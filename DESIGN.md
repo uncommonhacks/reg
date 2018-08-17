@@ -2,16 +2,24 @@
 
 ## Goal
 
-This is a platform for hackathon registration. Applicants should be able to submit their information, track their status, and be informed of their decision. Administrators should be able to evaluate (admit, waitlist, deny) applicants efficiently, configure [registration parameters](#registration-parameters) (deadlines, etc.). It is somewhat based on [Quill](https://github.com/techx/quill).
+This is a platform for hackathon registration. Applicants should be able to
+submit their information, track their status, and be informed of their decision.
+Administrators should be able to evaluate (admit, waitlist, deny) applicants
+efficiently, configure [registration parameters](#registration-parameters)
+(deadlines, etc.). It is somewhat based on
+[Quill](https://github.com/techx/quill).
 
 ## Architecture Outline
 
 ### Registration Parameters
 
 - Opening time: when the platform starts accepting applications.
-- Deadlines: it should be possible to set one or more deadlines. These should be completely independent of individual status (for example, an applicant should be able to be waitlisted before the final deadline).
+- Deadlines: it should be possible to set one or more deadlines. These should be
+  completely independent of individual status (for example, an applicant should
+  be able to be waitlisted before the final deadline).
 - Target Participants/Capacity: maybe only useful for displaying on admin pages.
-- Application Questions: questions as well as their parameters (word limit, judging criteria).
+- Application Questions: questions as well as their parameters (word limit,
+  judging criteria).
 
 ### User Model
 
@@ -22,16 +30,26 @@ There are three types of users:
 - Event Helper
 - Applicants
 
-_Administrators_ have full access privileges. They can access all applicant information (that is relevant to making admissions decisions). However, they do not judge applicants or view decisions (only summary statistics) -- this is to avoid bias. Additionally, they can modify registration parameters. All these actions are logged.
+_Administrators_ have full access privileges. They can access all applicant
+information (that is relevant to making admissions decisions). However, they do
+not judge applicants or view decisions (only summary statistics) -- this is to
+avoid bias. Additionally, they can modify registration parameters. All these
+actions are logged.
 
-_Judging_ don't have access to any PII, and are able to submit decisions on applicants.
+_Judging_ don't have access to any PII, and are able to submit decisions on
+applicants.
 
-_Event helpers_ have access to day-of functionality. In particular, they can check in applicants and view information such as dietary restrictions, etc. They can see, but not modify registration parameters. They can only see information relating to admitted applicants.
+_Event helpers_ have access to day-of functionality. In particular, they can
+check in applicants and view information such as dietary restrictions, etc. They
+can see, but not modify registration parameters. They can only see information
+relating to admitted applicants.
 
-_Applicants_ can see only their own state and application, and general day-of information. Applicants should be able to associate themselves with other applicants (in order to form teams)
+_Applicants_ can see only their own state and application, and general day-of
+information. Applicants should be able to associate themselves with other
+applicants (in order to form teams)
 
-
-Should be able to register in teams. Don't hard-code whether people can be accepted/rejected as a team
+Should be able to register in teams. Don't hard-code whether people can be
+accepted/rejected as a team
 
 ## Functionality
 
@@ -65,7 +83,8 @@ Should be able to register in teams. Don't hard-code whether people can be accep
   - TODO add more
   - Surface summary statistics to show how changing config parameters impacts
     the whole admit pool.
-- Administrators should be able to add new roles, and edit defaults through the interface
+- Administrators should be able to add new roles, and edit defaults through the
+  interface
 - Can release batches of decisions, but not see any PII (until after the
   application process closes, when they can export everything)
 - Should be able to change roles, add new users, within PII boundaries
