@@ -20,6 +20,16 @@ efficiently, configure [registration parameters](#registration-parameters)
 - Target Participants/Capacity: maybe only useful for displaying on admin pages.
 - Application Questions: questions as well as their parameters (word limit,
   judging criteria).
+- Decision release: admins should be allowed to manually release at any time
+  (with warnings), list of dates should be configurable, can only release
+  everything (i.e. cannot release any subset of decisions)
+- Acceptance critera (for example):
+  - Minimum number of reviewers
+  - Reviewers can upvote, downvote, and maybe abstain/neutral vote?
+  - Certain number of upvotes generates an acceptance (configurable)
+  - Certain number of downvotes generates a rejection (configurable)
+  - Neither generates a waitlist
+  - TODO possibly add the ability to fine-grained acceptance criteria
 
 ### User Model
 
