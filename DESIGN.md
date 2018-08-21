@@ -36,17 +36,17 @@ efficiently, configure [registration parameters](#registration-parameters)
 There are three types of users:
 
 - Administrators
-- Reviewing
+- Reviewers
 - Event Helper
 - Applicants
 
 _Administrators_ have full access privileges. They can access all applicant
 information (that is relevant to making admissions decisions). However, they do
-not reviewer applicants or view decisions (only summary statistics) -- this is to
+not review applicants or view decisions directly (only summary statistics) -- this is to
 avoid bias. Additionally, they can modify registration parameters. All these
 actions are logged.
 
-_Reviewing_ don't have access to any PII, and are able to submit decisions on
+_Reviewers_ don't have access to any PII, and are able to submit decisions on
 applicants.
 
 _Event helpers_ have access to day-of functionality. In particular, they can
@@ -74,7 +74,7 @@ accepted/rejected as a team
   notifying applicants
     - This should be very obvious to users of the system -- reviewers should be
       aware of this
-- Decisions should be immutable after they are released publically. The only
+- Decisions should be immutable after they are released publicly. The only
   allowable modification is removing people from the waitlist in either
   direction.
 - There should be ways to general policies for reviewing
