@@ -6,6 +6,10 @@ to set this up, install `aws-cli` onto your dev machine, then run `aws configure
 
 After that you should be good to just run `zappa update` from the main directory and itll push to the dev lambda w00t
 
+### how to make a superuser
+
+`zappa invoke --raw dev "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@yourdomain.com', 'horse battery stapler')"`
+
 ### how to migrate the database
 
 ```
