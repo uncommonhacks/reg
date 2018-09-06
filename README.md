@@ -1,5 +1,11 @@
 Registration for uncommon hacks.
 
+### the actual webapp
+Here's how state happens when people apply.
+![alt text](applicant-state.png)
+
+## infrastructure!!
+
 start by asking Claude or Ben to make you an account on the uncommonhacks AWS. Then go to IAM and generate yourself some keys.
 
 to set this up, install `aws-cli` onto your dev machine, then run `aws configure` and put in the key stuff from IAM.
