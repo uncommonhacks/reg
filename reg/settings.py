@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -76,10 +77,19 @@ WSGI_APPLICATION = 'reg.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+DB_NAME = client.get_parameter(Name='db_name')['Parameter']['Value']
+DB_USER = client.get_parameter(Name='db_user')['Parameter']['Value']
+DB_PASS = client.get_parameter(Name='db_pass', WithDecryption=True)['Parameter']['Value']
+DB_HOST = client.get_parameter(Name='db_host')['Parameter']['Value']
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
+        'HOST': DB_HOST,
+        'PORT': 5432,
     }
 }
 
@@ -120,4 +130,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+# THIS IS COMPLETELY BROKEN uGH
+AWS_STORAGE_BUCKET_NAME = client.get_parameter(Name='static_bucket')['Parameter']['Value']
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.us-east-2.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
