@@ -130,11 +130,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-# THIS IS COMPLETELY BROKEN uGH
 AWS_STORAGE_BUCKET_NAME = client.get_parameter(Name='static_bucket')['Parameter']['Value']
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.us-east-2.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
 
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_BUCKET_ACL = 'public-read'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

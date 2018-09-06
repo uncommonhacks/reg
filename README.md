@@ -13,3 +13,9 @@ After that you should be good to just run `zappa update` from the main directory
 set django-registration-url to be the hostname part of the URL that zappa gives you when you run zappa update. Should be of type String.
 
 set registration-django-secret-key (type SecureString) to be the "secret key" from django's settings.py. it should just be a long random string lol
+
+set the database parameters to be... right lol
+
+### static s3 bucket
+
+make a second s3 bucket and put it in settings.py. should be public-readable, owner-only writable. don't put anything sensitive in there, it's public-readable!!!
