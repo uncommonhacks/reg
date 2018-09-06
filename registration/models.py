@@ -3,19 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Applicant(models.Model):
-    # user model, handles email/auth/name
-    user = models.OneToOneField(User)
-    
-    # whats their app status?
-    # TODO set up an enum for this
-    status = models.CharField(max_length=200)
-    
-    # attach their application
-    application = models.OneToOneField(Application, null=True)
-
-    confirmation = models.OneToOneField(Confirmation, null=True)
-    
+# application class, to attach to applicant class
 class Application(models.Model):
     # are they 18+
     is_adult = models.BooleanField(default=False)
@@ -69,6 +57,7 @@ class Application(models.Model):
     termsconditions = models.BooleanField(default=False)
     code_of_conduct = models.BooleanField(default=False)
 
+# confirmation class, to attach to applicant class
 class Confirmation(models.Model):
     confirmed = models.BooleanField(default=False)
 
@@ -91,3 +80,17 @@ class Confirmation(models.Model):
     )
 
     notes = models.TextField(max_length=1500)
+
+
+class Applicant(models.Model):
+    # user model, handles email/auth/name
+    user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
+    
+    # whats their app status?
+    # TODO set up an enum for this
+    status = models.CharField(max_length=200)
+    
+    # attach their application
+    application = models.OneToOneField(Application, null=True, on_delete=models.SET_NULL)
+    
+    confirmation = models.OneToOneField(Confirmation, null=True, on_delete=models.SET_NULL)

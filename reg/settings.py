@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['127.0.0.1', client.get_parameter(Name='django-registration-url
 # Application definition
 
 INSTALLED_APPS = [
+    'registration.apps.RegistrationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
