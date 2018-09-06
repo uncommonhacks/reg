@@ -1,7 +1,9 @@
 Registration for uncommon hacks.
 
 ### the actual webapp
+
 Here's how state happens when people apply.
+
 ![alt text](applicant-state.png)
 
 ## infrastructure!!
