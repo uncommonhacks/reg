@@ -6,6 +6,14 @@ to set this up, install `aws-cli` onto your dev machine, then run `aws configure
 
 After that you should be good to just run `zappa update` from the main directory and itll push to the dev lambda w00t
 
+### how to migrate the database
+
+```
+python manage.py makemigrations
+zappa update dev
+zappa manage dev migrate
+```
+
 ### AWS SSM Parameter Store Config
 
 *this is already done on the uncommonhacks aws*
