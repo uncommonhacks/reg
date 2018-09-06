@@ -14,7 +14,7 @@ class Applicant(models.Model):
     # attach their application
     application = models.OneToOneField(Application, null=True)
 
-
+    confirmation = models.OneToOneField(Confirmation, null=True)
     
 class Application(models.Model):
     # are they 18+
@@ -68,3 +68,26 @@ class Application(models.Model):
     inforelease = models.BooleanField(default=False)
     termsconditions = models.BooleanField(default=False)
     code_of_conduct = models.BooleanField(default=False)
+
+class Confirmation(models.Model):
+    confirmed = models.BooleanField(default=False)
+
+    phone_number = models.CharField(max_length=20)
+    
+    dietary_restrictions = models.CharField(max_length=1000)
+    
+    SHIRT_SIZE_CHOICES = (
+        ('XS', 'XS'),
+        ('S_', 'S'),
+        ('M_', 'M'),
+        ('L_', 'L'),
+        ('1X', 'XL'),
+        ('2X', 'XXL'),
+    )
+    shirt_size = models.CharField(
+            max_length=2,
+            choices=SHIRT_SIZE_CHOICES,
+            default='M_'
+    )
+
+    notes = models.TextField(max_length=1500)
