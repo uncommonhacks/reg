@@ -28,20 +28,22 @@ SECRET_KEY = client.get_parameter(Name='registration-django-secret-key', WithDec
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', client.get_parameter(Name='django-registration-url')['Parameter']['Value']]
+ALLOWED_HOSTS = ['127.0.0.1', 'testing.uncommonhacks.com', client.get_parameter(Name='django-registration-url')['Parameter']['Value']]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'registration.apps.RegistrationConfig',
+    'theapplication.apps.TheapplicationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration',
     'storages',
+    'anymail',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'reg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,6 +75,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'reg.wsgi.application'
+
+
+# email
+
+ANYMAIL = {
+    'MAILGUN_API_KEY': 'key-4154a5d3a2bf91d770426c622d3aa694',
+}
+EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@uncommonhacks.com'
+
 
 
 # Database
@@ -113,6 +125,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'accounts/login/'
+ACCOUNT_ACTIVATION_DAYS = 7
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

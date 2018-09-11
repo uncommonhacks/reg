@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+
 # Create your models here.
 
 # application class, to attach to applicant class
@@ -87,8 +89,20 @@ class Applicant(models.Model):
     user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
     
     # whats their app status?
-    # TODO set up an enum for this
-    status = models.CharField(max_length=200)
+    STATUS_CHOICES = (
+        ('NS', 'Application Not Started'),
+        ('IP', 'Application In Progress'),
+        ('AD', 'Awaiting Decision'),
+        ('OD', 'Application Not Submitted By Deadline'),
+        ('WA', 'Waitlist'),
+        ('NA', 'Not Admitted'),
+        ('AM', 'Admitted'),
+    )
+    status = models.CharField(
+                max_length=2,
+                choices=STATUS_CHOICES,
+                default='NS'
+            )
     
     # attach their application
     application = models.OneToOneField(Application, null=True, on_delete=models.SET_NULL)

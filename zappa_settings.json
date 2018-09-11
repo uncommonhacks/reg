@@ -6,6 +6,8 @@
         "project_name": "reg", 
         "runtime": "python3.6", 
         "s3_bucket": "zappa-wq3r69g39",
-        "slim_handler": true
+        "slim_handler": true,
+        "certificate_arn": "arn:aws:acm:us-east-1:270710223943:certificate/b9840db1-acce-40b9-880e-87892fd3bfef",
+        "domain": "testing.uncommonhacks.com"
     }
 }
