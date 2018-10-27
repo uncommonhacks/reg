@@ -2,9 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
-# Create your models here.
-
 # application class, to attach to applicant class
 class Application(models.Model):
     # are they 18+
@@ -33,8 +30,8 @@ class Application(models.Model):
     # pronouns text field
     pronouns = models.CharField(max_length=150)
 
-    # race TODO make this a multi-selector
-    race = models.CharField(max_length=150)
+    # race
+    race = models.CharField(max_length=10, blank=True)
 
     # prior hackathons TODO make this a selector
     hackathons = models.CharField(max_length=150)

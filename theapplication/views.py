@@ -19,3 +19,17 @@ def index(request):
         return render(request, 'in_app/applicant_index.html', context={'status': applicant_obj.get_status_display()})
     else:
         return render(request, 'in_app/reviewer_index.html')
+
+@login_required
+def application(request):
+    if request.method == 'GET':
+        return render(request, 'in_app/application.html', context={})
+    elif request.method == 'POST':
+        
+        # make the application object and fill the field
+
+        # attach it to the current user
+
+        # change the user's status
+
+
