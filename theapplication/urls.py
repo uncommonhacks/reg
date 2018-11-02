@@ -7,6 +7,6 @@ urlpatterns = [
     # authentication endpoints
     url(r'^accounts/', include('theapplication.accounts_urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    path(r'^apply/', views.application, name='application')
+    path('apply/', views.application, name='application'),
     path('', views.index, name='index'),
 ]

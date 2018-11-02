@@ -1,12 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class RaceChoice(models.Model):
+    
+    race_string = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.race_string
 # application class, to attach to applicant class
 class Application(models.Model):
-    # are they 18+
-    is_adult = models.BooleanField(default=False)
-    
     # what's their school
     # TODO: make this a selector not a text field
     school = models.CharField(max_length=200)
@@ -31,7 +33,7 @@ class Application(models.Model):
     pronouns = models.CharField(max_length=150)
 
     # race
-    race = models.CharField(max_length=10, blank=True)
+    race = models.ManyToManyField(RaceChoice)
 
     # prior hackathons TODO make this a selector
     hackathons = models.CharField(max_length=150)
@@ -51,10 +53,6 @@ class Application(models.Model):
 
     # where are they coming from?
     location = models.CharField(max_length=200)
-
-    inforelease = models.BooleanField(default=False)
-    termsconditions = models.BooleanField(default=False)
-    code_of_conduct = models.BooleanField(default=False)
 
 # confirmation class, to attach to applicant class
 class Confirmation(models.Model):
