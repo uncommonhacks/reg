@@ -1,5 +1,5 @@
 from django import forms
-from .models import Application
+from .models import Application, Confirmation
 
 RACE = (('W', 'White'),
         ('B', 'Black or African American'),
