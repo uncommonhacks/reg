@@ -17,23 +17,20 @@ class ApplicantActivationView(ActivationView):
 
 @login_required
 def index(request):
-    if models.Applicant.objects.filter(user=request.user).exists():
-        applicant_obj = models.Applicant.objects.get(user=request.user)
-        status = applicant_obj.get_status_display()
-        open_application = applicant_obj.status in ['NS', 'IP'] and not over_application_deadline()
-        open_confirmation = applicant_obj.status is 'AM' and not over_confirmation_deadline()
-        over_application_deadline = applicant_obj.status in ['NS', 'IP'] and over_application_deadline()
-        over_confirmation_deadline = applicant_obj.status is 'AM' and over_confirmation_deadline()
-        return render(request, 'in_app/applicant_index.html', context={'status': status, 'open_application': open_application, 'open_confirmation': open_confirmation, 'over_application_deadline': over_application_deadline, 'over_confirmation_deadline': over_confirmation_deadline})
-    else:
-        return render(request, 'in_app/reviewer_index.html')
+    applicant_obj = models.Applicant.objects.get(user=request.user)
+    status = applicant_obj.get_status_display()
+    open_application = applicant_obj.status in ['NS', 'IP'] and not over_application_deadline()
+    open_confirmation = applicant_obj.status == 'AM' and not over_confirmation_deadline()
+    over_app_deadline = applicant_obj.status in ['NS', 'IP'] and over_application_deadline()
+    over_conf_deadline = applicant_obj.status == 'AM' and over_confirmation_deadline()
+    return render(request, 'in_app/applicant_index.html', context={'status': status, 'open_application': open_application, 'open_confirmation': open_confirmation, 'over_application_deadline': over_app_deadline, 'over_confirmation_deadline': over_conf_deadline})
 
 @login_required
 def application(request):
     if not models.Applicant.objects.filter(user=request.user).exists():
         return redirect('/')
     applicant = models.Applicant.objects.get(user=request.user)
-    if applicant.status not in ['NS', 'IP'] and not over_application_deadline():
+    if applicant.status not in ['NS', 'IP'] or over_application_deadline():
         return redirect('/')
     if request.method == 'POST':
         form = forms.ApplicationForm(request.POST)
@@ -52,7 +49,7 @@ def confirmation(request):
     if not models.Applicant.objects.filter(user=request.user).exists():
         return redirect('/')
     applicant = models.Applicant.objects.get(user=request.user)
-    if applicant.status is not 'AM' and not over_confirmation_deadline():
+    if applicant.status != 'AM' or over_confirmation_deadline():
         return redirect('/')
     if request.method == 'POST':
         form = forms.ConfirmationForm(request.POST)

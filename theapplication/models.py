@@ -98,6 +98,6 @@ class Applicant(models.Model):
             )
     
     # attach their application
-    application = models.OneToOneField(Application, null=True, on_delete=models.SET_NULL)
+    application = models.OneToOneField(Application, null=True, on_delete=models.SET_NULL, blank=True)
     
-    confirmation = models.OneToOneField(Confirmation, null=True, on_delete=models.SET_NULL)
+    confirmation = models.OneToOneField(Confirmation, null=True, on_delete=models.SET_NULL, blank=True)

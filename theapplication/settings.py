@@ -8,9 +8,9 @@ app_deadline_dt = datetime.datetime.strptime(application_deadline, format_str)
 con_deadline_dt = datetime.datetime.strptime(confirmation_deadline, format_str)
 
 def over_application_deadline():
-    return datetime.now() >= app_deadline_dt
+    return datetime.datetime.now() >= app_deadline_dt
 
 def over_confirmation_deadline():
-    return datetime.now() >= con_deadline_dt
+    return datetime.datetime.now() >= con_deadline_dt
 
 
