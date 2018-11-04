@@ -17,8 +17,8 @@ class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
         fields = ['school', 'grad_year', 'pronouns', 'race', 'hackathons', 'essay1', 'essay2', 'essay3', 'essay4', 'essay5', 'proudof', 'reimbursement', 'location']
-        widgets = {
-            'race': forms.CheckboxSelectMultiple(
-                choices=RACE
-            )
-        }
+
+class ConfirmationForm(forms.ModelForm):
+    class Meta:
+        model = Confirmation
+        fields = ['phone_number', 'dietary_restrictions', 'shirt_size', 'notes']

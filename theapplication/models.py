@@ -56,8 +56,6 @@ class Application(models.Model):
 
 # confirmation class, to attach to applicant class
 class Confirmation(models.Model):
-    confirmed = models.BooleanField(default=False)
-
     phone_number = models.CharField(max_length=20)
     
     dietary_restrictions = models.CharField(max_length=1000)
@@ -88,10 +86,10 @@ class Applicant(models.Model):
         ('NS', 'Application Not Started'),
         ('IP', 'Application In Progress'),
         ('AD', 'Awaiting Decision'),
-        ('OD', 'Application Not Submitted By Deadline'),
         ('WA', 'Waitlist'),
         ('NA', 'Not Admitted'),
         ('AM', 'Admitted'),
+        ('CF', 'Confirmed'),
     )
     status = models.CharField(
                 max_length=2,

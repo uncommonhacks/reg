@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-hi applicant welcome to your super exclusive index.html
+<p>hi applicant welcome to your super exclusive index.html</p>
+<p>Status: {{ status }}</p>
+<p>{% if open_application  %}<a href='apply/'>Apply Here!</a>{% endif %}</p>
+<p>{% if open_confirmation %}<a href='confirm/'>Confirm Here!</a>{% endif %}</p>
+<p>{% if over_application_deadline %}Sorry, the application deadline has passed. Apply again next year!{% endif %}</p>
+<p>{% if over_confirmation_deadline %}Sorry, the confirmation deadline has passed. Apply again next year!{% endif %}</p>
+
 {% endblock %}
