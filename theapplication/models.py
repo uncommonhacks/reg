@@ -96,7 +96,8 @@ class Applicant(models.Model):
                 choices=STATUS_CHOICES,
                 default='NS'
             )
-    
+
+    notified_of_admit_status = models.BooleanField(default=False)
     # attach their application
     application = models.OneToOneField(Application, null=True, on_delete=models.SET_NULL, blank=True)
     
