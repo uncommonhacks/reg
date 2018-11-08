@@ -84,7 +84,6 @@ class Applicant(models.Model):
     # whats their app status?
     STATUS_CHOICES = (
         ('NS', 'Application Not Started'),
-        ('IP', 'Application In Progress'),
         ('AD', 'Awaiting Decision'),
         ('WA', 'Waitlist'),
         ('NA', 'Not Admitted'),
