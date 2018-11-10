@@ -28,7 +28,9 @@ SECRET_KEY = client.get_parameter(Name='registration-django-secret-key', WithDec
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'testing.uncommonhacks.com', client.get_parameter(Name='django-registration-url')['Parameter']['Value']]
+MAIN_URL = 'testing.uncommonhacks.com'
+
+ALLOWED_HOSTS = ['127.0.0.1', MAIN_URL, client.get_parameter(Name='django-registration-url')['Parameter']['Value']]
 
 
 # Application definition

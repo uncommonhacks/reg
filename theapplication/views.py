@@ -11,7 +11,7 @@ from .settings import over_application_deadline, over_confirmation_deadline
 class ApplicantActivationView(ActivationView):
     def activate(self, *args, **kwargs):
         user = super(ApplicantActivationView, self).activate(*args, **kwargs)
-        applic = models.Applicant(user=user, application=None, confirmation=None, status="NS")
+        applic = models.Applicant(user=user, application=None, confirmation=None, notified_of_admit_status=False, status="NS")
         applic.save()
         return user
 
@@ -35,6 +35,10 @@ def application(request):
     if request.method == 'POST':
         form = forms.ApplicationForm(request.POST)
         if form.is_valid():
+            user = request.user
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
             application = form.save()
             applicant.application = application
             applicant.status = 'AD'

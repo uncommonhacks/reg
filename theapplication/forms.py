@@ -13,6 +13,8 @@ class ApplicationForm(forms.ModelForm):
     inforelease = forms.BooleanField()
     terms_conditions = forms.BooleanField()
     code_of_conduct = forms.BooleanField()
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
 
     class Meta:
         model = Application
