@@ -4,9 +4,13 @@
           {% block title %}<title>uncommon hacks registration</title>{% endblock %}
           {% load static %}
           <link rel="shortcut icon" type="image/png" href="{% static "favicon.png" %}"/>
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.css" %}" media="screen,projection"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         {% block sidebar %} <a href='{% url 'index' %}'>home</a>{% if user.is_authenticated %} <a href='{% url 'logout' %}'>logout</a>{% endif %}{% endblock %}
         {% block content %}<h2>Welcome to the uncommon hacks registration site!!</h2><!-- default content text (typically empty) -->{% endblock %}
+        <script type="text/javascript" src="{% static "materialize/js/materialize.js" %}"></script>
     </body>
 </html>
