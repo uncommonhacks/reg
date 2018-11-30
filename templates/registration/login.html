@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>login page</h2>
+<h2>log in</h2>
 {% if form.errors %}
-  <p>Your username and password didn't match. Please try again.</p>
+  <p>your username and password didn't match. please try again.</p>
 {% endif %}
 
 {% if next %}
   {% if user.is_authenticated %}
-    <p>What are you doing here go back to /!</p>
+    <a href='/'>you're already logged in. go home?</a>
   {% else %}
-    <p>Please login to see this page.</p>
+    <p>please log in to see this page.</p>
   {% endif %}
 {% endif %}
 
@@ -18,11 +18,11 @@
 {% csrf_token %}
 
 <div>
-  <td>{{ form.username.label_tag }}</td>
+  <td>username</td>
   <td>{{ form.username }}</td>
 </div>
 <div>
-  <td>{{ form.password.label_tag }}</td>
+    <td>password</td>
   <td>{{ form.password }}</td>
 </div>
 
@@ -33,6 +33,6 @@
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-    <p>Forgot password? <a href="{% url 'password_reset' %}">Reset it</a>!</p>
-    <p>No account? <a href="{% url 'registration_register' %}">Register</a>!</p>
+    <p>forgot password? <a href="{% url 'password_reset' %}">reset it</a>!</p>
+    <p>no account? <a href="{% url 'registration_register' %}">register</a>!</p>
 {% endblock %}
