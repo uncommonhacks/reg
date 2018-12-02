@@ -1,7 +1,7 @@
 import datetime
 
-application_deadline = '12:00:00 11/11/2018' # 'HH:mm:ss MM/DD/YYYY' format
-confirmation_deadline = '12:00:00 11/16/2018'
+application_deadline = '12:00:00 12/25/2018' # 'HH:mm:ss MM/DD/YYYY' format
+confirmation_deadline = '12:00:00 12/27/2018'
 
 format_str = '%H:%M:%S %m/%d/%Y'
 app_deadline_dt = datetime.datetime.strptime(application_deadline, format_str)
