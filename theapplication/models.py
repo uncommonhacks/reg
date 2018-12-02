@@ -79,7 +79,7 @@ class Confirmation(models.Model):
 
 class Applicant(models.Model):
     def __str__(self):
-        return '{} {}'.format(self.user.first_name, self.user.last_name)
+        return '{}: {} {}'.format(self.user.username, self.user.first_name, self.user.last_name)
     
     # user model, handles email/auth/name
     user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
