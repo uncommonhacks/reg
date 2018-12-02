@@ -17,6 +17,8 @@ class ApplicantActivationView(ActivationView):
 
 @login_required
 def index(request):
+    if not models.Applicant.objects.filter(user=request.user).exists():
+        return render(request, 'in_app/reviewer_index.html')
     applicant_obj = models.Applicant.objects.get(user=request.user)
     status = applicant_obj.get_status_display()
     open_application = applicant_obj.status == 'NS' and not over_application_deadline()
