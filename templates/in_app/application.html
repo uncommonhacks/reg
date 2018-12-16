@@ -1,10 +1,60 @@
 {% extends "base.html" %}
 
-{% block content %}
-<form method="post" novalidate>
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Submit</button>
-</form>
+{% block title %}
+<title>Application</title>
+{% endblock %}
 
+{% block content %}
+<div class="background">
+  <div class="container">
+    <div class="row title">
+      Application
+    </div>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <div class="row">
+	<div class="field">First Name:</div>
+	{{ form.first_name }}
+	<div class="error">{{ form.first_name.errors }}</div>
+
+	<div class="field">Last Name:</div>
+	{{ form.last_name }}
+	<div class="error">{{ form.last_name.errors }}</div>
+
+	<div class="field">Pronouns:</div>
+	{{ form.pronouns }}
+	<div class="error">{{ form.pronouns.errors }}</div>
+
+	<div class="field">Race:</div>
+	{{ form.race }}
+	<div class="error">{{ form.race.errors }}</div>
+
+	<div class="field">School:</div>
+	{{ form.school }}
+	<div class="error">{{ form.school.errors }}</div>
+
+	<div class="field">Graduation Year:</div>
+	{{ form.grad_year }}
+	<div class="error">{{ form.grad_year.errors }}</div>
+
+	<div class="field">Where will you be coming from to attend Uncommon Hacks?</div>
+	{{ form.location }}
+	<div class="error">{{ form.location.errors }}</div>
+
+	<div class="field">Please list any hackathons you have attended:</div>
+	{{ form.hackathons }}
+	<div class="error">{{ form.hackathons.errors }}
+
+	<div class="field">
+	
+	
+
+      </div>
+      {{ form }}
+      <div class="row center-align">
+	<input class="btn btn-default btn-lg" value="Submit" type="submit"/>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}

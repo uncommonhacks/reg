@@ -7,56 +7,44 @@
 {% block content %}
 <div class="background">
     <div class="container">
-        <div class="title">
+        <div class="title row">
 	  Log In to Uncommon Hacks
 	</div>
 
         {% if next %}
 	<div class="row">
 	  {% if user.is_authenticated %}
-	  <a href='/'>You're already logged in. Go home?</a>
+	    <div class="center-align">
+	      You're already logged in.<br/>
+	      <a href="{% url 'index' %}">Return to home</a>
+            </div>
 	  {% else %}
-	  Please log in to see this page.
+	    Please log in to see this page.
 	  {% endif %}
-	</div>
-        {% endif %}
-
-        {% if form.errors %}
-	<div class="row error">
-          Your username and password did not match. Please try again.  	  
 	</div>
         {% endif %}
 
 	<form method="post" action="{% url 'login' %}">
 	  {% csrf_token %}
-
 	  <div class="row">
-	    <div>
-	      <td>username</td>
-	      <td>{{ form.username }}</td>
-	    </div>
-
-	    <div>
-	      <td>password</td>
-	      <td>{{ form.password }}</td>
-	    </div>
+	    <td>Username</td>
+	    <td>{{ form.username }}</td>
+	    <td>Password</td>
+	    <td>{{ form.password }}</td>
 	  </div>
 	  
-	  <div class="row">
-	    <div class="center-align">
-	      <input type="submit" class="btn btn-default btn-lg" value="Log In" />
-	      <input type="hidden" name="next" value="{{ next }}" />
-	    </div>
+	  <div class="row center-align">
+            <input type="submit" class="btn btn-default btn-lg" value="Log In" />
+	    <input type="hidden" name="next" value="{{ next }}" />
 	  </div>
 	</form>
 
 	  {# Assumes you setup the password_reset view in your URLconf #}
-	  <div class="center-align">
-	    <a href="{% url 'registration_register' %}">I do not have an account</a>
-	  </div>
-	  <div class="center-align">
-	    <a href="{% url 'password_reset' %}">I forgot my password</a>
-	  </div>
+	<div class="row center-align">
+	  <a href="{% url 'registration_register' %}">I do not have an account</a>
+	  <br/>
+	  <a href="{% url 'password_reset' %}">I forgot my password</a>
+	</div>
     </div>    
 </div>
 {% endblock %}

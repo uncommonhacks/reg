@@ -1,10 +1,42 @@
 {% extends 'base.html' %}
 
+{% block title %}
+<title>Register | Uncommon Hacks Registration</title>
+{% endblock %}
+
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+<div class="background">
+  <div class="container">
+    <div class="title row">
+      Create an Account
+    </div>
+    <div class="row">
+      Please create an account to access the Uncommon Hacks registration system.
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+	<div class="field">Username:</div>
+	{{ form.username }}
+	<div class="error">{{ form.username.errors }}</div>
+
+	<div class="field">Email:</div>
+	{{ form.email }}
+	<div class="error">{{ form.email.errors }}</div>
+
+	<div class="field">Password:</div>
+	{{ form.password1 }}
+	<div class="error">{{ form.password1.errors }}</div>
+
+	<div class="field">Confirm Password:</div>
+	{{ form.password2 }}
+	<div class="error">{{ form.password2.errors }}</div>
+      </div>
+
+      <div class="row center-align">
+        <input class="btn btn-default btn-lg" type="submit" value="Create Account"/>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}

@@ -7,7 +7,7 @@ from . import views
 urlpatterns = [
     url(r'^activate/complete/$',
         TemplateView.as_view(
-            template_name='registration/activation_complete.html'
+            template_name='django_registration/activation_complete.html'
         ),
         name='registration_activation_complete'),
     # The activation key can make use of any character from the
@@ -16,7 +16,9 @@ urlpatterns = [
         views.ApplicantActivationView.as_view(),
         name='registration_activate'),
     url(r'^register/$',
-        RegistrationView.as_view(),
+        RegistrationView.as_view(
+            template_name="django_registration/registration_form.html"
+        ),
         name='registration_register'),
     url(r'^register/complete/$',
         TemplateView.as_view(

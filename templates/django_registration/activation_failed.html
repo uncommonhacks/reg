@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
+{% block title %}
+<title>Account Not Activated | Uncommon Hacks Registration</title>
+{% endblock %}
+
 {% block content %}
-    <p>account activation failed <i>developer: when you implement this page, check the context for the activation_error dict so that you can print descriptive error messages!</i></p>
+<div class="background">
+  <div class="container">
+    <div class="row title">
+    </div>
+    <div class="row center-align">
+      Your account was unable to be activated. Please email
+      <a href="mailto:celery@uncommonhacks.com">celery@uncommonhacks.com</a>
+      for assistance.
+      <br/>
+      <a href="{% url 'login' %}">Return to login</a>
+    </div>
+  </div>
+</div>
 {% endblock %}

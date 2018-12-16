@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
+{% block title %}
+<title>Register | Uncommon Hacks Registration</title>
+{% endblock %}
+
 {% block content %}
-    <p>Account created. Check your email for a validation link.</p>
+<div class="background">
+  <div class="container">
+    <div class="row title">
+      Create an Account
+    </div>
+    <div class="row center-align">
+      Your account has been created. Check your email for a validation link.
+      <br/>
+      <a href="{% url 'login' %}">Return to login</a>
+    </div>
 {% endblock %}

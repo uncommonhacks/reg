@@ -13,13 +13,17 @@ html, body {
 	font-size: 4em;
     }
 
-    .error{
-	color: red;
-    }
-
     .background{
 	height: 100%;
 	background-color: #2D313A;
     }
 
-    /* Page Specific Styles */
+    /* Form Styles */
+
+    .error{
+	color: red; 
+    }
+    
+    .field{
+	color: #bfbfbf;
+    }
