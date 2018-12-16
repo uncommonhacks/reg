@@ -33,7 +33,7 @@ class Application(models.Model):
     pronouns = models.CharField(max_length=150)
     
     
-    GENDER_CHOICE = (
+    GENDER_CHOICES = (
         ('M_', 'Male'),
         ('NB', 'Nonbinary'),
         ('F_', 'Female'),
