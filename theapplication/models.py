@@ -31,7 +31,22 @@ class Application(models.Model):
     
     # pronouns text field
     pronouns = models.CharField(max_length=150)
+    
+    
+    GENDER_CHOICE = (
+        ('M_', 'Male'),
+        ('NB', 'Nonbinary'),
+        ('F_', 'Female'),
+        ('or', 'Other/Prefer not to disclose'),
+    )
+    gender = models.CharField(
+            max_length=2,
+            choices=GENDER_CHOICES,
+            default='or',
+    )
 
+    major = models.CharField(max_length=150)
+    
     # race
     race = models.ManyToManyField(RaceChoice)
 

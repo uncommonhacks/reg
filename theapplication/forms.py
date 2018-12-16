@@ -18,7 +18,7 @@ class ApplicationForm(forms.ModelForm):
 
     class Meta:
         model = Application
-        fields = ['school', 'grad_year', 'pronouns', 'race', 'hackathons', 'essay1', 'essay2', 'essay3', 'essay4', 'essay5', 'proudof', 'reimbursement', 'location']
+        fields = ['school', 'grad_year', 'pronouns', 'gender', 'race', 'major', 'hackathons', 'essay1', 'essay2', 'essay3', 'essay4', 'essay5', 'proudof', 'reimbursement', 'location']
 
 class ConfirmationForm(forms.ModelForm):
     class Meta:
