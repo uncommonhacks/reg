@@ -48,7 +48,7 @@ def application(request):
             return redirect('/')
     else:
         form = forms.ApplicationForm()
-    return render(request, 'in_app/application.html', {'form':form.as_p})
+    return render(request, 'in_app/application.html', {'form':form})
 
 @login_required
 def confirmation(request):
@@ -67,4 +67,4 @@ def confirmation(request):
             return redirect('/')
     else:
         form = forms.ConfirmationForm(request.POST)
-    return render(request, 'in_app/confirmation.html', {'form': form.as_p})
+    return render(request, 'in_app/confirmation.html', {'form': form})
