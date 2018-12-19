@@ -11,7 +11,7 @@ RACE = (('W', 'White'),
 class ApplicationForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100)
     last_name = forms.CharField(max_length=100)
-
+    
     class Meta:
         model = Application
         fields = '__all__'

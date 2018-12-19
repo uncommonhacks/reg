@@ -13,5 +13,6 @@
         {% block sidebar %} {% if user.is_authenticated %} <a href='{% url 'logout' %}'>logout</a>{% endif %}{% endblock %}
 	{% block content %}<h2>Welcome to the uncommon hacks registration site!!</h2><!-- default content text (typically empty) -->{% endblock %}
 	<script type="text/javascript" src="{% static "materialize/js/bin/materialize.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "materialize/js/main.js" %}"></script>
     </body>
 </html>
