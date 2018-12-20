@@ -109,10 +109,6 @@ class Application(models.Model):
         max_length=1500, verbose_name="Anything you're proud of?", null=True
     )
 
-    # TODO: Figure out where / how we should save this
-    # https://docs.djangoproject.com/en/2.1/ref/models/fields/#filefield
-    resume = models.FileField()
-
     essay1 = models.TextField(
                 max_length=1500,
                 verbose_name=("There are 2 types of people in this world. "
