@@ -42,7 +42,7 @@ def application(request):
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.save()
-            upload_resume_to_s3(request.FILES['file'], request.user)
+            upload_resume_to_s3(request.FILES['resume'], request.user)
             application = form.save()
             applicant.application = application
             applicant.status = 'AD'
@@ -50,7 +50,7 @@ def application(request):
             return redirect('/')
     else:
         form = forms.ApplicationForm()
-    return render(request, 'in_app/application.html', {'form':form})
+    return render(request, 'in_app/application.html', {'form':form, 'enctype': 'enctype=multipart/form-data'})
 
 @login_required
 def confirmation(request):
@@ -69,4 +69,4 @@ def confirmation(request):
             return redirect('/')
     else:
         form = forms.ConfirmationForm(request.POST)
-    return render(request, 'in_app/confirmation.html', {'form': form})
+    return render(request, 'in_app/confirmation.html', {'form': form, 'enctype': ''})

@@ -15,11 +15,12 @@ RACE_CHOICES = (
 class ApplicationForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100)
     last_name = forms.CharField(max_length=100)
+    resume = forms.FileField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Constrain race options
-        self.fields['race'] = forms.MultipleChoiceField(choices=RACE_CHOICES,)
+#        self.fields['race'] = forms.MultipleChoiceField(choices=RACE_CHOICES,)
 
     class Meta:
         model = Application
