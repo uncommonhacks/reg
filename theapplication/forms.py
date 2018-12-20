@@ -11,8 +11,8 @@ class ApplicationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Constrain race options
         # Make school an autocomplete field
-        self.fields['school'].widget.template_name=("django/forms/widgets/"
-                                                    "school_autocomplete.html")
+#        self.fields['school'].widget.template_name=("django/forms/widgets/"
+#                                                    "school_autocomplete.html")
 
     class Meta:
         model = Application
