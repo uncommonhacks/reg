@@ -8,11 +8,17 @@ class RaceChoice(models.Model):
     def __str__(self):
         return self.race_string
 
+class SchoolChoice(models.Model):    
+    school_string = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.school_string
+
 # Application class, to attach to applicant class.
 class Application(models.Model):
 
-    phone_number = PhoneNumberField(null=True)
-
+#    phone_number = PhoneNumberField(null=True)
+    phone_number = models.CharField(max_length=20, null=True)
     # TODO: this needs validation
 #    birth_date = models.DateField(
 #                    null=True,
