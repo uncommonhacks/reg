@@ -17,10 +17,10 @@ class Application(models.Model):
     )
 
     # TODO: this needs validation
-    birth_date = models.DateField(
-                    null=True,
-    )
-
+#    birth_date = models.DateField(
+#                    null=True,
+#    )
+    birth_date = models.CharField(max_length=50, null=True)
     GENDER_CHOICES = (
         ('M_', 'Male'),
         ('NB', 'Nonbinary'),
@@ -108,10 +108,6 @@ class Application(models.Model):
                 verbose_name="Anything you're proud of?",
                 null=True,
     )    
-    
-    # TODO: Figure out where / how we should save this
-    # https://docs.djangoproject.com/en/2.1/ref/models/fields/#filefield
-    resume = models.FileField()
     
     # essay questions
     essay1 = models.TextField(
