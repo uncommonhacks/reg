@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0008_auto_20181104_2347'),
-    ]
+    dependencies = [("theapplication", "0008_auto_20181104_2347")]
 
     operations = [
         migrations.AddField(
-            model_name='applicant',
-            name='notified_of_admit_status',
+            model_name="applicant",
+            name="notified_of_admit_status",
             field=models.BooleanField(default=False),
-        ),
+        )
     ]
