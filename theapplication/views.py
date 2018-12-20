@@ -5,6 +5,7 @@ from . import models
 from . import forms
 from django.http import HttpResponse
 from .settings import over_application_deadline, over_confirmation_deadline
+from .storage_backends import upload_resume_to_s3
 
 # Create your views here.
 
@@ -35,12 +36,13 @@ def application(request):
     if applicant.status != 'NS' or over_application_deadline():
         return redirect('/')
     if request.method == 'POST':
-        form = forms.ApplicationForm(request.POST)
+        form = forms.ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
             user = request.user
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.save()
+            upload_resume_to_s3(request.FILES['file'], request.user)
             application = form.save()
             applicant.application = application
             applicant.status = 'AD'

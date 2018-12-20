@@ -53,6 +53,7 @@ class Application(models.Model):
                 null=True,
     )
 
+    # TODO: make this a selector
     study_level = models.CharField(
                     max_length=50,
                     verbose_name="What is your most current level of study?",
@@ -104,10 +105,8 @@ class Application(models.Model):
     
     # TODO: Figure out where / how we should save this
     # https://docs.djangoproject.com/en/2.1/ref/models/fields/#filefield
-    resume = models.FileField(
-                null=True,
-    )
-
+    resume = models.FileField()
+    
     essay1 = models.TextField(
                 max_length=1500,
                 verbose_name=("There are 2 types of people in this world. "
