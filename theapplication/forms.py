@@ -1,16 +1,6 @@
 from django import forms
 from .models import Application, Confirmation
 
-RACE_CHOICES = (
-    ('W', 'White'),
-    ('B', 'Black or African American'),
-    ('N', 'American Indian or Alaska Native'),
-    ('A', 'Asian'),
-    ('P', 'Native Hawaiian or Pacific Islander'),
-    ('H', 'Hispanic or Latino'),
-    ('O', 'Other'),
-    ('Z', 'Prefer not to answer')
-)
 
 class ApplicationForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100)
@@ -21,8 +11,8 @@ class ApplicationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Constrain race options
         # Make school an autocomplete field
-        #self.fields['school'].widget.template_name=("django/forms/widgets/"
-        #                                            "school_autocomplete.html")
+        self.fields['school'].widget.template_name=("django/forms/widgets/"
+                                                    "school_autocomplete.html")
 
     class Meta:
         model = Application
