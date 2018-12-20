@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.forms',
+    'phonenumber_field',
     'registration',
     'storages',
     'anymail',
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'reg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates'],
+        'DIRS': ['./templates', 'django/forms/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
