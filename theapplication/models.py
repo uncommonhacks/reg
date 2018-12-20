@@ -50,9 +50,9 @@ class Application(models.Model):
             verbose_name="What is your race/ethnicity?",
     )
 
-    school = models.CharField(
-                max_length=200,
-                null=True,
+    school = models.ManyToManyField(
+            SchoolChoice,
+            verbose_name="Where do you attend school?",
     )
 
     major = models.CharField(
