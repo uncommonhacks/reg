@@ -7,37 +7,7 @@
 {% block content %}
 <div class="background">
   <div class="container">
-    <div class="title row">
-      Create an Account
-    </div>
-    <div class="row">
-      Please create an account to access the Uncommon Hacks registration system.
-    </div>
-    <form method="post">
-      {% csrf_token %}
-      <div class="row">
-	<div class="error">
-	  {% for error in form.source.errors %}
-	  {{ error }}<br/>
-	  {% endfor %}
-	  {% for error in form.non_field_errors %}
-	  {{ error }}<br/>
-	  {% endfor %}
-	</div>
-	{% for field in form.visible_fields %}
-	<div class="field-label">{{ field.label_tag }}</div>
-	<div class="field">{{ field }}</div>
-	<div class="error">
-	  {% for error in field.errors %}
-	  {{ error }}<br/>
-	  {% endfor %}
-	</div>
-	{% endfor %}
-      </div>
-      <div class="row center-align">
-        <input class="btn btn-default btn-lg" type="submit" value="Create Account"/>
-      </div>
-    </form>
+    {% include "com/cardform.html" %}
   </div>
 </div>
 {% endblock %}

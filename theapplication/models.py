@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 class RaceChoice(models.Model):    
     race_string = models.CharField(max_length=50)
@@ -10,17 +11,14 @@ class RaceChoice(models.Model):
 # Application class, to attach to applicant class.
 class Application(models.Model):
 
-    # TODO: this needs validation
-    phone_number = models.CharField(
-                    max_length=50,
-                    null=True,
-    )
+    phone_number = PhoneNumberField()
 
     # TODO: this needs validation
 #    birth_date = models.DateField(
 #                    null=True,
 #    )
     birth_date = models.CharField(max_length=50, null=True)
+
     GENDER_CHOICES = (
         ('M_', 'Male'),
         ('NB', 'Nonbinary'),
@@ -32,7 +30,7 @@ class Application(models.Model):
     gender = models.CharField(
             max_length=2,
             choices=GENDER_CHOICES,
-            default='P_',
+            null=True,
     )
 
     pronouns = models.CharField(
@@ -46,7 +44,6 @@ class Application(models.Model):
             verbose_name="What is your race/ethnicity?",
     )
 
-    # TODO: make this a selector not a text field
     school = models.CharField(
                 max_length=200,
                 null=True,
@@ -78,7 +75,7 @@ class Application(models.Model):
     grad_year = models.CharField(
             max_length=2,
             choices=YEAR_IN_SCHOOL_CHOICES,
-            default='or',
+            null=True,
     )
 
     # TODO: add helper text - city/state/country
@@ -87,9 +84,8 @@ class Application(models.Model):
                 verbose_name="Where are you coming from to attend Uncommon Hacks?",
                 null=True,
     )
-
-    # TODO: add helper text - list names of hackathons
-    # TODO: make this a selector - low priority
+    
+    # TODO: add helper text - "Feel free to list them"
     hackathons = models.CharField(
                     max_length=150,
                     verbose_name="How many hackathons have you attended before?",
@@ -180,7 +176,7 @@ class Confirmation(models.Model):
     shirt_size = models.CharField(
             max_length=2,
             choices=SHIRT_SIZE_CHOICES,
-            default='M_'
+            null=True,
     )
 
     notes = models.TextField(max_length=1500)
