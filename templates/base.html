@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-          {% block title %}<title>uncommon hacks registration</title>{% endblock %}
+          {% block title %}
+	  <title>Uncommon Hacks</title>
+	  {% endblock %}
+
           {% load static %}
+	  
+	  <!-- Links -->
           <link rel="shortcut icon" type="image/png" href="{% static "favicon.png" %}"/>
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-          <link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.css" %}" media="screen,projection"/>
-          <link type="text/css" rel="stylesheet" href="{% static "materialize/css/style.css" %}" media="screen,projection"/>
+          <link type="text/css" rel="stylesheet" 
+	            href="{% static "materialize/css/materialize.css" %}" 
+                    media="screen,projection"/>
+          <link type="text/css" rel="stylesheet" 
+		href="{% static "style.css" %}" 
+		media="screen,projection"/>
+	  
+	  <!-- Meta -->
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  
+          <!-- Scripts -->
+	  <script type="text/javascript" 
+	          src="{% static "materialize/js/bin/materialize.min.js" %}">
+	  </script>
+	  <script type="text/javascript" src="{% static "main.js" %}"></script>
     </head>
     <body>
-        {% block sidebar %} {% if user.is_authenticated %} <a href='{% url 'logout' %}'>logout</a>{% endif %}{% endblock %}
-	{% block content %}<h2>Welcome to the uncommon hacks registration site!!</h2><!-- default content text (typically empty) -->{% endblock %}
-	<script type="text/javascript" src="{% static "materialize/js/bin/materialize.min.js" %}"></script>
-	<script type="text/javascript" src="{% static "materialize/js/main.js" %}"></script>
+        {% block sidebar %}
+	{% if user.is_authenticated %}
+	<a href='{% url 'logout' %}'>logout</a>
+	{% endif %}
+	{% endblock %}
+
+	{% block content %}
+	<!-- default content text (typically empty) -->
+	{% endblock %}
     </body>
 </html>

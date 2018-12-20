@@ -1,5 +1,7 @@
 import datetime
 
+import django
+
 application_deadline = '12:00:00 12/25/2018' # 'HH:mm:ss MM/DD/YYYY' format
 confirmation_deadline = '12:00:00 12/27/2018'
 
@@ -12,5 +14,3 @@ def over_application_deadline():
 
 def over_confirmation_deadline():
     return datetime.datetime.now() >= con_deadline_dt
-
-

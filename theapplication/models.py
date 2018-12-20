@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class RaceChoice(models.Model):
-    
+class RaceChoice(models.Model):    
     race_string = models.CharField(max_length=50)
 
     def __str__(self):
@@ -26,13 +25,14 @@ class Application(models.Model):
         ('M_', 'Male'),
         ('NB', 'Nonbinary'),
         ('F_', 'Female'),
-        ('or', 'Other/Prefer not to disclose'),
+        ('O_', 'Other'),
+        ('P_', 'Prefer not to answer')
     )
 
     gender = models.CharField(
             max_length=2,
             choices=GENDER_CHOICES,
-            default='or',
+            default='P_',
     )
 
     pronouns = models.CharField(
@@ -70,7 +70,7 @@ class Application(models.Model):
         ('20', '2020'),
         ('21', '2021'),
         ('22', '2022'),
-        ('23', '2023 or Later'),
+        ('23', '2023 or later'),
         ('or', 'other'),
     )
 
