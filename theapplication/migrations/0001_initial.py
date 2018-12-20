@@ -9,71 +9,154 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ('auth', '0009_alter_user_last_name_max_length'),
-    ]
+    dependencies = [("auth", "0009_alter_user_last_name_max_length")]
 
     operations = [
         migrations.CreateModel(
-            name='Applicant',
+            name="Applicant",
             fields=[
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
-                ('status', models.CharField(choices=[('NS', 'Application Not Started'), ('IP', 'Application In Progress'), ('AD', 'Awaiting Decision'), ('OD', 'Application Not Submitted By Deadline'), ('WA', 'Waitlist'), ('NA', 'Not Admitted'), ('AM', 'Admitted')], default='NS', max_length=2)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        primary_key=True,
+                        serialize=False,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("NS", "Application Not Started"),
+                            ("IP", "Application In Progress"),
+                            ("AD", "Awaiting Decision"),
+                            ("OD", "Application Not Submitted By Deadline"),
+                            ("WA", "Waitlist"),
+                            ("NA", "Not Admitted"),
+                            ("AM", "Admitted"),
+                        ],
+                        default="NS",
+                        max_length=2,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Application',
+            name="Application",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_adult', models.BooleanField(default=False)),
-                ('school', models.CharField(max_length=200)),
-                ('grad_year', models.CharField(choices=[('19', '2019'), ('20', '2020'), ('21', '2021'), ('22', '2022'), ('23', '2023 or Later'), ('or', 'other')], default='or', max_length=2)),
-                ('pronouns', models.CharField(max_length=150)),
-                ('hackathons', models.CharField(max_length=150)),
-                ('essay1', models.TextField(max_length=1500)),
-                ('essay2', models.TextField(max_length=1500)),
-                ('essay3', models.TextField(max_length=1500)),
-                ('essay4', models.TextField(max_length=1500)),
-                ('essay5', models.TextField(max_length=1500)),
-                ('proudof', models.TextField(max_length=1500)),
-                ('reimbursement', models.BooleanField(default=False)),
-                ('location', models.CharField(max_length=200)),
-                ('inforelease', models.BooleanField(default=False)),
-                ('termsconditions', models.BooleanField(default=False)),
-                ('code_of_conduct', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_adult", models.BooleanField(default=False)),
+                ("school", models.CharField(max_length=200)),
+                (
+                    "grad_year",
+                    models.CharField(
+                        choices=[
+                            ("19", "2019"),
+                            ("20", "2020"),
+                            ("21", "2021"),
+                            ("22", "2022"),
+                            ("23", "2023 or Later"),
+                            ("or", "other"),
+                        ],
+                        default="or",
+                        max_length=2,
+                    ),
+                ),
+                ("pronouns", models.CharField(max_length=150)),
+                ("hackathons", models.CharField(max_length=150)),
+                ("essay1", models.TextField(max_length=1500)),
+                ("essay2", models.TextField(max_length=1500)),
+                ("essay3", models.TextField(max_length=1500)),
+                ("essay4", models.TextField(max_length=1500)),
+                ("essay5", models.TextField(max_length=1500)),
+                ("proudof", models.TextField(max_length=1500)),
+                ("reimbursement", models.BooleanField(default=False)),
+                ("location", models.CharField(max_length=200)),
+                ("inforelease", models.BooleanField(default=False)),
+                ("termsconditions", models.BooleanField(default=False)),
+                ("code_of_conduct", models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
-            name='Confirmation',
+            name="Confirmation",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('confirmed', models.BooleanField(default=False)),
-                ('phone_number', models.CharField(max_length=20)),
-                ('dietary_restrictions', models.CharField(max_length=1000)),
-                ('shirt_size', models.CharField(choices=[('XS', 'XS'), ('S_', 'S'), ('M_', 'M'), ('L_', 'L'), ('1X', 'XL'), ('2X', 'XXL')], default='M_', max_length=2)),
-                ('notes', models.TextField(max_length=1500)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("confirmed", models.BooleanField(default=False)),
+                ("phone_number", models.CharField(max_length=20)),
+                ("dietary_restrictions", models.CharField(max_length=1000)),
+                (
+                    "shirt_size",
+                    models.CharField(
+                        choices=[
+                            ("XS", "XS"),
+                            ("S_", "S"),
+                            ("M_", "M"),
+                            ("L_", "L"),
+                            ("1X", "XL"),
+                            ("2X", "XXL"),
+                        ],
+                        default="M_",
+                        max_length=2,
+                    ),
+                ),
+                ("notes", models.TextField(max_length=1500)),
             ],
         ),
         migrations.CreateModel(
-            name='RaceSelectMultiple',
+            name="RaceSelectMultiple",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('race', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("race", models.CharField(max_length=50)),
             ],
         ),
         migrations.AddField(
-            model_name='application',
-            name='race',
-            field=models.ManyToManyField(blank=True, to='theapplication.RaceSelectMultiple'),
+            model_name="application",
+            name="race",
+            field=models.ManyToManyField(
+                blank=True, to="theapplication.RaceSelectMultiple"
+            ),
         ),
         migrations.AddField(
-            model_name='applicant',
-            name='application',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, to='theapplication.Application'),
+            model_name="applicant",
+            name="application",
+            field=models.OneToOneField(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="theapplication.Application",
+            ),
         ),
         migrations.AddField(
-            model_name='applicant',
-            name='confirmation',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, to='theapplication.Confirmation'),
+            model_name="applicant",
+            name="confirmation",
+            field=models.OneToOneField(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="theapplication.Confirmation",
+            ),
         ),
     ]

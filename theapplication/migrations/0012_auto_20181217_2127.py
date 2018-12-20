@@ -5,14 +5,15 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0011_auto_20181217_2126'),
-    ]
+    dependencies = [("theapplication", "0011_auto_20181217_2126")]
 
     operations = [
         migrations.AlterField(
-            model_name='application',
-            name='race',
-            field=models.ManyToManyField(to='theapplication.RaceChoice', verbose_name='What is your race/ethnicity?'),
-        ),
+            model_name="application",
+            name="race",
+            field=models.ManyToManyField(
+                to="theapplication.RaceChoice",
+                verbose_name="What is your race/ethnicity?",
+            ),
+        )
     ]
