@@ -28,12 +28,16 @@ SECRET_KEY = client.get_parameter(
 )["Parameter"]["Value"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ.get("RUN_LOCAL") == "TRUE":
+    DEBUG = True
+else:
+    DEBUG = False
 
 MAIN_URL = "testing.uncommonhacks.com"
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
+    "localhost",
     MAIN_URL,
     client.get_parameter(Name="django-registration-url")["Parameter"]["Value"],
 ]
@@ -96,12 +100,21 @@ DEFAULT_FROM_EMAIL = "noreply@uncommonhacks.com"
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DB_NAME = client.get_parameter(Name="db_name")["Parameter"]["Value"]
-DB_USER = client.get_parameter(Name="db_user")["Parameter"]["Value"]
-DB_PASS = client.get_parameter(Name="db_pass", WithDecryption=True)["Parameter"][
-    "Value"
-]
-DB_HOST = client.get_parameter(Name="db_host")["Parameter"]["Value"]
+if os.environ.get("RUN_LOCAL") == "TRUE":
+    DB_NAME = "ucreg"
+    DB_USER = "ucreguser"
+    DB_PASS = "usregpassword"
+    DB_HOST = "localhost"
+    DB_PORT = ""
+else:
+    DB_NAME = client.get_parameter(Name="db_name")["Parameter"]["Value"]
+    DB_USER = client.get_parameter(Name="db_user")["Parameter"]["Value"]
+    DB_PASS = client.get_parameter(Name="db_pass", WithDecryption=True)["Parameter"][
+        "Value"
+    ]
+    DB_HOST = client.get_parameter(Name="db_host")["Parameter"]["Value"]
+    DB_PORT = 5432
+
 
 
 DATABASES = {
@@ -111,7 +124,7 @@ DATABASES = {
         "USER": DB_USER,
         "PASSWORD": DB_PASS,
         "HOST": DB_HOST,
-        "PORT": 5432,
+        "PORT": DB_PORT,
     }
 }
 
