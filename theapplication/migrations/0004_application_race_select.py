@@ -5,12 +5,14 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("theapplication", "0003_auto_20181101_1820")]
+    dependencies = [
+        ('theapplication', '0003_auto_20181101_1820'),
+    ]
 
     operations = [
         migrations.AddField(
-            model_name="application",
-            name="race_select",
-            field=models.ManyToManyField(to="theapplication.RaceChoice"),
-        )
+            model_name='application',
+            name='race_select',
+            field=models.ManyToManyField(to='theapplication.RaceChoice'),
+        ),
     ]

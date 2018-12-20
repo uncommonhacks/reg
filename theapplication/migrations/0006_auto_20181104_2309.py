@@ -5,26 +5,14 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [("theapplication", "0005_auto_20181101_1837")]
+    dependencies = [
+        ('theapplication', '0005_auto_20181101_1837'),
+    ]
 
     operations = [
         migrations.AlterField(
-            model_name="applicant",
-            name="status",
-            field=models.CharField(
-                choices=[
-                    ("NS", "Application Not Started"),
-                    ("IP", "Application In Progress"),
-                    ("AD", "Awaiting Decision"),
-                    ("OD", "Application Not Submitted By Deadline"),
-                    ("WA", "Waitlist"),
-                    ("NA", "Not Admitted"),
-                    ("AM", "Admitted"),
-                    ("MD", "Missed Confirmation Deadline"),
-                    ("CF", "Confirmed"),
-                ],
-                default="NS",
-                max_length=2,
-            ),
-        )
+            model_name='applicant',
+            name='status',
+            field=models.CharField(choices=[('NS', 'Application Not Started'), ('IP', 'Application In Progress'), ('AD', 'Awaiting Decision'), ('OD', 'Application Not Submitted By Deadline'), ('WA', 'Waitlist'), ('NA', 'Not Admitted'), ('AM', 'Admitted'), ('MD', 'Missed Confirmation Deadline'), ('CF', 'Confirmed')], default='NS', max_length=2),
+        ),
     ]

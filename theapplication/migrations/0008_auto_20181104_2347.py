@@ -6,27 +6,19 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [("theapplication", "0007_auto_20181104_2344")]
+    dependencies = [
+        ('theapplication', '0007_auto_20181104_2344'),
+    ]
 
     operations = [
         migrations.AlterField(
-            model_name="applicant",
-            name="application",
-            field=models.OneToOneField(
-                blank=True,
-                null=True,
-                on_delete=django.db.models.deletion.SET_NULL,
-                to="theapplication.Application",
-            ),
+            model_name='applicant',
+            name='application',
+            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='theapplication.Application'),
         ),
         migrations.AlterField(
-            model_name="applicant",
-            name="confirmation",
-            field=models.OneToOneField(
-                blank=True,
-                null=True,
-                on_delete=django.db.models.deletion.SET_NULL,
-                to="theapplication.Confirmation",
-            ),
+            model_name='applicant',
+            name='confirmation',
+            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='theapplication.Confirmation'),
         ),
     ]
