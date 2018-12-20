@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
     'registration',
     'storages',
     'anymail',
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'reg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates'],
+        'DIRS': ['django/forms/templates', './templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,9 +93,9 @@ DEFAULT_FROM_EMAIL = 'noreply@uncommonhacks.com'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DB_NAME = client.get_parameter(Name='db_name')['Parameter']['Value']
-DB_USER = client.get_parameter(Name='db_user')['Parameter']['Value']
-DB_PASS = client.get_parameter(Name='db_pass', WithDecryption=True)['Parameter']['Value']
+DB_NAME = client.get_parameter(Name='adb_name')['Parameter']['Value']
+DB_USER = client.get_parameter(Name='adb_user')['Parameter']['Value']
+DB_PASS = client.get_parameter(Name='adb_pass', WithDecryption=True)['Parameter']['Value']
 DB_HOST = client.get_parameter(Name='db_host')['Parameter']['Value']
 
 DATABASES = {
@@ -158,3 +159,5 @@ AWS_BUCKET_ACL = 'public-read'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
