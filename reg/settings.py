@@ -93,9 +93,9 @@ DEFAULT_FROM_EMAIL = 'noreply@uncommonhacks.com'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DB_NAME = client.get_parameter(Name='adb_name')['Parameter']['Value']
-DB_USER = client.get_parameter(Name='adb_user')['Parameter']['Value']
-DB_PASS = client.get_parameter(Name='adb_pass', WithDecryption=True)['Parameter']['Value']
+DB_NAME = client.get_parameter(Name='db_name')['Parameter']['Value']
+DB_USER = client.get_parameter(Name='db_user')['Parameter']['Value']
+DB_PASS = client.get_parameter(Name='db_pass', WithDecryption=True)['Parameter']['Value']
 DB_HOST = client.get_parameter(Name='db_host')['Parameter']['Value']
 
 
@@ -155,11 +155,15 @@ AWS_STORAGE_BUCKET_NAME = client.get_parameter(Name='static_bucket')['Parameter'
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.us-east-2.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
 
-AWS_BUCKET_ACL = 'public-read'
+AWS_STATIC_LOCATION = 'static'
+STATICFILES_STORAGE = 'theapplication.storage_backends.StaticStorage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+RESUME_BUCKET = client.get_parameter(Name='resume_bucket')['Parameter']['Value']
+
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
