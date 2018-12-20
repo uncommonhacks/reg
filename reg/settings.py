@@ -162,17 +162,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-AWS_STORAGE_BUCKET_NAME = client.get_parameter(Name="static_bucket")["Parameter"][
-    "Value"
-]
+if os.environ.get("RUN_LOCAL") == "TRUE":
+    STATIC_ROOT = "static"
+    STATIC_URL = "/static/"
+    AWS_STATIC_LOCATION = "static"
+else:
+    AWS_STORAGE_BUCKET_NAME = client.get_parameter(Name="static_bucket")["Parameter"][
+        "Value"
+    ]
 
-AWS_S3_CUSTOM_DOMAIN = "%s.s3.us-east-2.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
+    AWS_S3_CUSTOM_DOMAIN = "%s.s3.us-east-2.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
 
-AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
 
-AWS_STATIC_LOCATION = "static"
-STATICFILES_STORAGE = "theapplication.storage_backends.StaticStorage"
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+    AWS_STATIC_LOCATION = "static"
+    STATICFILES_STORAGE = "theapplication.storage_backends.StaticStorage"
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
 
 RESUME_BUCKET = client.get_parameter(Name="resume_bucket")["Parameter"]["Value"]
 
