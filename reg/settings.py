@@ -70,6 +70,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'reg.urls'
 
+DEFAULT_CHARSET = 'utf-8'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -191,3 +193,5 @@ RESUME_BUCKET = client.get_parameter(Name='resume_bucket')['Parameter']['Value']
 
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+
+PHONENUMBER_DB_FORMAT = 'E164'

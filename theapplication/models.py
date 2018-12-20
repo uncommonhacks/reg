@@ -8,14 +8,22 @@ class RaceChoice(models.Model):
     def __str__(self):
         return self.race_string
 
+class SchoolChoice(models.Model):    
+    school_string = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.school_string
+
 # Application class, to attach to applicant class.
 class Application(models.Model):
 
-    phone_number = PhoneNumberField()
+#    phone_number = PhoneNumberField(null=True)
+    phone_number = models.CharField(max_length=20, null=True)
 
-    birth_date = models.DateField(
-                    null=True,
-    )
+#    birth_date = models.DateField(
+#                    null=True,
+#    )
+    birth_date = models.CharField(max_length=50, null=True)
 
     GENDER_CHOICES = (
         ('M_', 'Male'),
@@ -42,9 +50,9 @@ class Application(models.Model):
             verbose_name="What is your race/ethnicity?",
     )
 
-    school = models.CharField(
-                max_length=200,
-                null=True,
+    school = models.ManyToManyField(
+            SchoolChoice,
+            verbose_name="Where do you attend school?",
     )
 
     major = models.CharField(
