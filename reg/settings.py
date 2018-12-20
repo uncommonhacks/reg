@@ -64,7 +64,7 @@ ROOT_URLCONF = 'reg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['django/forms/templates', './templates'],
+        'DIRS': ['./templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,6 +97,8 @@ DB_NAME = client.get_parameter(Name='adb_name')['Parameter']['Value']
 DB_USER = client.get_parameter(Name='adb_user')['Parameter']['Value']
 DB_PASS = client.get_parameter(Name='adb_pass', WithDecryption=True)['Parameter']['Value']
 DB_HOST = client.get_parameter(Name='db_host')['Parameter']['Value']
+
+
 
 DATABASES = {
     'default': {
