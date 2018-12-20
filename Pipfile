@@ -46,6 +46,8 @@ lambda_packages = "==0.20.0"
 PyYAML = "==3.13"
 Unidecode = "==1.0.22"
 Werkzeug = "==0.14.1"
+django-phonenumber-field = "*"
+phonenumbers = "*"
 
 [requires]
 python_version = "3.6"

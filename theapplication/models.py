@@ -11,7 +11,7 @@ class RaceChoice(models.Model):
 # Application class, to attach to applicant class.
 class Application(models.Model):
 
-    phone_number = PhoneNumberField()
+    phone_number = PhoneNumberField(null=True)
 
     # TODO: this needs validation
 #    birth_date = models.DateField(
