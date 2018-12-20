@@ -8,4 +8,7 @@ class StaticStorage(S3Boto3Storage):
 
 def upload_resume_to_s3(resume_file, user):
     s3 = boto3.client('s3')
-    s3.upload_fileobj(resume_file, settings.RESUME_BUCKET, user.username + '.pdf')
+    if resume_file.name[-4:] == '.pdf':
+        s3.upload_fileobj(resume_file, settings.RESUME_BUCKET, user.username + '.pdf')
+        return True
+    return False
