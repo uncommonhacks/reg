@@ -33,3 +33,4 @@ db.sqlite3
 *.tar.gz
 *~
 *#
+**/.sass-cache/
