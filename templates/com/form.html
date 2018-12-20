@@ -1,5 +1,5 @@
 {% block form_com %}
-<form method="post">
+<form method="post" {{ enctype }}>
   {% csrf_token %}
   
   <!--Global Form Errors-->

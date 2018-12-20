@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os, boto3
 
 # get boto3 client to initialize other settings
-client = boto3.client("ssm")
+client = boto3.client('ssm')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = client.get_parameter(
-    Name="registration-django-secret-key", WithDecryption=True
-)["Parameter"]["Value"]
+SECRET_KEY = client.get_parameter(Name='registration-django-secret-key', WithDecryption=True)['Parameter']['Value']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("RUN_LOCAL") == "TRUE":
@@ -33,7 +31,7 @@ if os.environ.get("RUN_LOCAL") == "TRUE":
 else:
     DEBUG = False
 
-MAIN_URL = "testing.uncommonhacks.com"
+MAIN_URL = 'testing.uncommonhacks.com'
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -61,16 +59,16 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = "reg.urls"
+ROOT_URLCONF = 'reg.urls'
 
 TEMPLATES = [
     {
@@ -85,17 +83,20 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    }
+    },
 ]
 
-WSGI_APPLICATION = "reg.wsgi.application"
+WSGI_APPLICATION = 'reg.wsgi.application'
 
 
 # email
 
-ANYMAIL = {"MAILGUN_API_KEY": "key-4154a5d3a2bf91d770426c622d3aa694"}
-EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
-DEFAULT_FROM_EMAIL = "noreply@uncommonhacks.com"
+ANYMAIL = {
+    'MAILGUN_API_KEY': 'key-4154a5d3a2bf91d770426c622d3aa694',
+}
+EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@uncommonhacks.com'
+
 
 
 # Database
@@ -135,23 +136,29 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
-LOGIN_REDIRECT_URL = "/"
-LOGIN_URL = "accounts/login/"
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'accounts/login/'
 ACCOUNT_ACTIVATION_DAYS = 7
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -180,7 +187,7 @@ else:
     STATICFILES_STORAGE = "theapplication.storage_backends.StaticStorage"
     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
 
-RESUME_BUCKET = client.get_parameter(Name="resume_bucket")["Parameter"]["Value"]
+RESUME_BUCKET = client.get_parameter(Name='resume_bucket')['Parameter']['Value']
 
 
-FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
