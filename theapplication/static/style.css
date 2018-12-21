@@ -6,33 +6,33 @@ html, body {
   height: 100%;
 }
 
-    /* General Styles*/
+/* General Styles*/
 
-    .title{
-	text-align: center;
-	font-size: 4em;
-    }
+.title{
+  text-align: center;
+  font-size: 4em;
+}
 
-    .background{
-	height: 100%;
-	background-color: #2D313A;
-    }
+.background{
+  height: 100%;
+  background-color: #2D313A;
+}
 
-    /* Form Styles */
+/* Form Styles */
 
-    .field-head{
-	color: #bfbfbf;
-	font-size: 1em;
-    }
+.field-head{
+  color: #bfbfbf;
+  font-size: 1em;
+}
 
-    .field{
-	color: white;
-	font-size: 1em;
-    }
+.field{
+  color: white;
+  font-size: 1em;
+}
 
-    .error{
-	color: red; 
-	font-size: 1em;
-    }
+.error{
+  color: red; 
+  font-size: 1em;
+}
 
-    
+

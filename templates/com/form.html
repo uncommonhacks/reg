@@ -1,11 +1,3 @@
-{% block css_overrides %}
-<style>
-input {
-  color: white;
-}
-</style>
-{% endblock %}
-
 {% block form_com %}
 <form method="post" {{ enctype }}>
   {% csrf_token %}
