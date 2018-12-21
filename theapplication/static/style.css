@@ -32,6 +32,11 @@ html, body {
 }
 
 .error{
-  color: red; 
+  color: red;
   font-size: 1em;
+}
+
+canvas{
+  /* min-height: 1000px; */
+  min-width: 800px;
 }

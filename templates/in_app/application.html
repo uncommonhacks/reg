@@ -13,23 +13,28 @@ $(document).ready(function() {
   let isthisaCanvas = document.getElementById("isthisaCanvas");
   let pikachuCanvas = document.getElementById("pikachuCanvas");
 
-  let brainCtx = brainCanvas.getContext("2d");
-  let isthisaCtx = isthisaCanvas.getContext("2d");
-  let pikachuCtx = pikachuCanvas.getContext("2d");
+  // We know the dimensions of images beforehand so I'm just resizing the canvases here
+  brainCanvas.height = brainCanvas.width * 700 / 501;
+  isthisaCanvas.height = isthisaCanvas.width * 1425 / 1587;
+  pikachuCanvas.height = pikachuCanvas.width * 1892 / 1893;
 
-  let brainImg = new Image(brainCanvas.width, brainCanvas.height);
-  let isthisaImg = new Image(isthisaCanvas.width, isthisaCanvas.height);
-  let pikachuImg = new Image(pikachuCanvas.width, pikachuCanvas.height);
+  let brainImg = new Image(brainCanvas.width, "auto");
+  let isthisaImg = new Image(isthisaCanvas.width, "auto");
+  let pikachuImg = new Image(pikachuCanvas.width, "auto");
 
   brainImg.src = "{% static "images/expanding_brain.png" %}";
   isthisaImg.src = "{% static "images/is_this_a.jpg" %}";
   pikachuImg.src = "{% static "images/surprised_pikachu.jpg" %}";
 
+  let brainCtx = brainCanvas.getContext("2d");
+  let isthisaCtx = isthisaCanvas.getContext("2d");
+  let pikachuCtx = pikachuCanvas.getContext("2d");
+
   brainImg.onload = function() {
     brainCtx.drawImage(brainImg, 0, 0, brainCanvas.width, brainCanvas.height);
   };
   isthisaImg.onload = function() {
-    isthisaCtx.drawImage(isthisaImg, 0, 0, brainCanvas.width, brainCanvas.height);
+    isthisaCtx.drawImage(isthisaImg, 0, 0, isthisaCanvas.width, isthisaCanvas.height);
   };
   pikachuImg.onload = function() {
     pikachuCtx.drawImage(pikachuImg, 0, 0, pikachuCanvas.width, pikachuCanvas.height);
