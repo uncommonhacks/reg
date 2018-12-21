@@ -5,24 +5,43 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0013_auto_20181219_2359'),
-    ]
+    dependencies = [("theapplication", "0013_auto_20181219_2359")]
 
     operations = [
         migrations.AlterField(
-            model_name='application',
-            name='birth_date',
+            model_name="application",
+            name="birth_date",
             field=models.CharField(max_length=50, null=True),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='gender',
-            field=models.CharField(choices=[('M_', 'Male'), ('NB', 'Nonbinary'), ('F_', 'Female'), ('O_', 'Other'), ('P_', 'Prefer not to answer')], default='P_', max_length=2),
+            model_name="application",
+            name="gender",
+            field=models.CharField(
+                choices=[
+                    ("M_", "Male"),
+                    ("NB", "Nonbinary"),
+                    ("F_", "Female"),
+                    ("O_", "Other"),
+                    ("P_", "Prefer not to answer"),
+                ],
+                default="P_",
+                max_length=2,
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='grad_year',
-            field=models.CharField(choices=[('19', '2019'), ('20', '2020'), ('21', '2021'), ('22', '2022'), ('23', '2023 or later'), ('or', 'other')], default='or', max_length=2),
+            model_name="application",
+            name="grad_year",
+            field=models.CharField(
+                choices=[
+                    ("19", "2019"),
+                    ("20", "2020"),
+                    ("21", "2021"),
+                    ("22", "2022"),
+                    ("23", "2023 or later"),
+                    ("or", "other"),
+                ],
+                default="or",
+                max_length=2,
+            ),
         ),
     ]

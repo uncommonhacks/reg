@@ -5,18 +5,16 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0017_schoolchoice'),
-    ]
+    dependencies = [("theapplication", "0017_schoolchoice")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='application',
-            name='school',
-        ),
+        migrations.RemoveField(model_name="application", name="school"),
         migrations.AddField(
-            model_name='application',
-            name='school',
-            field=models.ManyToManyField(to='theapplication.SchoolChoice', verbose_name='Where do you attend school?'),
+            model_name="application",
+            name="school",
+            field=models.ManyToManyField(
+                to="theapplication.SchoolChoice",
+                verbose_name="Where do you attend school?",
+            ),
         ),
     ]

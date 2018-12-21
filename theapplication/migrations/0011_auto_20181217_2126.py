@@ -5,116 +5,158 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0010_auto_20181202_1910'),
-    ]
+    dependencies = [("theapplication", "0010_auto_20181202_1910")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='application',
-            name='essay5',
-        ),
-        migrations.RemoveField(
-            model_name='application',
-            name='reimbursement',
-        ),
-        migrations.RemoveField(
-            model_name='confirmation',
-            name='phone_number',
-        ),
+        migrations.RemoveField(model_name="application", name="essay5"),
+        migrations.RemoveField(model_name="application", name="reimbursement"),
+        migrations.RemoveField(model_name="confirmation", name="phone_number"),
         migrations.AddField(
-            model_name='application',
-            name='birth_date',
+            model_name="application",
+            name="birth_date",
             field=models.DateField(null=True),
         ),
         migrations.AddField(
-            model_name='application',
-            name='gender',
-            field=models.CharField(choices=[('M_', 'Male'), ('NB', 'Nonbinary'), ('F_', 'Female'), ('or', 'Other/Prefer not to disclose')], default='or', max_length=2),
+            model_name="application",
+            name="gender",
+            field=models.CharField(
+                choices=[
+                    ("M_", "Male"),
+                    ("NB", "Nonbinary"),
+                    ("F_", "Female"),
+                    ("or", "Other/Prefer not to disclose"),
+                ],
+                default="or",
+                max_length=2,
+            ),
         ),
         migrations.AddField(
-            model_name='application',
-            name='legal1',
-            field=models.BooleanField(default=False, verbose_name='I have read and agree to the MLH Code of Conduct.'),
+            model_name="application",
+            name="legal1",
+            field=models.BooleanField(
+                default=False,
+                verbose_name="I have read and agree to the MLH Code of Conduct.",
+            ),
         ),
         migrations.AddField(
-            model_name='application',
-            name='legal2',
-            field=models.BooleanField(default=False, verbose_name='I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the MLH Privacy Policy. Further, I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy'),
+            model_name="application",
+            name="legal2",
+            field=models.BooleanField(
+                default=False,
+                verbose_name="I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the MLH Privacy Policy. Further, I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy",
+            ),
         ),
         migrations.AddField(
-            model_name='application',
-            name='major',
-            field=models.CharField(max_length=150, null=True, verbose_name='What is your major?'),
+            model_name="application",
+            name="major",
+            field=models.CharField(
+                max_length=150, null=True, verbose_name="What is your major?"
+            ),
         ),
         migrations.AddField(
-            model_name='application',
-            name='phone_number',
+            model_name="application",
+            name="phone_number",
             field=models.CharField(max_length=50, null=True),
         ),
         migrations.AddField(
-            model_name='application',
-            name='resume',
-            field=models.FileField(null=True, upload_to=''),
+            model_name="application",
+            name="resume",
+            field=models.FileField(null=True, upload_to=""),
         ),
         migrations.AddField(
-            model_name='application',
-            name='self_description',
-            field=models.CharField(max_length=1500, null=True, verbose_name='I would describe myself as...'),
+            model_name="application",
+            name="self_description",
+            field=models.CharField(
+                max_length=1500, null=True, verbose_name="I would describe myself as..."
+            ),
         ),
         migrations.AddField(
-            model_name='application',
-            name='study_level',
-            field=models.CharField(max_length=50, null=True, verbose_name='What is your most current level of study?'),
+            model_name="application",
+            name="study_level",
+            field=models.CharField(
+                max_length=50,
+                null=True,
+                verbose_name="What is your most current level of study?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='essay1',
-            field=models.TextField(max_length=1500, null=True, verbose_name='There are 2 types of people in this world. One is you. The other is everyone else. What are the types?'),
+            model_name="application",
+            name="essay1",
+            field=models.TextField(
+                max_length=1500,
+                null=True,
+                verbose_name="There are 2 types of people in this world. One is you. The other is everyone else. What are the types?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='essay2',
-            field=models.TextField(max_length=1500, null=True, verbose_name='Sandwich (noun): A popular concoction consisting of two or more pieces of surrounding material with various other materials in between them. This definition leads to the very obvious question that I’m sure you’re already thinking of: is an array a sandwich?'),
+            model_name="application",
+            name="essay2",
+            field=models.TextField(
+                max_length=1500,
+                null=True,
+                verbose_name="Sandwich (noun): A popular concoction consisting of two or more pieces of surrounding material with various other materials in between them. This definition leads to the very obvious question that I’m sure you’re already thinking of: is an array a sandwich?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='essay3',
-            field=models.TextField(max_length=1500, null=True, verbose_name='If you could create your own flavor of lacroix, what would it be and why? What would it be called? What would it taste like [to the degree that you can actually taste it ;)]'),
+            model_name="application",
+            name="essay3",
+            field=models.TextField(
+                max_length=1500,
+                null=True,
+                verbose_name="If you could create your own flavor of lacroix, what would it be and why? What would it be called? What would it taste like [to the degree that you can actually taste it ;)]",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='essay4',
-            field=models.TextField(max_length=1500, null=True, verbose_name='Meme fill-in the blanks.'),
+            model_name="application",
+            name="essay4",
+            field=models.TextField(
+                max_length=1500, null=True, verbose_name="Meme fill-in the blanks."
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='hackathons',
-            field=models.CharField(max_length=150, null=True, verbose_name='How many hackathons have you attended before?'),
+            model_name="application",
+            name="hackathons",
+            field=models.CharField(
+                max_length=150,
+                null=True,
+                verbose_name="How many hackathons have you attended before?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='location',
-            field=models.CharField(max_length=200, null=True, verbose_name='Where are you coming from to attend Uncommon Hacks?'),
+            model_name="application",
+            name="location",
+            field=models.CharField(
+                max_length=200,
+                null=True,
+                verbose_name="Where are you coming from to attend Uncommon Hacks?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='pronouns',
-            field=models.CharField(max_length=150, null=True, verbose_name='What are your pronouns?'),
+            model_name="application",
+            name="pronouns",
+            field=models.CharField(
+                max_length=150, null=True, verbose_name="What are your pronouns?"
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='proudof',
-            field=models.TextField(max_length=1500, null=True, verbose_name="Anything you're proud of?"),
+            model_name="application",
+            name="proudof",
+            field=models.TextField(
+                max_length=1500, null=True, verbose_name="Anything you're proud of?"
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='race',
-            field=models.ManyToManyField(null=True, to='theapplication.RaceChoice', verbose_name='What is your race/ethnicity?'),
+            model_name="application",
+            name="race",
+            field=models.ManyToManyField(
+                null=True,
+                to="theapplication.RaceChoice",
+                verbose_name="What is your race/ethnicity?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='school',
+            model_name="application",
+            name="school",
             field=models.CharField(max_length=200, null=True),
         ),
     ]

@@ -5,16 +5,22 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0016_auto_20181220_1919'),
-    ]
+    dependencies = [("theapplication", "0016_auto_20181220_1919")]
 
     operations = [
         migrations.CreateModel(
-            name='SchoolChoice',
+            name="SchoolChoice",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('school_string', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("school_string", models.CharField(max_length=200)),
             ],
-        ),
+        )
     ]

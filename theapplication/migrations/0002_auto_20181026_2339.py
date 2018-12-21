@@ -5,21 +5,14 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0001_initial'),
-    ]
+    dependencies = [("theapplication", "0001_initial")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='application',
-            name='race',
-        ),
+        migrations.RemoveField(model_name="application", name="race"),
         migrations.AddField(
-            model_name='application',
-            name='race',
+            model_name="application",
+            name="race",
             field=models.CharField(blank=True, max_length=10),
         ),
-        migrations.DeleteModel(
-            name='RaceSelectMultiple',
-        ),
+        migrations.DeleteModel(name="RaceSelectMultiple"),
     ]
