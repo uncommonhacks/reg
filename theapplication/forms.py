@@ -11,6 +11,7 @@ class ApplicationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields["legal1"].widget.template_name="django/forms/widgets/legal1.html"
         self.fields["legal2"].widget.template_name="django/forms/widgets/legal2.html"
+        self.fields["legal3"].widget.template_name="django/forms/widgets/legal3.html"
 
     class Meta:
         model = Application
