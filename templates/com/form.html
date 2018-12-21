@@ -1,7 +1,15 @@
+{% block css_overrides %}
+<style>
+input {
+  color: white;
+}
+</style>
+{% endblock %}
+
 {% block form_com %}
 <form method="post" {{ enctype }}>
   {% csrf_token %}
-  
+
   <!--Global Form Errors-->
   <div class="row">
     <div class="error">
@@ -13,24 +21,23 @@
       {% endfor %}
     </div>
   </div>
-  
+
   <!--Fields-->
   {% for field in form.visible_fields %}
   <div class="row">
     <div class="field-label">{{ field.label_tag }}</div>
     <div class="field">{{ field }}</div>
     <div class="error">
-    {% for error in field.errors %}
-    {{ error }}<br/>
-    {% endfor %}
+      {% for error in field.errors %}
+      {{ error }}<br/>
+      {% endfor %}
     </div>
   </div>
   {% endfor %}
-  
+
   <!--Submit Button-->
   <div class="row center-align">
     <input class="btn btn-default btn-lg" value="Submit" type="submit"/>
   </div>
 </form>
 {% endblock %}
-  
