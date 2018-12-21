@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
-{% block content %}
-<form method="post" novalidate>
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Submit</button>
-</form>
+{% block title %}
+<title>Confirmation</title>
+{% endblock %}
 
+{% block content %}
+<div class="background">
+  <div class="container">
+    <div class="row title">
+      Confirmation
+    </div>
+    {% include "com/form.html" %}
+  </div>
+</div>
 {% endblock %}
