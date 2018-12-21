@@ -33,6 +33,7 @@ if os.environ.get("RUN_LOCAL") == "TRUE":
 else:
     DEBUG = False
 
+DEBUG = True
 MAIN_URL = "testing.uncommonhacks.com"
 
 ALLOWED_HOSTS = [
@@ -181,7 +182,7 @@ else:
     AWS_STATIC_LOCATION = "static"
     STATICFILES_STORAGE = "theapplication.storage_backends.StaticStorage"
     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
-
+    AWS_DEFAULT_ACL = 'public-read'
 RESUME_BUCKET = client.get_parameter(Name="resume_bucket")["Parameter"]["Value"]
 
 
