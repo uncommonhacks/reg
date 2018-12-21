@@ -1,0 +1,8 @@
+<canvas id="brainCanvas" width="80%"></canvas>
+<label for="id_brain_1">Expanding Brain 1:</label>
+<input
+   type="{{ widget.type }}"
+   name="{{ widget.name }}"
+   {% if widget.value != None %}
+   value="{{ widget.value|stringformat:'s' }}"
+   {% endif %}>

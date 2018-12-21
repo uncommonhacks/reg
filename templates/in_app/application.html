@@ -4,6 +4,22 @@
 <title>Application</title>
 {% endblock %}
 
+{% block extra_js %}
+<script>
+let brainCanvas = document.getElementById("brainCanvas");
+let isthisaCanvas = document.getElementById("isthisaCanvas");
+let pikachuCanvas = document.getElementById("pikachuCanvas");
+
+let brainCtx = brainCanvas.getContext("2d");
+let isthisaCtx = isthisaCanvas.getContext("2d");
+let pikachuCtx = pikachuCanvas.getContext("2d");
+
+let brainImg = Image(brainCanvas.width, brainCanvas.height);
+let isthisaImg = Image(isthisaCanvas.width, isthisaCanvas.height);
+let pikachuImg = Image(pikachuCanvas.width, pikachuCanvas.height);
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="background">
   <div class="container">

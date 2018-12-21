@@ -17,8 +17,8 @@
                           href="{% static "style.css" %}"
                           media="screen,projection"/>
 
-    {% block css_overrides %}
-    {# Custom CSS overrides within templates #}
+    {% block extra_js %}
+    {# Javascript to be run per-template #}
     {% endblock %}
 
     <!-- Meta -->
@@ -32,6 +32,10 @@
             src="{% static "materialize/js/bin/materialize.min.js" %}">
     </script>
     <script type="text/javascript" src="{% static "main.js" %}"></script>
+
+    {% block extra_js %}
+    {#  within templates #}
+    {% endblock %}
   </head>
   <body>
     {% block navbar %}

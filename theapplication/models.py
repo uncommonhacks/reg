@@ -21,18 +21,17 @@ class SchoolChoice(models.Model):
 class Application(models.Model):
 
     phone_number = models.CharField(
-                    max_length=20, 
-                    null=True,
-                    verbose_name="Phone Number:",
-                    help_text="###-###-####",
+        max_length=20, null=True, verbose_name="Phone Number:", help_text="###-###-####"
     )
 
     birth_date = models.DateField(
-                    null=True,
-                    verbose_name="Birth Date:",
-                    help_text=("MM/DD/YYYY - Because of limitations imposed by "
-                               "our venue, we are not legally allowed to host "
-                               "minors (those under 18) for Uncommon Hacks 2018."),
+        null=True,
+        verbose_name="Birth Date:",
+        help_text=(
+            "MM/DD/YYYY - Because of limitations imposed by "
+            "our venue, we are not legally allowed to host "
+            "minors (those under 18) for Uncommon Hacks 2018."
+        ),
     )
 
     GENDER_CHOICES = (
@@ -43,11 +42,7 @@ class Application(models.Model):
         ("P_", "Prefer not to answer"),
     )
 
-    gender = models.CharField(
-                max_length=2, 
-                choices=GENDER_CHOICES,
-                null=True,
-    )
+    gender = models.CharField(max_length=2, choices=GENDER_CHOICES, null=True)
 
     pronouns = models.CharField(
         max_length=150, verbose_name="What are your pronouns?", null=True
@@ -58,15 +53,17 @@ class Application(models.Model):
     )
 
     school = models.ManyToManyField(
-        SchoolChoice, 
-        verbose_name=("Where do you attend school? If your school does not appear "
-                      "on the list, select \"Other\"."),
+        SchoolChoice,
+        verbose_name=(
+            "Where do you attend school? If your school does not appear "
+            'on the list, select "Other".'
+        ),
     )
 
     major = models.CharField(
         max_length=150, verbose_name="What is your major?", null=True
     )
-    
+
     study_level = models.CharField(
         max_length=50,
         verbose_name="What is your most current level of study?",
@@ -104,8 +101,8 @@ class Application(models.Model):
     )
 
     proudof = models.TextField(
-        max_length=1500, 
-        verbose_name="Anything you're proud of (Github, Devpost, etc.) ?", 
+        max_length=1500,
+        verbose_name="Anything you're proud of (Github, Devpost, etc.) ?",
         null=True,
     )
 
@@ -140,22 +137,32 @@ class Application(models.Model):
         ),
         null=True,
     )
-    # TODO: Figure out how to incorporate meme images.
-    essay4 = models.TextField(
-        max_length=1500, verbose_name="Meme fill-in the blanks.", null=True
+
+    legal1 = models.BooleanField(default=False, verbose_name="")
+
+    legal2 = models.BooleanField(default=False, verbose_name="")
+
+    legal3 = models.BooleanField(default=False, verbose_name="")
+
+    brain_1 = models.CharField(
+        max_length=150, verbose_name="", null=True,
     )
 
-    legal1 = models.BooleanField(
-        default=False,
+    brain_2 = models.CharField(
+        max_length=150, verbose_name="Expanding Brain 2", null=True
     )
 
-    legal2 = models.BooleanField(
-        default=False,
+    brain_3 = models.CharField(
+        max_length=150, verbose_name="Expanding Brain 3", null=True
     )
-    
-    legal3= models.BooleanField(
-        default=False,
+
+    brain_4 = models.CharField(
+        max_length=150, verbose_name="Expanding Brain 4", null=True
     )
+
+    is_this_a = models.CharField(max_length=150, verbose_name="", null=True)
+
+    pikachu = models.CharField(max_length=500, verbose_name="", null=True)
 
 
 # confirmation class, to attach to applicant class

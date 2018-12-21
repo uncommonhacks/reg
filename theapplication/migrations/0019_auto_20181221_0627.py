@@ -5,64 +5,102 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0018_auto_20181220_2150'),
-    ]
+    dependencies = [("theapplication", "0018_auto_20181220_2150")]
 
     operations = [
         migrations.AddField(
-            model_name='application',
-            name='legal3',
+            model_name="application",
+            name="legal3",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='birth_date',
-            field=models.DateField(help_text='MM/DD/YYYY - Because of limitations imposed by our venue, we are not legally allowed to host minors (those under 18) for Uncommon Hacks 2018.', null=True, verbose_name='Birth Date:'),
+            model_name="application",
+            name="birth_date",
+            field=models.DateField(
+                help_text="MM/DD/YYYY - Because of limitations imposed by our venue, we are not legally allowed to host minors (those under 18) for Uncommon Hacks 2018.",
+                null=True,
+                verbose_name="Birth Date:",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='essay3',
-            field=models.TextField(max_length=1500, null=True, verbose_name='If you could create your own flavor of lacroix, what would it be and why? What would it be called? What would it taste like--to the degree that you can actually taste it ;) '),
+            model_name="application",
+            name="essay3",
+            field=models.TextField(
+                max_length=1500,
+                null=True,
+                verbose_name="If you could create your own flavor of lacroix, what would it be and why? What would it be called? What would it taste like--to the degree that you can actually taste it ;) ",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='grad_year',
-            field=models.CharField(choices=[('19', '2019'), ('20', '2020'), ('21', '2021'), ('22', '2022'), ('23', '2023 or later'), ('or', 'Other')], max_length=2, null=True),
+            model_name="application",
+            name="grad_year",
+            field=models.CharField(
+                choices=[
+                    ("19", "2019"),
+                    ("20", "2020"),
+                    ("21", "2021"),
+                    ("22", "2022"),
+                    ("23", "2023 or later"),
+                    ("or", "Other"),
+                ],
+                max_length=2,
+                null=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='hackathons',
-            field=models.CharField(max_length=150, null=True, verbose_name='Which hackathons, if any, have you attended before?'),
+            model_name="application",
+            name="hackathons",
+            field=models.CharField(
+                max_length=150,
+                null=True,
+                verbose_name="Which hackathons, if any, have you attended before?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='legal1',
+            model_name="application",
+            name="legal1",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='legal2',
+            model_name="application",
+            name="legal2",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='location',
-            field=models.CharField(help_text='city, providence, country', max_length=200, null=True, verbose_name='Where are you coming from to attend Uncommon Hacks?'),
+            model_name="application",
+            name="location",
+            field=models.CharField(
+                help_text="city, providence, country",
+                max_length=200,
+                null=True,
+                verbose_name="Where are you coming from to attend Uncommon Hacks?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='phone_number',
-            field=models.CharField(help_text='###-###-####', max_length=20, null=True, verbose_name='Phone Number:'),
+            model_name="application",
+            name="phone_number",
+            field=models.CharField(
+                help_text="###-###-####",
+                max_length=20,
+                null=True,
+                verbose_name="Phone Number:",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='proudof',
-            field=models.TextField(max_length=1500, null=True, verbose_name="Anything you're proud of (Github, Devpost, etc.) ?"),
+            model_name="application",
+            name="proudof",
+            field=models.TextField(
+                max_length=1500,
+                null=True,
+                verbose_name="Anything you're proud of (Github, Devpost, etc.) ?",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='school',
-            field=models.ManyToManyField(to='theapplication.SchoolChoice', verbose_name='Where do you attend school? If your school does not appear on the list, select "Other".'),
+            model_name="application",
+            name="school",
+            field=models.ManyToManyField(
+                to="theapplication.SchoolChoice",
+                verbose_name='Where do you attend school? If your school does not appear on the list, select "Other".',
+            ),
         ),
     ]
