@@ -1,22 +1,34 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 <title>Application</title>
 {% endblock %}
 
+<!-- Scripts run from anywhere within the document -->
 {% block extra_js %}
 <script>
-let brainCanvas = document.getElementById("brainCanvas");
-let isthisaCanvas = document.getElementById("isthisaCanvas");
-let pikachuCanvas = document.getElementById("pikachuCanvas");
+$(document).ready(function() {
+  let brainCanvas = document.getElementById("brainCanvas");
+  let isthisaCanvas = document.getElementById("isthisaCanvas");
+  let pikachuCanvas = document.getElementById("pikachuCanvas");
 
-let brainCtx = brainCanvas.getContext("2d");
-let isthisaCtx = isthisaCanvas.getContext("2d");
-let pikachuCtx = pikachuCanvas.getContext("2d");
+  let brainCtx = brainCanvas.getContext("2d");
+  let isthisaCtx = isthisaCanvas.getContext("2d");
+  let pikachuCtx = pikachuCanvas.getContext("2d");
 
-let brainImg = Image(brainCanvas.width, brainCanvas.height);
-let isthisaImg = Image(isthisaCanvas.width, isthisaCanvas.height);
-let pikachuImg = Image(pikachuCanvas.width, pikachuCanvas.height);
+  let brainImg = new Image(brainCanvas.width, brainCanvas.height);
+  let isthisaImg = new Image(isthisaCanvas.width, isthisaCanvas.height);
+  let pikachuImg = new Image(pikachuCanvas.width, pikachuCanvas.height);
+
+  brainImg.src = "{% static "images/expanding_brain.png" %}";
+  isthisaImg.src = "{% static "images/is_this_a.jpg" %}";
+  pikachuImg.src = "{% static "images/surprised_pikachu.jpg" %}";
+
+  brainCtx.drawImage(brainImg, 0, 0, brainCanvas.width, brainCanvas.height);
+  isthisaCtx.drawImage(isthisaImg, 0, 0, isthisaCanvas.width, isthisaCanvas.height);
+  pikachuCtx.drawImage(pikachuImg, 0, 0, pikachuCanvas.width, pikachuCanvas.height);
+});
 </script>
 {% endblock %}
 
