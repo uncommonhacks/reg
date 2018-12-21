@@ -17,6 +17,10 @@
                           href="{% static "style.css" %}"
                           media="screen,projection"/>
 
+    {% block css_overrides %}
+    {# Custom CSS overrides within templates #}
+    {% endblock %}
+
     <!-- Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 

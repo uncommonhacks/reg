@@ -1,3 +1,14 @@
+{% block css_overrides %}
+<style>
+input {
+  color: white;
+}
+label {
+  font-size: 1em;
+}
+</style>
+{% endblock %}
+
 {% block form_com %}
 <form method="post" {{ enctype }}>
   {% csrf_token %}
@@ -18,7 +29,7 @@
   {% for field in form.visible_fields %}
   <div class="row">
     <div class="field-label">{{ field.label_tag }}</div>
-    <div class="field">{{ field }}</div>
+    {{ field }}
     <div class="error">
       {% for error in field.errors %}
       {{ error }}<br/>
