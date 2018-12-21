@@ -25,9 +25,15 @@ $(document).ready(function() {
   isthisaImg.src = "{% static "images/is_this_a.jpg" %}";
   pikachuImg.src = "{% static "images/surprised_pikachu.jpg" %}";
 
-  brainCtx.drawImage(brainImg, 0, 0, brainCanvas.width, brainCanvas.height);
-  isthisaCtx.drawImage(isthisaImg, 0, 0, isthisaCanvas.width, isthisaCanvas.height);
-  pikachuCtx.drawImage(pikachuImg, 0, 0, pikachuCanvas.width, pikachuCanvas.height);
+  brainImg.onload = function() {
+    brainCtx.drawImage(brainImg, 0, 0, brainCanvas.width, brainCanvas.height);
+  };
+  isthisaImg.onload = function() {
+    isthisaCtx.drawImage(isthisaImg, 0, 0, brainCanvas.width, brainCanvas.height);
+  };
+  pikachuImg.onload = function() {
+    pikachuCtx.drawImage(pikachuImg, 0, 0, pikachuCanvas.width, pikachuCanvas.height);
+  };
 });
 </script>
 {% endblock %}
