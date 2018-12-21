@@ -5,15 +5,22 @@
 {% endblock %}
 
 {% block content %}
-<div class="background">
+<div class="background"
+     style="align-items: center; display: flex; justify-center: center">
   <div class="container">
-    <div class="row title">
-      Log Out
-    </div>
-    <div class="row center-align">
-      You are now logged out.
-      <br/>
-      <a href="{% url 'login' %}">Return to login</a>
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card white">
+          <div class="card-content black-text">
+            <span class="card-title">Log Out</span>
+            <p>You are now logged out.</p>
+          </div>
+          <div class="card-action center-align ">
+            <a href="{% url 'login' %}">
+              Return to login</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
