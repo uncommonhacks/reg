@@ -1,7 +1,6 @@
-// Materialize Initialization
+// Materialize JQuery Initialization
 $(document).ready(function(){
 	$('select').formSelect();
-	$('.datepicker').datepicker();
 	// MLH School List Autocomplete
 	$('input.autocomplete').autocomplete({
 		limit: 3,

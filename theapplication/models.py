@@ -20,13 +20,20 @@ class SchoolChoice(models.Model):
 # Application class, to attach to applicant class.
 class Application(models.Model):
 
-    #    phone_number = PhoneNumberField(null=True)
-    phone_number = models.CharField(max_length=20, null=True)
+    phone_number = models.CharField(
+                    max_length=20, 
+                    null=True,
+                    verbose_name="Phone Number:",
+                    help_text="###-###-####",
+    )
 
-    #    birth_date = models.DateField(
-    #                    null=True,
-    #    )
-    birth_date = models.CharField(max_length=50, null=True)
+    birth_date = models.DateField(
+                    null=True,
+                    verbose_name="Birth Date:",
+                    help_text=("MM/DD/YYYY - Because of limitations imposed by "
+                               "our venue, we are not legally allowed to host "
+                               "minors (those under 18) for Uncommon Hacks 2018."),
+    )
 
     GENDER_CHOICES = (
         ("M_", "Male"),
@@ -36,7 +43,11 @@ class Application(models.Model):
         ("P_", "Prefer not to answer"),
     )
 
-    gender = models.CharField(max_length=2, choices=GENDER_CHOICES, null=True)
+    gender = models.CharField(
+                max_length=2, 
+                choices=GENDER_CHOICES,
+                null=True,
+    )
 
     pronouns = models.CharField(
         max_length=150, verbose_name="What are your pronouns?", null=True
@@ -47,45 +58,44 @@ class Application(models.Model):
     )
 
     school = models.ManyToManyField(
-        SchoolChoice, verbose_name="Where do you attend school?"
+        SchoolChoice, 
+        verbose_name=("Where do you attend school? If your school does not appear "
+                      "on the list, select \"Other\"."),
     )
 
     major = models.CharField(
         max_length=150, verbose_name="What is your major?", null=True
     )
-
-    # TODO: make this a selector
+    
     study_level = models.CharField(
         max_length=50,
         verbose_name="What is your most current level of study?",
         null=True,
     )
 
-    # Constants in Model class
     YEAR_IN_SCHOOL_CHOICES = (
         ("19", "2019"),
         ("20", "2020"),
         ("21", "2021"),
         ("22", "2022"),
         ("23", "2023 or later"),
-        ("or", "other"),
+        ("or", "Other"),
     )
 
     grad_year = models.CharField(
         max_length=2, choices=YEAR_IN_SCHOOL_CHOICES, null=True
     )
 
-    # TODO: add helper text - city/state/country
     location = models.CharField(
         max_length=200,
         verbose_name="Where are you coming from to attend Uncommon Hacks?",
+        help_text="city, providence, country",
         null=True,
     )
 
-    # TODO: add helper text - "Feel free to list them"
     hackathons = models.CharField(
         max_length=150,
-        verbose_name="How many hackathons have you attended before?",
+        verbose_name="Which hackathons, if any, have you attended before?",
         null=True,
     )
 
@@ -93,9 +103,10 @@ class Application(models.Model):
         max_length=1500, verbose_name="I would describe myself as...", null=True
     )
 
-    # TODO: add helper text - "Github, Devpost, etc."
     proudof = models.TextField(
-        max_length=1500, verbose_name="Anything you're proud of?", null=True
+        max_length=1500, 
+        verbose_name="Anything you're proud of (Github, Devpost, etc.) ?", 
+        null=True,
     )
 
     essay1 = models.TextField(
@@ -124,8 +135,8 @@ class Application(models.Model):
         verbose_name=(
             "If you could create your own flavor of lacroix, "
             "what would it be and why? What would it be "
-            "called? What would it taste like [to the degree "
-            "that you can actually taste it ;)]"
+            "called? What would it taste like--to the degree "
+            "that you can actually taste it ;) "
         ),
         null=True,
     )
@@ -134,27 +145,16 @@ class Application(models.Model):
         max_length=1500, verbose_name="Meme fill-in the blanks.", null=True
     )
 
-    # TODO: add helper text
-    # COC: https://static.mlh.io/docs/mlh-code-of-conduct.pdf
     legal1 = models.BooleanField(
-        default=False, verbose_name="I have read and agree to the MLH Code of Conduct."
+        default=False,
     )
 
-    # TODO: add helper text
-    # CTC - https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md
-    # PP - https://mlh.io/privacy
     legal2 = models.BooleanField(
         default=False,
-        verbose_name=(
-            "I authorize you to share my application/"
-            "registration information for event administration"
-            ", ranking, MLH administration, pre- and post-event"
-            " informational e-mails, and occasional messages "
-            "about hackathons in-line with the MLH Privacy "
-            "Policy. Further, I agree to the terms of both the "
-            "MLH Contest Terms and Conditions and the MLH "
-            "Privacy Policy"
-        ),
+    )
+    
+    legal3= models.BooleanField(
+        default=False,
     )
 
 

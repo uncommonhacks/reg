@@ -1,7 +1,7 @@
 import django
 from theapplication.models import RaceChoice, SchoolChoice
 
-
+# Populate models
 with open("schools.csv") as f:
     for school in f:
         s = SchoolChoice(school_string=school.strip())
