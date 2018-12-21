@@ -2026,7 +2026,7 @@ a {
   box-shadow: none !important; }
 
 /* 2dp elevation modified*/
-.z-depth-1, nav, .card-panel, .card, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible {
+.z-depth-1, .card-panel, .card, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); }
 
 .z-depth-1-half, .btn:hover, .btn-large:hover, .btn-small:hover, .btn-floating:hover {
@@ -3131,28 +3131,29 @@ table span.badge {
         left: 100%; } }
 
 nav {
-  color: #fff;
-  background-color: #f48fb1;
+  color: black;
+  /*  @extend .z-depth-1; */
+  background-color: white;
   width: 100%;
-  height: 45px;
-  line-height: 45px; }
+  height: auto;
+  line-height: auto; }
   nav.nav-extended {
     height: auto; }
     nav.nav-extended .nav-wrapper {
-      min-height: 45px;
+      min-height: auto;
       height: auto; }
     nav.nav-extended .nav-content {
       position: relative;
       line-height: normal; }
   nav a {
-    color: #fff; }
+    color: black; }
   nav i,
   nav [class^="mdi-"], nav [class*="mdi-"],
   nav i.material-icons {
     display: block;
     font-size: 24px;
-    height: 45px;
-    line-height: 45px; }
+    height: auto;
+    line-height: auto; }
   nav .nav-wrapper {
     position: relative;
     height: 100%; }
@@ -3163,17 +3164,18 @@ nav {
     float: left;
     position: relative;
     z-index: 1;
-    height: 45px;
+    height: auto;
     margin: 0 18px; }
     nav .sidenav-trigger i {
-      height: 45px;
-      line-height: 45px; }
+      height: auto;
+      line-height: auto; }
   nav .brand-logo {
     position: absolute;
-    color: #fff;
+    color: black;
     display: inline-block;
     font-size: 2.1rem;
-    padding: 0; }
+    padding: 20px;
+    padding-left: 40px; }
     nav .brand-logo.center {
       left: 50%;
       transform: translateX(-50%); }
@@ -3212,7 +3214,7 @@ nav {
     nav ul a {
       transition: background-color .3s;
       font-size: 1rem;
-      color: #fff;
+      color: black;
       display: block;
       padding: 0 15px;
       cursor: pointer; }
@@ -3247,25 +3249,25 @@ nav {
         color: rgba(255, 255, 255, 0.7);
         transition: color .3s; }
       nav .input-field label.active i {
-        color: #fff; }
+        color: black; }
 
 .navbar-fixed {
   position: relative;
-  height: 45px;
+  height: auto;
   z-index: 997; }
   .navbar-fixed nav {
     position: fixed; }
 
 @media only screen and (min-width: 601px) {
   nav.nav-extended .nav-wrapper {
-    min-height: 45px; }
+    min-height: auto; }
 
   nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-    height: 45px;
-    line-height: 45px; }
+    height: auto;
+    line-height: auto; }
 
   .navbar-fixed {
-    height: 45px; } }
+    height: auto; } }
 a {
   text-decoration: none; }
 

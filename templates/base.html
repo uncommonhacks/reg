@@ -35,13 +35,15 @@
   </head>
   <body>
     {% block navbar %}
-    {% if user.is_authenticated %}
     <nav>
-      <ul id="nav-mobile" class="right">
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-      </ul>
+      <div class="nav-wrapper">
+        {% if user.is_authenticated %}
+          <ul id="nav-mobile" class="right">
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        {% endif %}    
+      </div>
     </nav>
-    {% endif %}
     {% endblock %}
 
     {% block content %}
