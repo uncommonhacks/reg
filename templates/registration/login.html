@@ -15,6 +15,21 @@
             {% csrf_token %}
             <div class="card-content black-text">
               <span class="card-title">Log In</span>
+              <div class="error">
+                {% for error in form.source.errors %}
+                  {{ error }}<br/>
+                {% endfor %}
+
+                {% for error in form.non_field_errors %}
+                  {{ error }}<br/>
+                {% endfor %}
+
+                {% for field in form.visible_fields %}
+                  {% for error in field.errors %}
+                    {{ error }}<br/>
+                  {% endfor %}
+                {% endfor %}
+              </div>
               {% for field in form.visible_fields %}
               <div class="input-field">
                 {{ field }}
