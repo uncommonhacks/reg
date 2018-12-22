@@ -1,13 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 <title>Log In</title>
 {% endblock %}
 
 {% block content %}
-<div class="col m2 offset-m1 s6 offset-s3 title" >
-  Uncommon Hacks 2019
-</div>
+{% include "com/title.html" %}
 <div class="background"
   style="align-items: center; display: flex; justify-center: center">
   <div class="container">

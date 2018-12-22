@@ -8,13 +8,13 @@
     {% load static %}
 
     <!-- Links -->
-    <link rel="shortcut icon" type="image/png" href="{% static "favicon.png" %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static "img/favicon.png" %}"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet"
-                          href="{% static "materialize/css/materialize.css" %}"
+                          href="{% static "css/materialize.css" %}"
                           media="screen,projection"/>
     <link type="text/css" rel="stylesheet"
-                          href="{% static "style.css" %}"
+                          href="{% static "css/style.css" %}"
                           media="screen,projection"/>
 
     <!-- Meta -->
@@ -22,12 +22,12 @@
 
     <!-- Scripts -->
     <script type="text/javascript"
-            src="{% static "jquery-3.2.1.min.js" %}">
+            src="{% static "js/jquery-3.2.1.min.js" %}">
     </script>
     <script type="text/javascript"
-            src="{% static "materialize/js/bin/materialize.min.js" %}">
+            src="{% static "js/bin/materialize.min.js" %}">
     </script>
-    <script type="text/javascript" src="{% static "main.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
 
     {% block extra_js %}
     {#  within templates #}
@@ -35,15 +35,16 @@
   </head>
   <body>
     {% block navbar %}
+    {% if user.is_authenticated %}
     <nav>
       <div class="nav-wrapper">
-        {% if user.is_authenticated %}
+
           <ul id="nav-mobile" class="right">
             <li><a href="{% url 'logout' %}">Logout</a></li>
           </ul>
-        {% endif %}    
       </div>
     </nav>
+    {% endif %}    
     {% endblock %}
 
     {% block content %}

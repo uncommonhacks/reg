@@ -25,12 +25,17 @@ html, body {
   font-size: 1em;
 }
 
-.field{
-  color: white;
-  font-size: 1em;
-}
-
 .error{
   color: red; 
   font-size: 1em;
+}
+
+.card-image-wrapper{
+  height: auto;
+  
+}
+
+.card-image {
+  height: auto;
+  width: 20vw;
 }
