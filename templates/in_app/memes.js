@@ -11,6 +11,7 @@ let pikachuCtx = null;
 let brainInputs = null;
 let isthisaInput = null;
 let pikachuInput = null;
+let isthisaImg = null;
 
 $(document).ready(function() {
   if (window.innerHeight < 500) { return; }
@@ -26,8 +27,8 @@ $(document).ready(function() {
   pikachuCanvas.height = pikachuCanvas.width * 1892 / 1893;
 
   let brainImg = new Image(brainCanvas.width, "auto");
-  let isthisaImg = new Image(isthisaCanvas.width, "auto");
   let pikachuImg = new Image(pikachuCanvas.width, "auto");
+  isthisaImg = new Image(isthisaCanvas.width, "auto"); // We keep a reference for refreshing
 
   brainImg.src = "{% static 'images/expanding_brain.png' %}";
   isthisaImg.src = "{% static 'images/is_this_a.jpg' %}";
@@ -42,12 +43,14 @@ $(document).ready(function() {
 
   brainImg.onload = function() {
     brainCtx.drawImage(brainImg, 0, 0, brainCanvas.width, brainCanvas.height);
+    resetBrain();
   };
   isthisaImg.onload = function() {
-    isthisaCtx.drawImage(isthisaImg, 0, 0, isthisaCanvas.width, isthisaCanvas.height);
+    resetIsthisa();
   };
   pikachuImg.onload = function() {
     pikachuCtx.drawImage(pikachuImg, 0, 0, pikachuCanvas.width, pikachuCanvas.height);
+    resetPikachu();
   };
 
   // Set update handlers on the relevant input fields
@@ -57,6 +60,23 @@ $(document).ready(function() {
 
   setInputHandlers(brainInputs, isthisaInput, pikachuInput);
 });
+
+// ind == -1 resets everything
+let resetBrain = function (ind=-1) {
+  if (ind == -1) {
+    whiteoutBlock(brainCtx, 0, 0, brainCanvas.width/2 - 2, brainCanvas.height);
+  } else {
+    whiteoutBlock(brainCtx, 0, brainCanvas.height / 4 * ind, brainCanvas.width/2 - 2, brainCanvas.height/4 - 8);
+  }
+};
+
+let resetIsthisa = function () {
+  isthisaCtx.drawImage(isthisaImg, 0, 0, isthisaCanvas.width, isthisaCanvas.height);
+};
+
+let resetPikachu = function () { 
+  whiteoutBlock(pikachuCtx, 0, 0, pikachuCanvas.width, 760 / 1892 * pikachuCanvas.height);
+};
 
 let getBrainInputs = function(firstInput) {
   let inputs = [firstInput];
@@ -92,7 +112,7 @@ let drawTextBrain = (ind) => () => {
   if (brainCtx == null) { return; }
 
   // Clear the area we're modifying
-  whiteoutBlock(brainCtx, 0, brainCanvas.height / 4 * ind, brainCanvas.width/2 - 2, brainCanvas.height/4 - 8);
+  resetBrain(ind);
 
   let text = $(`input[name=brain_${ind + 1}]`)[0].value;
   drawWrappedText(brainCtx, text, 0, 18 + brainCanvas.height / 4 * ind, brainCanvas.width/2, 12);
@@ -101,12 +121,14 @@ let drawTextBrain = (ind) => () => {
 let drawTextIsthisa = function () {
   if (isthisaCtx == null) { return; }
 
+  resetIsthisa();
   console.log("Should be updating isthisa text");
 };
 
 let drawTextPikachu = function () {
   if (pikachuCtx == null) { return; }
 
+  resetPikachu();
   console.log("Should be updating pikachu text");
 };
 
