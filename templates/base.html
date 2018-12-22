@@ -37,17 +37,15 @@
   <body>
     {% block navbar %}
     <nav>
-      <div class="nav-wrapper">
-        <div class="row">
-          <div class="col s10 offset-s1 m8 offset-m2 l5 offset-l1" style="margin-top: 0.5em;">
-            <span class="title">title{{ navbar_title }}</span>
-          </div>
-        </div>
+      <div class="nav-wrapper" style="padding-top: 20px;">
+        <span class="title" style="padding-left: 20px;">
+          {% block navbar_title %}Uncommon Hacks 2019{% endblock %}
+        </span>
         {% if user.is_authenticated %}
         <ul id="nav-mobile" class="right">
           <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
-        {% endif %}    
+        {% endif %}
       </div>
     </nav>
     {% endblock %}
