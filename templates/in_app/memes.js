@@ -60,16 +60,7 @@ $(document).ready(function() {
     resetPikachu();
   };
 
-  // Set update handlers on the relevant input fields
-  brainInputs = [document.getElementById("id_brain_1"),
-                 document.getElementById("id_brain_2"),
-                 document.getElementById("id_brain_3"),
-                 document.getElementById("id_brain_4"),
-  ];
-  isthisaInput = document.getElementById("id_is_this_a");
-  pikachuInput = document.getElementById("id_pikachu");
-
-  setupInputFields(brainInputs, isthisaInput, pikachuInput);
+  setupInputFields();
 });
 
 // ind == -1 resets everything
@@ -101,15 +92,18 @@ let getBrainInputs = function(firstInput) {
   return inputs;
 };
 
-let setupInputFields = function (brainInputs, isthisaInput, pikachuInput) {
+let setupInputFields = function () {
   for (let i = 0; i < 4; i++) {
-    brainInputs[i].oninput = drawTextBrain(i);
-    brainInputs[i].maxLength = 119;
+    let brainInput = document.getElementById(`id_brain_${i+1}`);
+    brainInput.oninput = drawTextBrain(i);
+    brainInput.maxLength = 119;
   }
 
+  let isthisaInput = document.getElementById("id_is_this_a");
   isthisaInput.oninput = drawTextIsthisa;
   isthisaInput.maxLength = 16;
 
+  let pikachuInput = document.getElementById("id_pikachu");
   pikachuInput.oninput = drawTextPikachu;
   pikachuInput.maxLength = 300;
 };
@@ -129,7 +123,7 @@ let drawTextBrain = (ind) => () => {
   // Clear the area we're modifying
   resetBrain(ind);
 
-  let text = $(`input[name=brain_${ind + 1}]`)[0].value;
+  let text = document.getElementById(`id_brain_${ind + 1}`).value;
   drawWrappedText(brainCtx, text, 0, 18 + brainCanvas.height / 4 * ind, brainCanvas.width/2, 12);
 };
 
@@ -138,7 +132,7 @@ let drawTextIsthisa = function () {
 
   resetIsthisa();
 
-  let text = "Is this " + $("input[name=is_this_a]")[0].value;
+  let text = "Is this " + document.getElementById("id_is_this_a").value;
   drawCenteredBorderedText(isthisaCtx, text, 4 / 5 * isthisaCanvas.height, isthisaCanvas.width);
 };
 
@@ -147,7 +141,7 @@ let drawTextPikachu = function () {
 
   resetPikachu();
 
-  let text = $("input[name=pikachu]")[0].value;
+  let text = document.getElementById("id_pikachu").value;
   drawWrappedText(pikachuCtx, text, 0, 18, pikachuCanvas.width, 12);
 };
 
