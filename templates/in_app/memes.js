@@ -81,20 +81,11 @@ let setInputHandlers = function (brainInputs, isthisaInput, pikachuInput) {
 
 // Rather than trying to figure out which brain was updated, just scan all of them
 let drawTextBrain = (ind) => () => {
-  if (ind < 0 || ind > 4) { return; }
+  if (ind < 0 || ind > 3) { return; }
   if (brainCtx == null) { return; }
 
-  ind = 0; // TODO removeme
-
-  console.log("Should be updating some brain text");
-
-  // for (let i = 0; i < 4; i++) {
-  // }
-
-  console.log(brainCtx);
-  let text = "hi there wow this jsut keeps on going darn on and on and on and and on and on and on and on and on and on and on and on and on and on";
-
-  drawWrappedText(brainCtx, text, 0, 20, brainCanvas.width/2, 12);
+  let text = $(`input[name=brain_${ind + 1}]`)[0].value;
+  drawWrappedText(brainCtx, text, 0, 18 + brainCanvas.height / 4 * ind, brainCanvas.width/2, 12);
 };
 
 let drawTextIsthisa = function () {
@@ -131,5 +122,3 @@ let drawWrappedText = function (ctx, text, initX, initY, boundingWidth, yStep) {
   }
   ctx.fillText(line, x, y);
 };
-
-// let drawTextBrain = [drawTextBrain1, drawTextBrain2, drawTextBrain3, drawTextBrain4];
