@@ -3,9 +3,17 @@ from .models import Application, Confirmation
 
 
 class ApplicationForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=100)
-    last_name = forms.CharField(max_length=100)
-    resume = forms.FileField()
+    first_name = forms.CharField(
+                    max_length=100,
+                    label="First Name",
+    )
+    last_name = forms.CharField(
+                    max_length=100,
+                    label="Last Name",
+    )
+    resume = forms.FileField(
+                label="Resume",
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

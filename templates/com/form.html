@@ -1,10 +1,13 @@
+{% load %}
+
 {% block css_overrides %}
 <style>
-label, input, textarea {
-  font-size: 1em;
-  color: black;
+label {
+  font-size: 1.5rem;
+  color: #9e9e9e;
 }
 span {
+  font-size: 1.5rem;
   color: #f48fb1;
 }
 </style>
@@ -29,15 +32,21 @@ span {
   <!--Fields-->
   {% for field in form.visible_fields %}
   <div class="row">
-
-    <!-- handle text fields -->
-    {% if field.field.widget.input_type == "text" %}
-    <div class="input-field">
-      <label for="{{ field.id_for_label }}"></label>
-    </div>
+    {% if field.field.widget.template_name == "django/forms/widgets/text.html" or field.field.widget.template_name == "django/forms/widgets/date.html" %}
+      {% include "com/text_field.html" with field=field %}
     {% endif %}
-
-    {{ field }}
+    {% if field.field.widget.template_name == "django/forms/widgets/textarea.html" %}
+      {% include "com/textarea_field.html" with field=field %}
+    {% endif %}
+    {% if field.field.widget.template_name == "django/forms/widgets/select.html" %}
+      {% include "com/select_field.html" with field=field %}
+    {% endif %}
+    {% if field.field.widget.template_name == "django/forms/widgets/clearable_file_input.html" %}
+      {% include "com/file_field.html" with field=field %}
+    {% endif %}
+    {% if field.name == "legal1" or field.name == "legal2" or field.name == "legal3" or field.name == "is_this_a" or field.name == "pikachu" or field.name == "brain_1" %}
+      {{ field }}
+    {% endif %}
     <label>{{ field.help_text }}</label>
     <div class="error">
       {% for error in field.errors %}

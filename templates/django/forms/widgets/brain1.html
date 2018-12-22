@@ -2,10 +2,7 @@
   <canvas id="brainCanvas"></canvas>
 </div>
 
-<label for="id_brain_1">Expanding Brain 1:</label>
-<input
-   type="{{ widget.type }}"
-   name="{{ widget.name }}"
-   {% if widget.value != None %}
-   value="{{ widget.value|stringformat:'s' }}"
-   {% endif %}>
+<div class="input-field">
+  <input type="text" id = "id_brain_1">
+  <label for="id_brain_1">Expanding Brain 1</label>
+</div>

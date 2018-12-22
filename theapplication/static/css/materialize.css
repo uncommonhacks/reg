@@ -3929,7 +3929,7 @@ button.btn-floating {
       min-height: 0;
       height: 1px; }
     .dropdown-content li > a, .dropdown-content li > span {
-      font-size: 16px;
+      font-size: 1.5rem;
       color: #f48fb1;
       display: block;
       line-height: 22px;
@@ -4231,7 +4231,7 @@ body.keyboard-focused .dropdown-content li:focus {
     border: 0;
     color: rgba(0, 0, 0, 0.6);
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.5rem;
     height: 3rem;
     line-height: 32px;
     outline: 0;
@@ -4297,7 +4297,7 @@ button:focus {
   background-color: #f6a2be; }
 
 label {
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   color: #9e9e9e; }
 
 /* Text Inputs + Textarea
@@ -4327,7 +4327,7 @@ textarea.materialize-textarea {
   outline: none;
   height: 3rem;
   width: 100%;
-  font-size: 16px;
+  font-size: 1.5rem;
   margin: 0 0 8px 0;
   padding: 0;
   box-shadow: none;
@@ -4666,7 +4666,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
     cursor: text;
     transition: transform .2s ease-out, color .2s ease-out;
     transform-origin: 0% 100%;
@@ -4900,7 +4900,7 @@ textarea {
     display: inline-block;
     height: 25px;
     line-height: 25px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     user-select: none; }
   [type="checkbox"] + span:not(.lever):before, [type="checkbox"]:not(.filled-in) + span:not(.lever):after {
     content: '';
@@ -5124,7 +5124,7 @@ select {
     height: 3rem;
     line-height: 3rem;
     width: 100%;
-    font-size: 16px;
+    font-size: 1.5rem;
     margin: 0 0 8px 0;
     padding: 0;
     display: block;
@@ -5143,7 +5143,7 @@ select {
   .select-wrapper + label {
     position: absolute;
     top: -26px;
-    font-size: 0.8rem; }
+    font-size: 1.5rem; }
 
 select:disabled {
   color: rgba(0, 0, 0, 0.42); }
@@ -5222,7 +5222,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-size: 20px;
+    font-size: 1.5rem;
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0); }

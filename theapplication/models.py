@@ -21,16 +21,18 @@ class SchoolChoice(models.Model):
 class Application(models.Model):
 
     phone_number = models.CharField(
-        max_length=20, null=True, verbose_name="Phone Number:", help_text="###-###-####"
+        max_length=20, null=True, 
+        verbose_name="Phone Number", 
+        help_text="###-###-####"
     )
 
     birth_date = models.DateField(
         null=True,
-        verbose_name="Birth Date:",
+        verbose_name="Birth Date",
         help_text=(
             "MM/DD/YYYY - Because of limitations imposed by "
             "our venue, we are not legally allowed to host "
-            "minors (those under 18) for Uncommon Hacks 2018."
+            "minors (those under 18) for Uncommon Hacks 2019."
         ),
     )
 
@@ -58,6 +60,7 @@ class Application(models.Model):
             "Where do you attend school? If your school does not appear "
             'on the list, select "Other".'
         ),
+        help_text="SELECT OTHER",
     )
 
     major = models.CharField(

@@ -2,10 +2,7 @@
   <canvas id="isthisaCanvas"></canvas>
 </div>
 
-<label for="id_isthisa">Is this...:</label>
-<input
-   type="{{ widget.type }}"
-   name="{{ widget.name }}"
-   {% if widget.value != None %}
-   value="{{ widget.value|stringformat:'s' }}"
-   {% endif %}>
+<div class="input-field">
+  <input type="text" id="id_is_this_a">
+  <label for="id_is_this_a">Is this...</label>
+</div>

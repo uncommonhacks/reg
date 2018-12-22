@@ -1,0 +1,9 @@
+{% if field.name == "essay1" or field.name == "essay2" or field.name == "essay3" %}
+  <label>{{ field.label }}</label>
+  <textarea class="materialize-textarea"></textarea>  
+{% else %}
+  <div class="input-field">
+    <textarea id="{{ field.id_for_label }}" class="materialize-textarea"></textarea>
+    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+  </div>
+{% endif %}
