@@ -134,21 +134,19 @@ let drawTextPikachu = function () {
 
 // yStep == 12 works for 2 vh
 let drawWrappedText = function (ctx, text, initX, initY, boundingWidth, yStep) {
-  let words = text.split(" ");
   let line = "";
   let x = initX;
   let y = initY;
 
-  for(let n = 0; n < words.length; n++) {
-    let testLine = line + words[n] + " ";
-    let metrics = ctx.measureText(testLine);
-    let testWidth = metrics.width;
+  for(let n = 0; n < text.length; n++) {
+    let testLine = line + text[n];
+    let testWidth = ctx.measureText(testLine + " ").width;
     if (testWidth > boundingWidth && n > 0) {
+      line += "-";
       ctx.fillText(line, x, y);
-      line = words[n] + " ";
+      line = text[n];
       y += yStep;
-    }
-    else {
+    } else {
       line = testLine;
     }
   }
