@@ -105,7 +105,9 @@ let setupInputFields = function (brainInputs, isthisaInput, pikachuInput) {
 
   isthisaInput.oninput = drawTextIsthisa;
   isthisaInput.maxLength = 16;
+
   pikachuInput.oninput = drawTextPikachu;
+  pikachuInput.maxLength = 300;
 };
 
 let whiteoutBlock = function (ctx, x, y, width, height) {
@@ -133,7 +135,6 @@ let drawTextIsthisa = function () {
   resetIsthisa();
 
   let text = "Is this " + $("input[name=is_this_a]")[0].value;
-
   drawCenteredBorderedText(isthisaCtx, text, 4 / 5 * isthisaCanvas.height, isthisaCanvas.width);
 };
 
@@ -141,7 +142,9 @@ let drawTextPikachu = function () {
   if (pikachuCtx == null) { return; }
 
   resetPikachu();
-  console.log("Should be updating pikachu text");
+
+  let text = $("input[name=pikachu]")[0].value;
+  drawWrappedText(pikachuCtx, text, 0, 18, pikachuCanvas.width, 12);
 };
 
 // Horizontally centered
