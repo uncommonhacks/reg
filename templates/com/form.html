@@ -2,7 +2,7 @@
 <style>
 label, input, textarea {
   font-size: 1em;
-   color: white;
+  color: black;
 }
 span {
   color: #f48fb1;
@@ -29,7 +29,14 @@ span {
   <!--Fields-->
   {% for field in form.visible_fields %}
   <div class="row">
-    {{ field.label_tag }}
+
+    <!-- handle text fields -->
+    {% if field.field.widget.input_type == "text" %}
+    <div class="input-field">
+      <label for="{{ field.id_for_label }}"></label>
+    </div>
+    {% endif %}
+
     {{ field }}
     <label>{{ field.help_text }}</label>
     <div class="error">
