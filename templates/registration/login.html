@@ -6,54 +6,56 @@
 {% endblock %}
 
 {% block content %}
-{% include "com/title.html" %}
-<div class="background"
-  style="align-items: center; display: flex; justify-center: center">
-  <div class="container">
-    <div class="row">
-      <div class="col offset-s1 s10 m6 offset-m3">
-        <div class="z-depth-4">
-          <div class="card white">
-            <form method="post" action="{% url 'login' %}">
-              {% csrf_token %}
-              <div class="card-content black-text">
-                <span class="card-title">Log In</span>
-                <div class="error">
-                  {% for error in form.source.errors %}
-                    {{ error }}<br/>
-                  {% endfor %}
+<div class="row">
+  <div class="title col s10 offset-s1 m8 offset-m2 l5 offset-l1">
+    <span>Uncommon Hacks 2019</span>
+  </div>
+</div>
+<div class="row card-row">
+  <div class="col offset-s1 s10 m8 offset-m2 l4 offset-l4">
+    <div class="z-depth-4 round">
+      <div class="card white round">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="card-content black-text">
+            <span class="card-title">Log in</span>
+            <div class="error">
+              {% for error in form.source.errors %}
+                {{ error }}<br/>
+              {% endfor %}
 
-                  {% for error in form.non_field_errors %}
-                    {{ error }}<br/>
-                  {% endfor %}
+              {% for error in form.non_field_errors %}
+                {{ error }}<br/>
+              {% endfor %}
 
-                  {% for field in form.visible_fields %}
-                    {% for error in field.errors %}
-                      {{ error }}<br/>
-                    {% endfor %}
-                  {% endfor %}
-                </div>
-                {% for field in form.visible_fields %}
-                <div class="input-field">
-                  {{ field }}
-                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                </div>
+              {% for field in form.visible_fields %}
+                {% for error in field.errors %}
+                  {{ error }}<br/>
                 {% endfor %}
-                <div class="center-align">
-                  <input class="btn btn-default btn-lg" value="submit" type="submit">
-                </div>
-              </div>
-              <div class="card-action center-align">
-                <a style="margin: 0;" href="{% url 'registration_register' %}">Create account</a>
-                <br/>
-                <a style="margin: 0;" href="{% url 'password_reset' %}">Forgot password?</a>
-              </div>
-              <input type="hidden" name="next" value="{{ next }}" />
-            </form>
+              {% endfor %}
+            </div>
+            {% for field in form.visible_fields %}
+            <div class="input-field">
+              {{ field }}
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            </div>
+            {% endfor %}
+            <div class="center-align">
+              <input class="btn btn-default btn-lg" value="submit" type="submit">
+            </div>
           </div>
-        </div>
+          <div class="card-action center-align">
+            <a style="margin: 0;" href="{% url 'registration_register' %}">Create account</a>
+            <br/>
+            <a style="margin: 0;" href="{% url 'password_reset' %}">Forgot password?</a>
+          </div>
+          <input type="hidden" name="next" value="{{ next }}" />
+        </form>
       </div>
     </div>
+  </div>
+  <div class="card-image-wrapper col s10 offset-s1 m8 offset-m2 l3 offset-l1">
+    <img class="card-image" src="{% static 'img/dog_laptop_ellipse.png' %}">
   </div>
 </div>
 {% endblock %}

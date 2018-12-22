@@ -8,12 +8,6 @@ html, body {
 
 /* General Styles*/
 
-.title{
-    font-size:2.1rem;
-    padding-left: 40px;
-    padding-top: 20px;
-}
-
 .background{
   min-height: 85vh;
 }
@@ -30,12 +24,28 @@ html, body {
   font-size: 1em;
 }
 
+/* Card and Title setup*/
+
+.title{
+  font-family: 'TruenoRegular'; 
+  font-weight: normal; 
+  font-style: normal; 
+  font-size:2.1rem;
+  margin-top: 0.5em;
+}
+
+.card-row{
+  margin-top: 20vh;
+}
+
 .card-image-wrapper{
-  height: auto;
-  
+  margin-top: 20vw;
 }
 
 .card-image {
-  height: auto;
-  width: 20vw;
+  height: 30vh;
+}
+
+.round{
+  border-radius: 20px;
 }
