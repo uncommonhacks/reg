@@ -4,20 +4,9 @@
 <title>Application</title>
 {% endblock %}
 
+<!-- Scripts run from anywhere within the document -->
 {% block extra_js %}
-<script>
-let brainCanvas = document.getElementById("brainCanvas");
-let isthisaCanvas = document.getElementById("isthisaCanvas");
-let pikachuCanvas = document.getElementById("pikachuCanvas");
-
-let brainCtx = brainCanvas.getContext("2d");
-let isthisaCtx = isthisaCanvas.getContext("2d");
-let pikachuCtx = pikachuCanvas.getContext("2d");
-
-let brainImg = Image(brainCanvas.width, brainCanvas.height);
-let isthisaImg = Image(isthisaCanvas.width, isthisaCanvas.height);
-let pikachuImg = Image(pikachuCanvas.width, pikachuCanvas.height);
-</script>
+<script> {% include "in_app/memes.js" %} </script>
 {% endblock %}
 
 {% block content %}
