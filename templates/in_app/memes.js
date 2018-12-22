@@ -1,14 +1,20 @@
 // Templated Javascript to make the memes dynamic
-{%load static %}
+
+//{%load static %}
 
 let brainCanvas = null;
 let isthisaCanvas = null;
 let pikachuCanvas = null;
+let brainCtx = null;
+let isthisaCtx = null;
+let pikachuCtx = null;
 let brainInputs = null;
 let isthisaInput = null;
 let pikachuInput = null;
 
 $(document).ready(function() {
+  if (window.innerHeight < 500) { return; }
+
   brainCanvas = document.getElementById("brainCanvas");
   isthisaCanvas = document.getElementById("isthisaCanvas");
   pikachuCanvas = document.getElementById("pikachuCanvas");
@@ -27,9 +33,12 @@ $(document).ready(function() {
   isthisaImg.src = "{% static 'images/is_this_a.jpg' %}";
   pikachuImg.src = "{% static 'images/surprised_pikachu.jpg' %}";
 
-  let brainCtx = brainCanvas.getContext("2d");
-  let isthisaCtx = isthisaCanvas.getContext("2d");
-  let pikachuCtx = pikachuCanvas.getContext("2d");
+  brainCtx = brainCanvas.getContext("2d");
+  isthisaCtx = isthisaCanvas.getContext("2d");
+  pikachuCtx = pikachuCanvas.getContext("2d");
+
+  brainCtx.font = isthisaCtx.font = pikachuCtx.font = "2vh Courier";
+  brainCtx.fillStyle = isthisaCtx.fillStyle = pikachuCtx.fillStyle = "black";
 
   brainImg.onload = function() {
     brainCtx.drawImage(brainImg, 0, 0, brainCanvas.width, brainCanvas.height);
@@ -63,29 +72,64 @@ let getBrainInputs = function(firstInput) {
 
 let setInputHandlers = function (brainInputs, isthisaInput, pikachuInput) {
   for (let i = 0; i < 4; i++) {
-    brainInputs[i].oninput = drawTextBrain;
+    brainInputs[i].oninput = drawTextBrain(i);
   }
 
   isthisaInput.oninput = drawTextIsthisa;
   pikachuInput.oninput = drawTextPikachu;
 };
 
-// We don't know which one triggered, so scan them
-let drawTextBrain = function () {
-  //if (ind < 0 || ind > 4) { return; }
-  //if (brainCanvas == null) { return; }
+// Rather than trying to figure out which brain was updated, just scan all of them
+let drawTextBrain = (ind) => () => {
+  if (ind < 0 || ind > 4) { return; }
+  if (brainCtx == null) { return; }
 
-  console.log("Should be updating brain text", ind);
+  ind = 0; // TODO removeme
+
+  console.log("Should be updating some brain text");
+
+  // for (let i = 0; i < 4; i++) {
+  // }
+
+  console.log(brainCtx);
+  let text = "hi there wow this jsut keeps on going darn on and on and on and and on and on and on and on and on and on and on and on and on and on";
+
+  drawWrappedText(brainCtx, text, 0, 20, brainCanvas.width/2, 12);
 };
 
 let drawTextIsthisa = function () {
-  //if (isthisaCanvas == null) { return; }
+  if (isthisaCtx == null) { return; }
 
   console.log("Should be updating isthisa text");
 };
 
 let drawTextPikachu = function () {
-  //if (pikachuCanvas == null) { return; }
+  if (pikachuCtx == null) { return; }
 
   console.log("Should be updating pikachu text");
 };
+
+// yStep == 12 works for 2 vh
+let drawWrappedText = function (ctx, text, initX, initY, boundingWidth, yStep) {
+  let words = text.split(" ");
+  let line = "";
+  let x = initX;
+  let y = initY;
+
+  for(var n = 0; n < words.length; n++) {
+    var testLine = line + words[n] + " ";
+    var metrics = ctx.measureText(testLine);
+    var testWidth = metrics.width;
+    if (testWidth > boundingWidth && n > 0) {
+      ctx.fillText(line, x, y);
+      line = words[n] + " ";
+      y += yStep;
+    }
+    else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line, x, y);
+};
+
+// let drawTextBrain = [drawTextBrain1, drawTextBrain2, drawTextBrain3, drawTextBrain4];
