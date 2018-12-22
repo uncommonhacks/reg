@@ -79,10 +79,20 @@ let setInputHandlers = function (brainInputs, isthisaInput, pikachuInput) {
   pikachuInput.oninput = drawTextPikachu;
 };
 
+let whiteoutBlock = function (ctx, x, y, width, height) {
+  let beforeStyle = ctx.fillStyle;
+  ctx.fillStyle = "white";
+  ctx.fillRect(x, y, width, height);
+  ctx.fillStyle = beforeStyle;
+};
+
 // Rather than trying to figure out which brain was updated, just scan all of them
 let drawTextBrain = (ind) => () => {
   if (ind < 0 || ind > 3) { return; }
   if (brainCtx == null) { return; }
+
+  // Clear the area we're modifying
+  whiteoutBlock(brainCtx, 0, brainCanvas.height / 4 * ind, brainCanvas.width/2 - 2, brainCanvas.height/4 - 8);
 
   let text = $(`input[name=brain_${ind + 1}]`)[0].value;
   drawWrappedText(brainCtx, text, 0, 18 + brainCanvas.height / 4 * ind, brainCanvas.width/2, 12);
@@ -107,10 +117,10 @@ let drawWrappedText = function (ctx, text, initX, initY, boundingWidth, yStep) {
   let x = initX;
   let y = initY;
 
-  for(var n = 0; n < words.length; n++) {
-    var testLine = line + words[n] + " ";
-    var metrics = ctx.measureText(testLine);
-    var testWidth = metrics.width;
+  for(let n = 0; n < words.length; n++) {
+    let testLine = line + words[n] + " ";
+    let metrics = ctx.measureText(testLine);
+    let testWidth = metrics.width;
     if (testWidth > boundingWidth && n > 0) {
       ctx.fillText(line, x, y);
       line = words[n] + " ";
