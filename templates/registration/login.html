@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" with navbar_title="Uncommon Hacks 2019" %}
 {% load static %}
 
 {% block title %}
@@ -6,11 +6,6 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="title col s10 offset-s1 m8 offset-m2 l5 offset-l1">
-    <span>Uncommon Hacks 2019</span>
-  </div>
-</div>
 <div class="row card-row">
   <div class="col offset-s1 s10 m8 offset-m2 l4 offset-l4">
     <div class="z-depth-4 round">
