@@ -96,8 +96,7 @@ WSGI_APPLICATION = "reg.wsgi.application"
 
 
 # email
-
-ANYMAIL = {"MAILGUN_API_KEY": "key-4154a5d3a2bf91d770426c622d3aa694"}
+ANYMAIL = {"MAILGUN_API_KEY": client.get_parameter(Name="MAILGUN_API_KEY", WithDecryption=True)["Parameter"]["Value"]}
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 DEFAULT_FROM_EMAIL = "noreply@uncommonhacks.com"
 

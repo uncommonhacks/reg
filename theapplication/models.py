@@ -100,7 +100,7 @@ class Application(models.Model):
     location = models.CharField(
         max_length=200,
         verbose_name="Where are you coming from to attend Uncommon Hacks?",
-        help_text="city, providence, country",
+        help_text="city, province, country",
         null=True,
     )
 
