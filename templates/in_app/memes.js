@@ -38,15 +38,22 @@ $(document).ready(function() {
   isthisaCtx = isthisaCanvas.getContext("2d");
   pikachuCtx = pikachuCanvas.getContext("2d");
 
-  brainCtx.font = isthisaCtx.font = pikachuCtx.font = "2vh Courier";
-  brainCtx.fillStyle = isthisaCtx.fillStyle = pikachuCtx.fillStyle = "black";
+  brainCtx.font = pikachuCtx.font = "2vh Courier";
+  brainCtx.fillStyle = pikachuCtx.fillStyle = "black";
+
+  // Fancier setup for text-border
+  isthisaCtx.font = "3vh Courier";
+  isthisaCtx.fillStyle = "white";
+  isthisaCtx.strokeStyle = "black";
+  isthisaCtx.lineJoin = "circle";
+  isthisaCtx.miterLimit = 2;
 
   brainImg.onload = function() {
     brainCtx.drawImage(brainImg, 0, 0, brainCanvas.width, brainCanvas.height);
     resetBrain();
   };
   isthisaImg.onload = function() {
-    resetIsthisa();
+    drawTextIsthisa();
   };
   pikachuImg.onload = function() {
     pikachuCtx.drawImage(pikachuImg, 0, 0, pikachuCanvas.width, pikachuCanvas.height);
@@ -97,6 +104,7 @@ let setupInputFields = function (brainInputs, isthisaInput, pikachuInput) {
   }
 
   isthisaInput.oninput = drawTextIsthisa;
+  isthisaInput.maxLength = 16;
   pikachuInput.oninput = drawTextPikachu;
 };
 
@@ -123,7 +131,10 @@ let drawTextIsthisa = function () {
   if (isthisaCtx == null) { return; }
 
   resetIsthisa();
-  console.log("Should be updating isthisa text");
+
+  let text = "Is this " + $("input[name=is_this_a]")[0].value;
+
+  drawCenteredBorderedText(isthisaCtx, text, 4 / 5 * isthisaCanvas.height, isthisaCanvas.width);
 };
 
 let drawTextPikachu = function () {
@@ -131,6 +142,19 @@ let drawTextPikachu = function () {
 
   resetPikachu();
   console.log("Should be updating pikachu text");
+};
+
+// Horizontally centered
+let drawCenteredBorderedText = function (ctx, text, initY, boundingWidth) {
+  let textWidth = ctx.measureText(text).width;
+  if (textWidth > boundingWidth) { return; }
+
+  let initX = (boundingWidth - textWidth) / 2;
+
+  ctx.lineWidth = 7;
+  ctx.strokeText(text, initX, initY);
+  ctx.lineWidth = 1;
+  ctx.fillText(text, initX, initY);
 };
 
 // yStep == 12 works for 2 vh
