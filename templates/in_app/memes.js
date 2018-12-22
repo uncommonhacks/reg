@@ -61,9 +61,13 @@ $(document).ready(function() {
   };
 
   // Set update handlers on the relevant input fields
-  brainInputs = getBrainInputs(brainCanvas.parentElement.nextElementSibling.nextElementSibling);
-  isthisaInput = isthisaCanvas.parentElement.nextElementSibling.nextElementSibling;
-  pikachuInput = pikachuCanvas.parentElement.nextElementSibling.nextElementSibling;
+  brainInputs = [document.getElementById("id_brain_1"),
+                 document.getElementById("id_brain_2"),
+                 document.getElementById("id_brain_3"),
+                 document.getElementById("id_brain_4"),
+  ];
+  isthisaInput = document.getElementById("id_is_this_a");
+  pikachuInput = document.getElementById("id_pikachu");
 
   setupInputFields(brainInputs, isthisaInput, pikachuInput);
 });
