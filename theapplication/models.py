@@ -63,10 +63,21 @@ class Application(models.Model):
     major = models.CharField(
         max_length=150, verbose_name="What is your major?", null=True
     )
+    STUDY_LEVEL_CHOICES = (
+        ("HS", "High school or below"),
+        ("1Y", "1st year"),
+        ("2Y", "2nd year"),
+        ("3Y", "3rd year"),
+        ("4Y", "4th year"),
+        ("5Y", "5th year and beyond"),
+        ("GS", "Graduate Student"),
+        ("GR", "Graduated/out of school"),
+    )
 
     study_level = models.CharField(
-        max_length=50,
-        verbose_name="What is your most current level of study?",
+        max_length=2,
+        verbose_name="What is your current level of study?",
+        choices=STUDY_LEVEL_CHOICES,
         null=True,
     )
 
