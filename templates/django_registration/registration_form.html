@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+{{ form.field_errors }}
 {% include "com/title.html" %}
 <div class="background"
      style="align-items: center; display: flex; justify-center: center">
@@ -26,11 +27,11 @@
                     {{ error }}<br/>
                   {% endfor %}
 
-                  {% for field in form.visible_fields %}
+                  <!--{% for field in form.visible_fields %}
                     {% for error in field.errors %}
                       {{ error }}<br/>
                     {% endfor %}
-                  {% endfor %}
+                  {% endfor %}-->
                 </div>
                  {% for field in form.visible_fields %}
                 <div class="input-field">

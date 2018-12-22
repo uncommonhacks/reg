@@ -103,6 +103,8 @@ $card-padding: 24px !default;
 $card-bg-color: #fff !default;
 $card-link-color: color("orange", "accent-2") !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
+$card-title-font-size: 2.1rem !default;
+$card-title-small-font-size: 1.7rem !default;
 
 
 // 5. Carousel
@@ -215,10 +217,10 @@ $switch-radius: 15px !default;
 // ==========================================================================
 
 // Media Query Ranges
-$small-screen-up: 601px !default;
+$small-screen-up: 761px !default;
 $medium-screen-up: 993px !default;
 $large-screen-up: 1201px !default;
-$small-screen: 600px !default;
+$small-screen: 760px !default;
 $medium-screen: 992px !default;
 $large-screen: 1200px !default;
 
@@ -242,10 +244,10 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 // 13. Navigation Bar
 // ==========================================================================
 
-$navbar-height: 45px !default;
-$navbar-line-height: $navbar-height !default;
-$navbar-height-mobile: 45px !default;
-$navbar-line-height-mobile: $navbar-height-mobile !default;
+$navbar-height: 5rem !default;
+$navbar-line-height: 2rem !default;
+$navbar-height-mobile: 3rem !default;
+$navbar-line-height-mobile: 1rem !default;
 $navbar-font-size: 1.5rem !default;
 $navbar-font-color:black !default;
 $navbar-brand-font-size: 2.1rem !default;

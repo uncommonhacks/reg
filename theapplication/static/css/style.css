@@ -9,35 +9,126 @@ html, body {
 
 /* General */
 
-.title{
+.animal-img{
+  position:absolute;
+  bottom: 0;
+  height: 30vh;
+}
+
+/* Forms */
+
+.error{
+  color: red; 
+  font-size: 1.2rem;
+}
+
+/* Navbar */
+
+#nav-wrapper{
+  padding-top: 20px;
+}
+
+#nav-title{
   font-family: 'TruenoRegular'; 
   font-weight: normal; 
   font-style: normal; 
   font-size: 2.1rem;
-  color: black;  
+  color: black;
+  padding-left: 20px;
 }
 
-.round{
-  border-radius: 20px;
+#nav-title-responsive{
+  font-family: 'TruenoRegular';
+  font-size: 1.7em;
+  margin-top: 5vh;
+  display: none;
 }
 
-/* Form */
-
-.error{
-  color: red; 
-  font-size: 1em;
+#nav-logout-wrapper{
+  padding-right: 20px;
 }
 
-/* Login, Register, etc. */
-
-.card-row{
-  margin-top: 20vh;
+#nav-logout{
+  font-family: 'TruenoRegular';
+  font-size: 1.5rem;
 }
 
-.card-image-wrapper{
-  margin-top: 20vw;
+/* Card Views */
+.card-container {
+  max-width: 400px;
+  min-width: 300px;
+  margin-top: 15vh;
+}
+.card-form-error-wrap{
+  padding-top: 1rem;
+}
+.card-form-field-wrap{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.card-image {
-  height: 30vh;
+
+/* Login */
+
+#login-dog{
+  right: 0;
+}
+
+/* Applicant Index */
+
+#status-container{
+  margin-top: 25vh;
+  font-size: 1.5rem;
+  color: black;
+}
+
+#status-owl{
+  left: 0;
+}
+
+/* Media Queries */
+/* Small Screen */
+@media(max-width: 760px){
+
+  /* General */
+  .animal-img{
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;    
+  }
+
+  /* Navbar */
+  #nav-wrapper{
+    height: atuo;
+  }
+  #nav-title{
+    display: none;
+  }
+  #nav-title-responsive{
+    display: block;
+  }
+  #nav-logout-wrapper{
+    padding-right: 0;
+  }
+  #nav-logout{
+    font-size: 1.3rem;
+  }
+
+  /* Card Views */
+  .card-container{
+    margin-top: 10vh;
+  }
+  
+  /* Applicant Index */
+  #status-container{
+    margin-top: 5vh;
+  }
+}
+
+/* Low Height */
+@media(max-height:500px) {
+  .animal-img{
+    display: none;
+  }
 }

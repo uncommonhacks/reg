@@ -20,7 +20,7 @@
 
   .card-title {
     font-family: 'TruenoRegular';
-    font-size: 1.7rem;
+    font-size: $card-title-small-font-size;
     font-weight: 300;
     &.activator {
       cursor: pointer;
@@ -192,5 +192,10 @@
       cursor: pointer;
       display: block;
     }
+  }
+}
+@media #{$medium-and-up}{
+  .card .card-title {
+    font-size: $card-title-font-size
   }
 }

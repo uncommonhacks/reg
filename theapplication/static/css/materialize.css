@@ -2185,7 +2185,7 @@ ul.staggered-list li {
 /*********************
   Media Query Classes
 **********************/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 760px) {
   .hide-on-small-only, .hide-on-small-and-down {
     display: none !important; } }
 
@@ -2193,11 +2193,11 @@ ul.staggered-list li {
   .hide-on-med-and-down {
     display: none !important; } }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 761px) {
   .hide-on-med-and-up {
     display: none !important; } }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 760px) and (max-width: 992px) {
   .hide-on-med-only {
     display: none !important; } }
 
@@ -2217,15 +2217,15 @@ ul.staggered-list li {
   .show-on-large {
     display: block !important; } }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 760px) and (max-width: 992px) {
   .show-on-medium {
     display: block !important; } }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 760px) {
   .show-on-small {
     display: block !important; } }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 761px) {
   .show-on-medium-and-up {
     display: block !important; } }
 
@@ -2233,7 +2233,7 @@ ul.staggered-list li {
   .show-on-medium-and-down {
     display: block !important; } }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 760px) {
   .center-on-small-only {
     text-align: center; } }
 
@@ -2563,7 +2563,7 @@ table span.badge {
   max-width: 1280px;
   width: 90%; }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 761px) {
   .container {
     width: 85%; } }
 @media only screen and (min-width: 993px) {
@@ -2730,7 +2730,7 @@ table span.badge {
       right: 100%; }
     .row .col.push-s12 {
       left: 100%; }
-    @media only screen and (min-width: 601px) {
+    @media only screen and (min-width: 761px) {
       .row .col.m1 {
         width: 8.3333333333%;
         margin-left: auto;
@@ -3135,12 +3135,12 @@ nav {
   /*  @extend .z-depth-1; */
   background-color: white;
   width: 100%;
-  height: 45px;
-  line-height: 45px; }
+  height: 3rem;
+  line-height: 1rem; }
   nav.nav-extended {
     height: auto; }
     nav.nav-extended .nav-wrapper {
-      min-height: 45px;
+      min-height: 3rem;
       height: auto; }
     nav.nav-extended .nav-content {
       position: relative;
@@ -3152,8 +3152,8 @@ nav {
   nav i.material-icons {
     display: block;
     font-size: 24px;
-    height: 45px;
-    line-height: 45px; }
+    height: 3rem;
+    line-height: 1rem; }
   nav .nav-wrapper {
     position: relative;
     height: 100%; }
@@ -3164,11 +3164,11 @@ nav {
     float: left;
     position: relative;
     z-index: 1;
-    height: 45px;
+    height: 3rem;
     margin: 0 18px; }
     nav .sidenav-trigger i {
-      height: 45px;
-      line-height: 45px; }
+      height: 3rem;
+      line-height: 1rem; }
   nav .brand-logo {
     position: absolute;
     color: black;
@@ -3253,21 +3253,21 @@ nav {
 
 .navbar-fixed {
   position: relative;
-  height: 45px;
+  height: 3rem;
   z-index: 997; }
   .navbar-fixed nav {
     position: fixed; }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 761px) {
   nav.nav-extended .nav-wrapper {
-    min-height: 45px; }
+    min-height: 5rem; }
 
   nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-    height: 45px;
-    line-height: 45px; }
+    height: 5rem;
+    line-height: 2rem; }
 
   .navbar-fixed {
-    height: 45px; } }
+    height: 5rem; } }
 a {
   text-decoration: none; }
 
@@ -3341,64 +3341,64 @@ small {
 @media only screen and (min-width: 360px) {
   .flow-text {
     font-size: 1.2rem; } }
-@media only screen and (min-width: 390px) {
+@media only screen and (min-width: 382px) {
   .flow-text {
     font-size: 1.224rem; } }
-@media only screen and (min-width: 420px) {
+@media only screen and (min-width: 404px) {
   .flow-text {
     font-size: 1.248rem; } }
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 426px) {
   .flow-text {
     font-size: 1.272rem; } }
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 448px) {
   .flow-text {
     font-size: 1.296rem; } }
-@media only screen and (min-width: 510px) {
+@media only screen and (min-width: 470px) {
   .flow-text {
     font-size: 1.32rem; } }
-@media only screen and (min-width: 540px) {
+@media only screen and (min-width: 492px) {
   .flow-text {
     font-size: 1.344rem; } }
-@media only screen and (min-width: 570px) {
+@media only screen and (min-width: 514px) {
   .flow-text {
     font-size: 1.368rem; } }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 536px) {
   .flow-text {
     font-size: 1.392rem; } }
-@media only screen and (min-width: 630px) {
+@media only screen and (min-width: 558px) {
   .flow-text {
     font-size: 1.416rem; } }
-@media only screen and (min-width: 660px) {
+@media only screen and (min-width: 580px) {
   .flow-text {
     font-size: 1.44rem; } }
-@media only screen and (min-width: 690px) {
+@media only screen and (min-width: 602px) {
   .flow-text {
     font-size: 1.464rem; } }
-@media only screen and (min-width: 720px) {
+@media only screen and (min-width: 624px) {
   .flow-text {
     font-size: 1.488rem; } }
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 646px) {
   .flow-text {
     font-size: 1.512rem; } }
-@media only screen and (min-width: 780px) {
+@media only screen and (min-width: 668px) {
   .flow-text {
     font-size: 1.536rem; } }
-@media only screen and (min-width: 810px) {
+@media only screen and (min-width: 690px) {
   .flow-text {
     font-size: 1.56rem; } }
-@media only screen and (min-width: 840px) {
+@media only screen and (min-width: 712px) {
   .flow-text {
     font-size: 1.584rem; } }
-@media only screen and (min-width: 870px) {
+@media only screen and (min-width: 734px) {
   .flow-text {
     font-size: 1.608rem; } }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 756px) {
   .flow-text {
     font-size: 1.632rem; } }
-@media only screen and (min-width: 930px) {
+@media only screen and (min-width: 778px) {
   .flow-text {
     font-size: 1.656rem; } }
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 800px) {
   .flow-text {
     font-size: 1.68rem; } }
 @media only screen and (max-width: 360px) {
@@ -3537,6 +3537,9 @@ small {
       cursor: pointer;
       display: block; }
 
+@media only screen and (min-width: 761px) {
+  .card .card-title {
+    font-size: 2.1rem; } }
 .tabs {
   position: relative;
   overflow-x: auto;
@@ -4712,7 +4715,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
     .input-field .prefix ~ input {
       width: 86%;
       width: calc(100% - 3rem); } }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 760px) {
     .input-field .prefix ~ input {
       width: 80%;
       width: calc(100% - 3rem); } }
@@ -5963,7 +5966,7 @@ input[type=range]::-ms-thumb {
   color: #F44336; }
 
 /* Media Queries */
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 761px) {
   .datepicker-modal {
     max-width: 625px; }
 
@@ -6115,7 +6118,7 @@ input[type=range]::-ms-thumb {
   padding: 0 20px; }
 
 /* Media Queries */
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 761px) {
   .timepicker-modal {
     max-width: 600px; }
 

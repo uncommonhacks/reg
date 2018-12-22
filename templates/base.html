@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+
+
 <html lang="en">
   <head>
     {% block title %}
@@ -41,17 +44,24 @@
   <body>
     {% block navbar %}
     <nav>
-      <div class="nav-wrapper" style="padding-top: 20px;">
-        <span class="title" style="padding-left: 20px;">
-          {% block navbar_title %}Uncommon Hacks 2019{% endblock %}
+      <div id="nav-wrapper">
+        <span id="nav-title">
+          {% block nav_title %}Uncommon Hacks 2019{% endblock %}
         </span>
         {% if user.is_authenticated %}
-        <ul id="nav-mobile" class="right" style="padding-right:20px;">
-          <li><a href="{% url 'logout' %}">Logout</a></li>
+        <ul id="nav-logout-wrapper" class="right">
+          <li><a id="nav-logout" href="{% url 'logout' %}">Logout</a></li>
         </ul>
         {% endif %}
       </div>
     </nav>
+    <div id="nav-title-responsive">
+      <div class="row">
+        <div class="col s10 offset-s1 center-align">
+          {% block nav_title_responsive %}Uncommon Hacks 2019{% endblock %}
+        </div>
+      </div>
+    </div>
     {% endblock %}
 
     {% block content %}

@@ -2,38 +2,11 @@
 
 {% load static %}
 
-{% block navbar_title %}
+{% block nav_title %}
 Application Status
 {% endblock %}
-
-{% block css_overrides %}
-<style>
-#status-owl{
-  position:absolute;
-  bottom: 0;
-  left: 0;
-  height: 30vh;
-  min-height: 
-}
-#status-container{
-  margin-top: 25vh;
-  font-size: 1.5rem;
-  color: black;
-}
-@media(max-width:760px) {
-  #status-owl{
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-@media(max-height:500px) {
-  #status-owl{
-    display: none;
-  }
-}
-</style>
+{% block nav_title_responsive %}
+Application Status
 {% endblock %}
 
 {% block title %}
@@ -104,5 +77,5 @@ Application Status
     </div>
   </div>
 </div>
-<img id="status-owl" src="{% static 'img/owl_tablet_ellipse.png' %}">
+<img id="status-owl" class="animal-img" src="{% static 'img/owl_tablet_ellipse.png' %}">
 {% endblock %}
