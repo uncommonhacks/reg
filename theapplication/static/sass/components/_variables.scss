@@ -57,7 +57,7 @@ $badge-height: 22px !default;
 // Shared styles
 $button-border: none !default;
 $button-background-focus: lighten($secondary-color, 4%) !default;
-$button-font-size: 14px !default;
+$button-font-size: 1.5rem !default;
 $button-icon-font-size: 1.3rem !default;
 $button-height: 36px !default;
 $button-padding: 0 16px !default;
@@ -73,7 +73,7 @@ $button-raised-background-hover: lighten($button-raised-background, 5%) !default
 $button-raised-color: #fff !default;
 
 // Large buttons
-$button-large-font-size: 15px !default;
+$button-large-font-size: 1.5rem !default;
 $button-large-icon-font-size: 1.6rem !default;
 $button-large-height: $button-height * 1.5 !default;
 $button-floating-large-size: 56px !default;
@@ -246,7 +246,7 @@ $navbar-height: 45px !default;
 $navbar-line-height: $navbar-height !default;
 $navbar-height-mobile: 45px !default;
 $navbar-line-height-mobile: $navbar-height-mobile !default;
-$navbar-font-size: 1rem !default;
+$navbar-font-size: 1.5rem !default;
 $navbar-font-color:black !default;
 $navbar-brand-font-size: 2.1rem !default;
 

@@ -1,7 +1,33 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block navbar_title %}
 Application Status
+{% endblock %}
+
+{% block css_overrides %}
+<style>
+#status-owl{
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  height: 30vh;
+}
+#status-container{
+  margin-top: 25vh;
+  font-size: 1.5rem;
+  color: black;
+}
+@media(max-width:760px) {
+  #login-dog{
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style>
 {% endblock %}
 
 {% block title %}
@@ -9,26 +35,68 @@ Application Status
 {% endblock %}
 
 {% block content %}
-<div class="container" style="margin-top: 25vh;">
-  <div class="row center-align">
-    Welcome to the Uncommon Hacks 2019 Application Portal.
-  </div>
-  <div class="row center-align">
-    Status: {{ status }}
-    {% if over_application_deadline %}
-    <br/>Sorry, the application deadline has passed. Apply again next year!
-    {% endif %}
-    {% if over_confirmation_deadline %}
-    <br/>Sorry, the confirmation deadline has passed. Apply again next year!
-    {% endif %}
-  </div>
-  <div class="row center-align">
-    {% if open_application  %}
-    <a class="btn btn-default btn-lg" href='apply/'>Apply Here!</a>
-    {% endif %}
-    {% if open_confirmation %}
-    <a class="btn btn-default btn-lg" href='confirm/'>Confirm Here!</a>
-    {% endif %}
+<div class="container" id="status-container">
+  <div class="row">
+    <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3">
+      <div class="z-depth-4">
+        <div class="card white" id="status-card">
+          <div class="card-panel">
+            <div class="flowtext">
+              {% if status == "Application Not Started" %}
+                Welcome! Please submit an application for Uncommon Hacks 2019 by following the link below.
+              {% endif %}
+              {% if status == "Awaiting Decision" %}
+                Submitted! Thank you for your applying, we are excited to review your application.
+                We will notify you via email once we review applications. 
+                If you have any questions in the mean time 
+                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>
+                celery AT uncommonhacks.com or shoot us a
+                <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
+              {% endif %}
+              {% if status == "Waitlist" %}
+                Waitlisted. Thank you for applying. At this time we do not have enough spots available to
+                accept you. Spots often open up and we will contact you if they do. Feel free to
+                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>
+                celery AT uncommonhacks.com or shoot us a
+                <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
+              {% endif %}
+              {% if status == "Not Admitted" %}
+                Unfortunately, we are not able to offer you a spot at Uncommon Hacks this year.
+                We hope that you will apply again next year!
+              {% endif %}
+              {% if status == "Admitted" %}
+                Admitted! We are excited to have you at Uncommon Hacks 2019. Please fill out the confirmation
+                form below to confirm your attendance. Should you have any questions 
+                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>
+                celery AT uncommonhacks.com or shoot us a
+                <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
+              {% endif %}
+              {% if status == "Confirmed" %}
+                Confirmed! See you in Chicago. If you have any lingering questions 
+                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>
+                celery AT uncommonhacks.com or shoot us a
+                <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
+              {% endif %}
+              {% if over_application_deadline %}
+              <br/>Sorry, the application deadline has passed. Apply again next year!
+              {% endif %}
+              {% if over_confirmation_deadline %}
+              <br/>Sorry, the confirmation deadline has passed. Apply again next year!
+              {% endif %}
+              <div class="center-align" style="padding:20px;">
+                {% if open_application  %}
+                <a class="btn btn-default btn-lg"  href='apply/'>Apply Here!</a>
+                {% endif %}
+                {% if open_confirmation %}
+                <a class="btn btn-default btn-lg" href='confirm/'>Confirm Here!</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<img id="status-owl" src="{% static 'img/owl_tablet_ellipse.png' %}">
 {% endblock %}

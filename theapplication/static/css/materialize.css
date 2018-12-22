@@ -3213,7 +3213,7 @@ nav {
         background-color: rgba(0, 0, 0, 0.1); }
     nav ul a {
       transition: background-color .3s;
-      font-size: 1rem;
+      font-size: 1.5rem;
       color: black;
       display: block;
       padding: 0 15px;
@@ -3278,13 +3278,13 @@ html {
   color: rgba(1, 1, 1, 0.87); }
   @media only screen and (min-width: 0) {
     html {
-      font-size: 14px; } }
+      font-size: 15px; } }
   @media only screen and (min-width: 992px) {
     html {
       font-size: 14.5px; } }
   @media only screen and (min-width: 1200px) {
     html {
-      font-size: 15px; } }
+      font-size: 14px; } }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
@@ -3428,7 +3428,7 @@ small {
   border-radius: 2px; }
   .card .card-title {
     font-family: 'TruenoRegular';
-    font-size: 24px;
+    font-size: 1.7rem;
     font-weight: 300; }
     .card .card-title.activator {
       cursor: pointer; }
@@ -3696,7 +3696,7 @@ small {
 .btn-large,
 .btn-small,
 .btn-flat {
-  font-size: 14px;
+  font-size: 1.5rem;
   outline: 0; }
   .btn i, .btn-large i, .btn-small i,
   .btn-floating i,
@@ -3884,7 +3884,7 @@ button.btn-floating {
 .btn-large {
   height: 54px;
   line-height: 54px;
-  font-size: 15px;
+  font-size: 1.5rem;
   padding: 0 28px; }
   .btn-large i {
     font-size: 1.6rem; }
