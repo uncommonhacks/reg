@@ -58,7 +58,7 @@ $(document).ready(function() {
   isthisaInput = isthisaCanvas.parentElement.nextElementSibling.nextElementSibling;
   pikachuInput = pikachuCanvas.parentElement.nextElementSibling.nextElementSibling;
 
-  setInputHandlers(brainInputs, isthisaInput, pikachuInput);
+  setupInputFields(brainInputs, isthisaInput, pikachuInput);
 });
 
 // ind == -1 resets everything
@@ -90,9 +90,10 @@ let getBrainInputs = function(firstInput) {
   return inputs;
 };
 
-let setInputHandlers = function (brainInputs, isthisaInput, pikachuInput) {
+let setupInputFields = function (brainInputs, isthisaInput, pikachuInput) {
   for (let i = 0; i < 4; i++) {
     brainInputs[i].oninput = drawTextBrain(i);
+    brainInputs[i].maxLength = 119;
   }
 
   isthisaInput.oninput = drawTextIsthisa;
