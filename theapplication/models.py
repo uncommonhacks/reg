@@ -187,7 +187,10 @@ class Application(models.Model):
 
 # confirmation class, to attach to applicant class
 class Confirmation(models.Model):
-    dietary_restrictions = models.CharField(max_length=1000)
+    dietary_restrictions = models.CharField(
+                            verbose_name="Do you have any dietary restrictions?",
+                            max_length=1000,
+    )
 
     SHIRT_SIZE_CHOICES = (
         ("XS", "XS"),
@@ -197,9 +200,17 @@ class Confirmation(models.Model):
         ("1X", "XL"),
         ("2X", "XXL"),
     )
-    shirt_size = models.CharField(max_length=2, choices=SHIRT_SIZE_CHOICES, null=True)
+    shirt_size = models.CharField(
+                    verbose_name="Shirt Size",
+                    max_length=2,
+                    choices=SHIRT_SIZE_CHOICES,
+                    null=True)
 
-    notes = models.TextField(max_length=1500)
+    notes = models.TextField(
+                verbose_name = "Anything else we should know? (health information, accommodations, etc.)",
+                max_length=1500,
+                null=True,
+    )
 
 
 class Applicant(models.Model):
