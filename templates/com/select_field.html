@@ -3,7 +3,7 @@
 {% endif %}
 <div class="input-field">
   <select name="{{ field.html_name }}">
-    <option value="" disabled selected></option>
+    <option value="" disabled selected>---------</option>
     {% for choice in field %}
       {% if "---------" not in choice.tag %}
         {{ choice.tag }}

@@ -4,4 +4,8 @@ $(document).ready(function(){
 
   let schoolSelect = $("select[name=school]");
   schoolSelect.select2({width: "100%"});
+
+  $("select").change(function(e) {
+    console.log("selectchagnevent", e);
+  });
 });
