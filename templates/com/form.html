@@ -39,7 +39,12 @@ span {
       {% include "com/textarea_field.html" with field=field form=form %}
     {% endif %}
     {% if field.field.widget.template_name == "django/forms/widgets/select.html" %}
+      {# very gross #}
+      {% if field.name == "race" or field.name == "school" %}
+      {% include "com/select_multiple_field.html" with field=field %}
+      {% else %}
       {% include "com/select_field.html" with field=field %}
+      {% endif %}
     {% endif %}
     {% if field.field.widget.template_name == "django/forms/widgets/clearable_file_input.html" %}
       {% include "com/file_field.html" with field=field %}
