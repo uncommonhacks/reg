@@ -4319,7 +4319,8 @@ form textarea, form input {
   font-size: 1.3rem; }
 
 form label {
-  font-size: 1.3rem; }
+  font-size: 1.3rem;
+  color: #8c8c8c; }
 
 @media only screen and (min-width: 951px) {
   form input, form textarea {
@@ -4331,7 +4332,7 @@ form label {
    ========================================================================== */
 /* Style Placeholders */
 ::placeholder {
-  color: #6b6b6b; }
+  color: #595959; }
 
 /* Text inputs */
 input:not([type]),
@@ -4349,7 +4350,7 @@ input[type=search]:not(.browser-default),
 textarea.materialize-textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #9e9e9e;
+  border-bottom: 1px solid #8c8c8c;
   border-radius: 0;
   outline: none;
   height: 3rem;
@@ -4688,7 +4689,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   .input-field.col .prefix ~ .validate ~ label {
     width: calc(100% - 3rem - 1.5rem); }
   .input-field > label {
-    color: #9e9e9e;
+    color: #8c8c8c;
     position: absolute;
     top: 0;
     left: 0;
@@ -4708,7 +4709,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
     min-height: 18px;
     display: block;
     font-size: 1.1rem;
-    color: rgba(1, 1, 1, 0.54); }
+    color: #8c8c8c; }
     .input-field .helper-text::after {
       opacity: 1;
       position: absolute;
@@ -5147,7 +5148,7 @@ select {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #9e9e9e;
+    border-bottom: 1px solid #8c8c8c;
     outline: none;
     height: 3rem;
     line-height: 3rem;

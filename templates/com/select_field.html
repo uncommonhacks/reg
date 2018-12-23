@@ -1,3 +1,6 @@
+{% if field.name == "study_level" %}
+<label class="control-label">{{ field.label }}</label>
+{% endif %}
 <div class="input-field">
   <select name="{{ field.html_name }}">
     {% for choice in field %}
@@ -5,7 +8,9 @@
     {% endfor %}
   </select>
   {% if field.auto_id %}
+  {% if field.name != "study_level" %}
   <label class="control-label">{{ field.label }}</label>
+  {% endif %}
   <span class="helper-text">{{ field.help_text }}</span>
   {% endif %}
 </div>

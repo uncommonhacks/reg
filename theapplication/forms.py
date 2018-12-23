@@ -10,9 +10,11 @@ class ApplicationForm(forms.ModelForm):
     last_name = forms.CharField(
                     max_length=100,
                     label="Last Name",
+                    initial="",
+                    required=False,
     )
     resume = forms.FileField(
-                label="Resume",
+                label="Resume Upload",
                 help_text="File must be a PDF",
     )
 

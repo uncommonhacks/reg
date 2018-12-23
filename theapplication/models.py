@@ -117,7 +117,8 @@ class Application(models.Model):
 
     proudof = models.TextField(
         max_length=1500,
-        verbose_name="Anything you're proud of (Github, Devpost, etc.) ?",
+        verbose_name="What is something you're proud of?",
+        help_text="Github, Devpost, etc.",
         null=True,
     )
 

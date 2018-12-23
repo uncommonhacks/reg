@@ -1,6 +1,14 @@
 <!-- Text fields and date fields -->
-<div class="input-field">
-  {{ field }}
-  <label for="{{ field.auto_id }}">{{ field.label }}</label>
-  <span class="helper-text">{{ field.help_text }}</span>
-</div>
+{% if field.name == "hackathons" or field.name == "location" %}
+  <label>{{ field.label }}</label>
+  <div class="input-field">
+    {{ field }}
+    <span class="helper-text">{{ field.help_text }}</span>
+  </div>
+{% else %}
+  <div class="input-field">
+    {{ field }}
+    <label for="{{ field.auto_id }}">{{ field.label }}</label>
+    <span class="helper-text">{{ field.help_text }}</span>
+  </div>
+{% endif %}
