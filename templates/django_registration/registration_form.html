@@ -6,7 +6,9 @@
 
 {% block card_title %}Create an Account{% endblock %}
 {% block card_action %}
-<a href="{% url 'login' %}">Return to login</a>
+<div class="card-action center-align">
+  <a style="margin: 0;" href="{% url 'login' %}">Return to login</a>
+</div>
 {% endblock %}
 
 {% block before_card_form %}

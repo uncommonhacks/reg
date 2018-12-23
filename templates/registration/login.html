@@ -14,9 +14,11 @@ Log in
 {% endblock %}
 
 {% block card_action %}
-  <a  style="margin: 0;" href="{% url 'registration_register' %}">Create account</a>
-  <br/>
-  <a style="margin: 0;" href="{% url 'password_reset' %}">Forgot password?</a>
+  <div class="card-action center-align">
+    <a  style="margin: 0;" href="{% url 'registration_register' %}">Create account</a>
+    <br/>
+    <a style="margin: 0;" href="{% url 'password_reset' %}">Forgot password?</a>
+  </div>
 {% endblock %}
 
 {% block before_card_form %}

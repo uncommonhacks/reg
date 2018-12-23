@@ -60,9 +60,15 @@ html, body {
   margin-top: 15vh;
 }
 
+.card-text{
+  font-size: 1.3rem;
+  padding-top: 10px;
+}
+
 .card-form-error-wrap{
   padding-top: 1rem;
 }
+
 .card-form-field-wrap{
   padding-top: 1rem;
 }

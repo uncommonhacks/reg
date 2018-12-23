@@ -9,10 +9,14 @@
 {% endblock %}
 <div class="z-depth-4">
   <div class="card white">
+    {% if form %}
     <form method="post" {% block form_attributes %}{% endblock %}>
       {% csrf_token %}
+    {% endif %}
       <div class="card-content">
-        <span class="card-title">{% block card_title %}Title{% endblock %}</span>
+        <span class="card-title">{% block card_title %}{% endblock %}</span>
+        {% block card_text %}{% endblock %}
+        {% if form %}
         {% if form.source.errors or form.non_field_errors %}
         <div class="card-form-error-wrap">
           <div class="error">
@@ -46,10 +50,9 @@
         <div class="center-align">
           <input class="btn btn-defualt btn-lg" type="submit" value="submit">
         </div>
+        {% endif %}
       </div>
-      <div class="card-action center-align">
-        {% block card_action %}{% endblock %}
-      </div>
+      {% block card_action %}{% endblock %}
     </form>
   </div>
 </div>
