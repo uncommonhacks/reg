@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-
-
 <html lang="en">
   <head>
     {% block title %}
@@ -17,9 +14,11 @@
     <link type="text/css" rel="stylesheet"
                           href="{% static "css/materialize.css" %}"
                           media="screen,projection"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet"
                           href="{% static "css/style.css" %}"
                           media="screen,projection"/>
+
 
     {% block css_overrides %}
     {# Can be overriden by blocks for custom CSS #}
@@ -35,6 +34,7 @@
     <script type="text/javascript"
             src="{% static "js/bin/materialize.min.js" %}">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script type="text/javascript" src="{% static "js/main.js" %}"></script>
 
     {% block extra_js %}

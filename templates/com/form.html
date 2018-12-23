@@ -40,7 +40,7 @@ span {
     {% endif %}
     {% if field.field.widget.template_name == "django/forms/widgets/select.html" %}
       {# very gross, TODO figure out how to tell if something is multiple #}
-      {% if field.name == "race" or field.name == "school" %}
+      {% if field.name == "race" %}
       {% include "com/select_multiple_field.html" with field=field %}
       {% else %}
       {% include "com/select_field.html" with field=field %}

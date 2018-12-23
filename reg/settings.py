@@ -39,7 +39,7 @@ MAIN_URL = "testing.uncommonhacks.com"
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "ad6d2be7.ngrok.io",
+    "bcdeda7b.ngrok.io",
     MAIN_URL,
     client.get_parameter(Name="django-registration-url")["Parameter"]["Value"],
 ]
