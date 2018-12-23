@@ -6,21 +6,25 @@
 {% block content %}
 
 {% block before_card %}
+<div class="container card-container">
+  <div class="row">
 {% endblock %}
 
-<div class="z-depth-4">
-  <div class="card white">
-    <div class="card-content">
-      <span class="card-title">{% block card_title %}{% endblock %}</span>
-      {% block card_content %}{% endblock %}
+    <div class="z-depth-4">
+      <div class="card white">
+        <div class="card-content">
+          <span class="card-title">{% block card_title %}{% endblock %}</span>
+          {% block card_content %}{% endblock %}
+        </div>
+        <div class="card-action center-align">
+          {% block card_action %}{% endblock %}
+        </div>
+      </div>
     </div>
-    <div class="card-action center-align">
-      {% block card_action %}{% endblock %}
-    </div>
-  </div>
-</div>
 
 {% block after_card %}
+  </div>
+</div>
 {% endblock %}
 
 {% endblock %}
