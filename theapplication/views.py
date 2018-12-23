@@ -87,14 +87,14 @@ def confirmation(request):
         return redirect("/")
     if request.method == "POST":
         form = forms.ConfirmationForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             confirmation = form.save()
             applicant.confirmation = confirmation
             applicant.status = "CF"
             applicant.save()
             return redirect("/")
     else:
-        form = forms.ConfirmationForm(request.POST)
+        form = forms.ConfirmationForm()
     return render(
         request, 
         "in_app/confirmation.html", 
