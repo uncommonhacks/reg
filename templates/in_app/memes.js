@@ -183,7 +183,7 @@ let drawCenteredBorderedIsthisaText = function (text, initY, boundingX, leftXBou
   let charsPerLineRegion = Math.floor(charsPerLine * widthRatio);
 
   let textWidth = isthisaCtx.measureText(text + " ").width;
-  if (textWidth > 2 * regionWidth) { console.log("too long"); return; }
+  if (textWidth > 2 * regionWidth) { return; }
 
   // If there are two lines, draw the first one first
   if (textWidth >= regionWidth) {

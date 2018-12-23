@@ -194,8 +194,18 @@
     }
   }
 }
-@media #{$medium-and-up}{
+
+@media #{$medium-and-down}{
+  .card .card-action a{
+    font-size: $card-action-a-font-size-small;
+  }
+}
+
+@media #{$large-and-up} {
   .card .card-title {
-    font-size: $card-title-font-size
+    font-size: $card-title-font-size;
+  }
+  .card .card-action a{
+    font-size: $card-action-a-font-size;
   }
 }

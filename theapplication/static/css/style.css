@@ -84,7 +84,9 @@ html, body {
 #status-owl{
   left: 0;
 }
+/* Media Queries */
 
+/* Large and Tall Screens*/
 @media(min-width: 951px) and (min-height: 601px) {
   html, body {
     height: 100vh;
@@ -92,8 +94,7 @@ html, body {
   }
 }
 
-/* Media Queries */
-/* Small Screen */
+/* Medium and Down Screens */
 @media(max-width: 950px){
 
   /* General */
