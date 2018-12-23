@@ -58,14 +58,11 @@ def application(request):
         return redirect("/")
     if request.method == "POST":
         form = forms.ApplicationForm(request.POST, request.FILES)
-        if form.is_valid():
-            if not upload_resume_to_s3(request.FILES["resume"], request.user):
-                form.add_error("resume", "Resume should be a PDF!")
-                return render(
-                    request,
-                    "in_app/application.html",
-                    {"form": form, "enctype": "enctype=multipart/form-data"},
-                )
+        if not form.is_valid():
+            pass
+        if not upload_resume_to_s3(request.FILES["resume"], request.user):
+            form.add_error("resume", "Resume should be a PDF!")
+        else:
             user = request.user
             user.first_name = form.cleaned_data["first_name"]
             user.last_name = form.cleaned_data["last_name"]
