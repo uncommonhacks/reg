@@ -29,9 +29,13 @@
           {% for field in form.visible_fields %}
             <div class="input-field">
               {{ field }}
-              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-              <span class="helper-text" data-error="">{{ field.error }}</span>
+              <label for="{{ field.auto_id }}">{{ field.label }}</label>
             </div>
+	    <div class="error">
+              {% for error in field.errors %}
+	        {{ error }}<br/>
+	      {% endfor %}
+	    </div>
           {% endfor %}
           {% block extra_fields %}{% endblock %}
         </div>

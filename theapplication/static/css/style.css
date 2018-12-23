@@ -59,6 +59,7 @@ html, body {
   min-width: 300px;
   margin-top: 15vh;
 }
+
 .card-form-error-wrap{
   padding-top: 1rem;
 }
@@ -88,7 +89,7 @@ html, body {
 
 /* Media Queries */
 /* Small Screen */
-@media(max-width: 760px){
+@media(max-width: 950px){
 
   /* General */
   .animal-img{
