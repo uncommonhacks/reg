@@ -45,7 +45,6 @@
 .btn-large,
 .btn-small,
 .btn-flat {
-  font-size: $button-font-size;
   outline: 0;
   i {
     font-size: $button-icon-font-size;
@@ -297,7 +296,6 @@ button.btn-floating {
   @extend .btn;
   height: $button-large-height;
   line-height: $button-large-height;
-  font-size: $button-large-font-size;
   padding: 0 28px;
 
   i {
@@ -320,3 +318,20 @@ button.btn-floating {
 .btn-block {
   display: block;
 }
+
+.btn {
+  font-size: $button-font-size-small;
+}
+.btn-lg {
+  font-size: $button-large-font-size-small;
+}
+
+@media #{$large-and-up} {
+  .btn{
+    font-size: $button-font-size;
+  }
+  .btn-lg {
+    font-size: $button-large-font-size;
+  }
+}
+

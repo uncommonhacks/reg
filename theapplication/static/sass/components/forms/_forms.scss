@@ -8,9 +8,21 @@ button:focus {
   background-color: $button-background-focus;
 }
 
-label {
-  font-size: $label-font-size;
-  color: $input-border-color;
+form input {
+  font-size: $input-font-size-small;
+}
+
+form label{
+  font-size: $label-font-size-small;
+}
+
+@media #{$large-and-up}{
+  form input{
+    font-size: $input-font-size;
+  }
+  form label{
+    font-size: $label-font-size;
+  }
 }
 
 @import 'input-fields';

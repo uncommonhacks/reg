@@ -31,7 +31,6 @@ textarea.materialize-textarea {
   outline: none;
   height: $input-height;
   width: 100%;
-  font-size: $input-font-size;
   margin: $input-margin;
   padding: $input-padding;
   box-shadow: none;
@@ -180,7 +179,6 @@ textarea.materialize-textarea {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 1.5rem;
     cursor: text;
     transition: transform .2s ease-out, color .2s ease-out;
     transform-origin: 0% 100%;
@@ -212,7 +210,7 @@ textarea.materialize-textarea {
     position: relative;
     min-height: 18px;
     display: block;
-    font-size: 12px;
+    font-size: $help-text-font-size-small;
     color: rgba(1,1,1,.54);
   }
 
@@ -252,6 +250,12 @@ textarea.materialize-textarea {
       width: 80%;
       width: calc(100% - 3rem);
     }
+  }
+}
+
+@media #{medium-and-up} {
+  .input-field .helper-text{
+    font-size: $help-text-font-size;
   }
 }
 
