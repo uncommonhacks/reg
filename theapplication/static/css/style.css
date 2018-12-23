@@ -85,6 +85,13 @@ html, body {
   left: 0;
 }
 
+@media(min-width: 951px) and (min-height: 601px) {
+  html, body {
+    height: 100vh;
+    max-height: 100vh;
+  }
+}
+
 /* Media Queries */
 /* Small Screen */
 @media(max-width: 950px){

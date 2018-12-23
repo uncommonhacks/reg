@@ -57,10 +57,9 @@ class Application(models.Model):
     school = models.ManyToManyField(
         SchoolChoice,
         verbose_name=(
-            "Where do you attend school? If your school does not appear "
-            'on the list, select "Other".'
+            "Where do you attend school?"
         ),
-        help_text="SELECT OTHER",
+        help_text="If your school does not appear on the list, select \"Other\"",
     )
 
     major = models.CharField(

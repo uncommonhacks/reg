@@ -14,28 +14,32 @@
       <div class="card-content">
         <span class="card-title">{% block card_title %}Title{% endblock %}</span>
         {% if form.source.errors or form.non_field_errors %}
-          <div class="card-form-error-wrap">
-            <div class="error">
-              {% for error in form.source.errors %}
-                {{ error }}<br/>
-              {% endfor %}
-              {% for error in form.non_field_errors %}
-                {{ error }}<br/>
-              {% endfor %}
-            </div>
+        <div class="card-form-error-wrap">
+          <div class="error">
+            {% for error in form.source.errors %}
+            {{ error }}<br/>
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            {{ error }}<br/>
+            {% endfor %}
           </div>
+        </div>
         {% endif %}
         <div class="card-form-field-wrap">
           {% for field in form.visible_fields %}
-            <div class="input-field">
-              {{ field }}
-              <label for="{{ field.auto_id }}">{{ field.label }}</label>
-            </div>
-	    <div class="error">
-              {% for error in field.errors %}
-	        {{ error }}<br/>
-	      {% endfor %}
-	    </div>
+          <div class="input-field">
+            {{ field }}
+            <label for="{{ field.auto_id }}">{{ field.label }}</label>
+          </div>
+          <div class="error">
+            {% for error in field.errors %}
+            {{ error }}<br/>
+            {% endfor %}
+          </div>
+          {% if field.errors %}
+          {# 2019TODO fixme; add some space above the submit button only if there were errors #}
+          <div style="height: 10px"></div>
+          {% endif %}
           {% endfor %}
           {% block extra_fields %}{% endblock %}
         </div>

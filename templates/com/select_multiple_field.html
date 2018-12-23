@@ -1,8 +1,10 @@
-<select multiple name="{{ field.html_name }}">
-  {% for choice in field %}
-    {{ choice.tag }}
-  {% endfor %}
-</select>
-{% if field.auto_id %}
-<label class="control-label">{{ field.label }}</label>
-{% endif %}
+<div class="input-field">
+  <select multiple name="{{ field.html_name }}">
+    {% for choice in field %}
+      {{ choice.tag }}
+    {% endfor %}
+  </select>
+  {% if field.auto_id %}
+  <label class="control-label">{{ field.label }}</label>
+  {% endif %}
+</div>
