@@ -13,6 +13,7 @@ class ApplicationForm(forms.ModelForm):
     )
     resume = forms.FileField(
                 label="Resume",
+                help_text="File must be a PDF",
     )
 
     def __init__(self, *args, **kwargs):

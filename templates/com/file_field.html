@@ -16,9 +16,11 @@ let validateFilesize = function (e) {
 
 <div class="file-field input-field">
   <div class="btn">
-    <span style="color: white;">{{ field.label }} (PDF)</span>
+    <span style="color: white;">{{ field.label }}</span>
     {{ field }}
   </div>
 <div class="file-path-wrapper">
   <input class="file-path validate" type="text" accept=".pdf" onchange="validateFilesize(this);">
+  <span class="helper-text">{{ field.help_text }}</span>
 </div>
+

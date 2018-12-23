@@ -1,4 +1,5 @@
 {% extends "com/card.html" %}
+{% load static %}
 
 {% block title %}
 <title>Account Registered</title>
@@ -14,4 +15,10 @@ Account Registered
 
 {% block card_action %}
 <a style="margin: 0;" href="{% url 'login' %}">Return to login</a>
+{% endblock %}
+
+{% block after_card %}
+  </div>
+</div>
+<img class="animal-img" style="left: 0;" src="{% static "img/cat.png"%}">
 {% endblock %}
