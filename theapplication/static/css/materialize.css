@@ -4315,14 +4315,14 @@ button:focus {
   outline: none;
   background-color: #f6a2be; }
 
-form input {
+form textarea, form input {
   font-size: 1.3rem; }
 
 form label {
   font-size: 1.3rem; }
 
 @media only screen and (min-width: 951px) {
-  form input {
+  form input, form textarea {
     font-size: 1.4rem; }
 
   form label {

@@ -8,7 +8,7 @@ button:focus {
   background-color: $button-background-focus;
 }
 
-form input {
+form textarea, form input {
   font-size: $input-font-size-small;
 }
 
@@ -17,7 +17,7 @@ form label{
 }
 
 @media #{$large-and-up}{
-  form input{
+  form input, form textarea{
     font-size: $input-font-size;
   }
   form label{
