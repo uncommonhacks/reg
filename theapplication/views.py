@@ -58,7 +58,7 @@ def application(request):
         form = forms.ApplicationForm(request.POST, request.FILES)
         if not form.is_valid():
             pass
-        if not upload_resume_to_s3(request.FILES["resume"], request.user):
+        elif not upload_resume_to_s3(request.FILES["resume"], request.user):
             form.add_error("resume", "Resume should be a PDF!")
         else:
             user = request.user
