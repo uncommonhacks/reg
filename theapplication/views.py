@@ -31,9 +31,7 @@ def index(request):
     applicant_obj = models.Applicant.objects.get(user=request.user)
     status = applicant_obj.get_status_display()
     open_application = applicant_obj.status == "NS" and not over_application_deadline()
-    open_confirmation = (
-        applicant_obj.status == "AM" and not over_confirmation_deadline()
-    )
+    open_confirmation = applicant_obj.status == "AM" and not over_confirmation_deadline()
     over_app_deadline = applicant_obj.status == "NS" and over_application_deadline()
     over_conf_deadline = applicant_obj.status == "AM" and over_confirmation_deadline()
     return render(
@@ -98,4 +96,8 @@ def confirmation(request):
             return redirect("/")
     else:
         form = forms.ConfirmationForm(request.POST)
-    return render(request, "in_app/confirmation.html", {"form": form, "enctype": ""})
+    return render(
+        request, 
+        "in_app/confirmation.html", 
+        {"form": form, "enctype": ""},
+    )
