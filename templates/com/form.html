@@ -49,7 +49,7 @@ span {
     {% if field.field.widget.template_name == "django/forms/widgets/clearable_file_input.html" %}
       {% include "com/file_field.html" with field=field %}
     {% endif %}
-    {% if field.name == "legal1" or field.name == "legal2" or field.name == "legal3" or field.name == "is_this_a" or field.name == "pikachu" or field.name == "brain_1" %}
+    {% if field.name == "legal1" or field.name == "legal2" or field.name == "legal3" or field.name == "is_this_a_1" or field.name == "pikachu" or field.name == "brain_1" %}
       {{ field }}
     {% endif %}
     <label>{{ field.help_text }}</label>
@@ -59,7 +59,8 @@ span {
       {% endfor %}
     </div>
   </div>
-  {% if field.name != "brain_1" and field.name != "brain_2" and field.name != "brain_3" and field.name != "brain_4" and field.name != "is_this_a" and field.name != "pikachu" %} <div style="height: 35px;"></div></style> {% endif %}
+  {# 2019TODO obvoiusly, this should be a filter or something #}
+  {% if field.name != "brain_1" and field.name != "brain_2" and field.name != "brain_3" and field.name != "brain_4" and field.name != "is_this_a_1" and field.name != "is_this_a_2" and field.name != "is_this_a_3" and field.name != "pikachu" %} <div style="height: 35px;"></div></style> {% endif %}
   {% endfor %}
 
   <!--Submit Button-->

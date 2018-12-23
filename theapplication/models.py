@@ -175,7 +175,11 @@ class Application(models.Model):
         max_length=150, verbose_name="Expanding Brain 4", null=True
     )
 
-    is_this_a = models.CharField(max_length=150, verbose_name="", null=True)
+    is_this_a_1 = models.CharField(max_length=150, verbose_name="Who", null=True)
+
+    is_this_a_2 = models.CharField(max_length=150, verbose_name="Butterfly", null=True)
+
+    is_this_a_3 = models.CharField(max_length=150, verbose_name="Is this...", null=True)
 
     pikachu = models.CharField(max_length=500, verbose_name="", null=True)
 

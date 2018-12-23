@@ -21,7 +21,7 @@ class ApplicationForm(forms.ModelForm):
         self.fields["legal2"].widget.template_name = "django/forms/widgets/legal2.html"
         self.fields["legal3"].widget.template_name = "django/forms/widgets/legal3.html"
         self.fields["brain_1"].widget.template_name = "django/forms/widgets/brain1.html"
-        self.fields["is_this_a"].widget.template_name = "django/forms/widgets/isthisa.html"
+        self.fields["is_this_a_1"].widget.template_name = "django/forms/widgets/isthisa1.html"
         self.fields["pikachu"].widget.template_name = "django/forms/widgets/pikachu.html"
 
     class Meta:
@@ -49,7 +49,9 @@ class ApplicationForm(forms.ModelForm):
             "brain_2",
             "brain_3",
             "brain_4",
-            "is_this_a",
+            "is_this_a_1",
+            "is_this_a_2",
+            "is_this_a_3",
             "pikachu",
             "resume",
             "legal1",
