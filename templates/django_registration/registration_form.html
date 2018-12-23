@@ -1,57 +1,20 @@
-{% extends "base.html" %}
+{% extends "com/cardform.html" %}
 
 {% block title %}
 <title>Register</title>
 {% endblock %}
 
-{% block content %}
-{{ form.field_errors }}
-{% include "com/title.html" %}
-<div class="background"
-     style="align-items: center; display: flex; justify-center: center">
-  <div class="container">
-    <div class="row">
-      <div class="col s12 m6 offset-m3">
-        <div class="z-depth-4">
-          <div class="card white">
-            <form method="post">
-              {% csrf_token %}
-              <div class="card-content black-text">
-                <span class="card-title">Create an Account</span>
-                <div class="error">
-                  {% for error in form.source.errors %}
-                    {{ error }}<br/>
-                  {% endfor %}
+{% block card_title %}Create an Account{% endblock %}
+{% block card_action %}
+<a href="{% url 'login' %}">Return to login</a>
+{% endblock %}
 
-                  {% for error in form.non_field_errors %}
-                    {{ error }}<br/>
-                  {% endfor %}
-
-                  <!--{% for field in form.visible_fields %}
-                    {% for error in field.errors %}
-                      {{ error }}<br/>
-                    {% endfor %}
-                  {% endfor %}-->
-                </div>
-                 {% for field in form.visible_fields %}
-                <div class="input-field">
-                  {{ field }}
-                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                </div>
-                {% endfor %}
-                <div class="center-align">
-                  <input class="btn btn-default btn-lg" value="submit" type="submit">
-                </div>
-              </div>
-              <div class="card-action center-align ">
-                <a href="{% url 'login' %}">
-                  Return to login</a><br>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+{% block before_card_form %}
+<div class="container card-container">
+  <div class="row">
+{% endblock %}
+{% block after_card_form %}
   </div>
 </div>
 {% endblock %}
+
