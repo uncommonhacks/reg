@@ -13,40 +13,6 @@ span {
 </style>
 {% endblock %}
 
-{% block extra_js %}
-<script>
-let validateFilesize = function (e) {
-  if (!window.FileReader) { return; }
-  if (!e.files) { return; }
-
-  let file = e.files[0];
-  if (!file) { return; }
-
-  if (file.size > 10000000) {
-    e.value = null;
-    alert("Resume too large, please restrict file size to 10MB!");
-  }
-};
-
-let formModified = 0;
-$(document).ready(function() {
-  formModified = 0;
-  $("form *").change(function(){
-      formModified = 1;
-  });
-  window.onbeforeunload = confirmExit;
-  function confirmExit() {
-      if (formModified == 1) {
-          return "Your changes won't be saved if you don't submit. Are you sure you want to leave?";
-      }
-  }
-  $("input[name='submit']").click(function() {
-      formModified = 0;
-  });
-});
-</script>
-{% endblock %}
-
 {% block form_com %}
 <form method="post" {{ enctype }}>
   {% csrf_token %}
@@ -70,7 +36,7 @@ $(document).ready(function() {
       {% include "com/text_field.html" with field=field %}
     {% endif %}
     {% if field.field.widget.template_name == "django/forms/widgets/textarea.html" %}
-      {% include "com/textarea_field.html" with field=field %}
+      {% include "com/textarea_field.html" with field=field form=form %}
     {% endif %}
     {% if field.field.widget.template_name == "django/forms/widgets/select.html" %}
       {% include "com/select_field.html" with field=field %}
@@ -92,7 +58,7 @@ $(document).ready(function() {
 
   <!--Submit Button-->
   <div class="row center-align">
-    <input class="btn btn-default btn-lg" name="submit" value="Submit" type="submit"/>
+    <input class="btn btn-default btn-lg" value="Submit" type="submit"/>
   </div>
 </form>
 {% endblock %}

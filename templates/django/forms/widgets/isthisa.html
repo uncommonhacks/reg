@@ -3,6 +3,11 @@
 </div>
 
 <div class="input-field">
-  <input type="text" id="id_is_this_a">
+  <input type="text"
+         name="is_this_a"
+         id="id_is_this_a"
+         maxlength="150"
+         value="{% if widget.value %}{{ widget.value }}{% endif %}"
+         required>
   <label for="id_is_this_a">Is this...</label>
 </div>

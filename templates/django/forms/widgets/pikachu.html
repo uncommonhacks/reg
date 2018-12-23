@@ -3,7 +3,12 @@
 </div>
 
 <div class="input-field">
-  <input type="text" id="id_pikachu">
+  <input type="text"
+         name="pikachu"
+         id="id_pikachu"
+         maxlength="500"
+         value="{% if widget.value %}{{ widget.value }}{% endif %}"
+         required>
   <label for="id_pikachu">Pikachu</label>
 </div>
 
