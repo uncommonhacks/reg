@@ -12,6 +12,7 @@ let brainInputs = null;
 let isthisaInput = null;
 let pikachuInput = null;
 let isthisaImg = null;
+let isThisPosMap = null;
 
 $(document).ready(function() {
   if (window.innerHeight < 500) { return; }
@@ -48,12 +49,18 @@ $(document).ready(function() {
   isthisaCtx.lineJoin = "circle";
   isthisaCtx.miterLimit = 2;
 
+  isThisPosMap = {
+    0: [10, 20, isthisaCanvas.width/2 - 10],
+    1: [isthisaCanvas.width/2 + 20, 50, isthisaCanvas.width/2-20],
+    2: [0, 4 / 5 * isthisaCanvas.height, isthisaCanvas.width],
+  };
+
   brainImg.onload = function() {
     brainCtx.drawImage(brainImg, 0, 0, brainCanvas.width, brainCanvas.height);
     resetBrain();
   };
   isthisaImg.onload = function() {
-    drawTextIsthisa();
+    drawAllIsthisa();
   };
   pikachuImg.onload = function() {
     pikachuCtx.drawImage(pikachuImg, 0, 0, pikachuCanvas.width, pikachuCanvas.height);
@@ -76,7 +83,7 @@ let resetIsthisa = function () {
   isthisaCtx.drawImage(isthisaImg, 0, 0, isthisaCanvas.width, isthisaCanvas.height);
 };
 
-let resetPikachu = function () { 
+let resetPikachu = function () {
   whiteoutBlock(pikachuCtx, 0, 0, pikachuCanvas.width, 760 / 1892 * pikachuCanvas.height);
 };
 
@@ -99,13 +106,16 @@ let setupInputFields = function () {
     brainInput.maxLength = 119;
   }
 
-  let isthisaInput = document.getElementById("id_is_this_a");
-  isthisaInput.oninput = drawTextIsthisa;
-  isthisaInput.maxLength = 39;
+  let maxlens = [20, 18, 36];
+  for (let i = 0; i < 3; i++) {
+    let isthisaInput = document.getElementById(`id_is_this_a_${i+1}`);
+    isthisaInput.oninput = drawAllIsthisa;
+    isthisaInput.maxLength = maxlens[i];
+  }
 
   let pikachuInput = document.getElementById("id_pikachu");
   pikachuInput.oninput = drawTextPikachu;
-  pikachuInput.maxLength = 300;
+  pikachuInput.maxLength = 290;
 };
 
 let whiteoutBlock = function (ctx, x, y, width, height) {
@@ -127,13 +137,30 @@ let drawTextBrain = (ind) => () => {
   drawWrappedText(brainCtx, text, 0, 18 + brainCanvas.height / 4 * ind, brainCanvas.width/2, 12);
 };
 
-let drawTextIsthisa = function () {
-  if (isthisaCtx == null) { return; }
-
+let drawAllIsthisa = function () {
   resetIsthisa();
 
-  let text = "Is this " + document.getElementById("id_is_this_a").value;
-  drawCenteredBorderedText(isthisaCtx, text, 4 / 5 * isthisaCanvas.height, isthisaCanvas.width);
+  for (let i = 0; i < 3; i++) {
+    drawTextIsthisa(i)();
+  }
+};
+
+let drawTextIsthisa = (ind) => () => {
+  if (ind < 0 || ind > 2) { return; }
+  if (isthisaCtx == null) { return; }
+
+  let start = "";
+  if (ind == 2) {
+    start = "Is this ";
+  }
+
+  let text = start + document.getElementById(`id_is_this_a_${ind+1}`).value;
+
+  // 2019TODO if we keep this around, get rid of the annoying centered case
+
+  drawCenteredBorderedIsthisaText(text, isThisPosMap[ind][1],
+                                  isThisPosMap[ind][0] + isThisPosMap[ind][2],
+                                  leftXBound=isThisPosMap[ind][0]);
 };
 
 let drawTextPikachu = function () {
@@ -146,33 +173,41 @@ let drawTextPikachu = function () {
 };
 
 // Horizontally centered
-let drawCenteredBorderedText = function (ctx, text, initY, boundingWidth) {
-  let textWidth = ctx.measureText(text + " ").width;
-  if (textWidth > 2 * boundingWidth) { return; }
+let drawCenteredBorderedIsthisaText = function (text, initY, boundingX, leftXBound=0) {
+  console.log("Drawing from y", initY, "centered within (", leftXBound, boundingX, ") text", text);
+  if (boundingX == null || initY == null) { return; }
+
+  let charsPerLine = 22; // manually grabbed, nothing fancy
+  let regionWidth = boundingX - leftXBound;
+  let widthRatio = regionWidth / isthisaCanvas.width;
+  let charsPerLineRegion = Math.floor(charsPerLine * widthRatio);
+
+  let textWidth = isthisaCtx.measureText(text + " ").width;
+  if (textWidth > 2 * regionWidth) { return; }
 
   // If there are two lines, draw the first one first
-  if (textWidth >= boundingWidth) {
-    let firstLine = text.slice(0, 23); // 15 + 8 (len "Is this ")
-    if (firstLine[23] != " ") {
+  if (textWidth >= regionWidth) {
+    let firstLine = text.slice(0, charsPerLineRegion);
+    if (firstLine[charsPerLineRegion] != " ") {
       firstLine += "-";
     }
 
-    ctx.lineWidth = 7;
-    ctx.strokeText(firstLine, 0, initY);
-    ctx.lineWidth = 1;
-    ctx.fillText(firstLine, 0, initY);
+    isthisaCtx.lineWidth = 7;
+    isthisaCtx.strokeText(firstLine, leftXBound, initY);
+    isthisaCtx.lineWidth = 1;
+    isthisaCtx.fillText(firstLine, leftXBound, initY);
 
-    textWidth -= boundingWidth;
+    textWidth -= regionWidth;
     initY += 18; // 18 works for height = 3vh
-    text = text.slice(23);
+    text = text.slice(charsPerLineRegion);
   }
 
-  let initX = (boundingWidth - textWidth) / 2;
+  let initX = (regionWidth - textWidth) / 2 + leftXBound;
 
-  ctx.lineWidth = 7;
-  ctx.strokeText(text, initX, initY);
-  ctx.lineWidth = 1;
-  ctx.fillText(text, initX, initY);
+  isthisaCtx.lineWidth = 7;
+  isthisaCtx.strokeText(text, initX, initY);
+  isthisaCtx.lineWidth = 1;
+  isthisaCtx.fillText(text, initX, initY);
 };
 
 // yStep == 12 works for 2 vh
