@@ -16,7 +16,7 @@ Application Status
 {% block content %}
 <div class="container" id="status-container">
   <div class="row">
-    <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3">
+    <div class="col s12 m6 offset-m3 l6 offset-l3">
       <div class="z-depth-4">
         <div class="card white" id="status-card">
           <div class="card-panel">
@@ -27,15 +27,15 @@ Application Status
               {% if status == "Awaiting Decision" %}
                 Submitted! Thank you for your applying, we are excited to review your application.
                 We will notify you via email once we review applications. 
-                If you have any questions in the mean time 
-                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>
+                If you have any questions in the mean time, 
+                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
                 celery AT uncommonhacks.com or shoot us a
                 <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
               {% endif %}
               {% if status == "Waitlist" %}
                 Waitlisted. Thank you for applying. At this time we do not have enough spots available to
                 accept you. Spots often open up and we will contact you if they do. Feel free to
-                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>
+                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
                 celery AT uncommonhacks.com or shoot us a
                 <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
               {% endif %}
@@ -46,13 +46,13 @@ Application Status
               {% if status == "Admitted" %}
                 Admitted! We are excited to have you at Uncommon Hacks 2019. Please fill out the confirmation
                 form below to confirm your attendance. Should you have any questions 
-                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>
+                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
                 celery AT uncommonhacks.com or shoot us a
                 <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
               {% endif %}
               {% if status == "Confirmed" %}
                 Confirmed! See you in Chicago. If you have any lingering questions 
-                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>
+                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
                 celery AT uncommonhacks.com or shoot us a
                 <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
               {% endif %}
@@ -77,5 +77,5 @@ Application Status
     </div>
   </div>
 </div>
-<img class="animal-img" style="left: 0;" src="{% static 'img/owl_tablet_ellipse.png' %}">
+<img class="animal-img animal-left" src="{% static 'img/owl_tablet_ellipse.png' %}">
 {% endblock %}

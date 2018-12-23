@@ -14,8 +14,8 @@ class ApplicationForm(forms.ModelForm):
                     required=False,
     )
     resume = forms.FileField(
-                label="Resume Upload",
-                help_text="File must be a PDF",
+                label="Resume",
+                help_text="Upload your resume. File must be a PDF (10MB max).",
     )
 
     def __init__(self, *args, **kwargs):

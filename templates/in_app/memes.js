@@ -47,10 +47,12 @@ $(document).ready(function() {
   isthisaCtx.lineJoin = "circle";
   isthisaCtx.miterLimit = 2;
 
+  // Pased as arguments to draw function (for drawing isThisA meme)
+  // [leftXBound, initY, boundingWidth, maxLines]
   isThisPosMap = {
-    0: [10, 20, isthisaCanvas.width/2 - 10],
-    1: [isthisaCanvas.width/2 + 20, 50, isthisaCanvas.width/2-20],
-    2: [0, 4 / 5 * isthisaCanvas.height, isthisaCanvas.width],
+    0: [10, 20, isthisaCanvas.width/2 - 10, 2],
+    1: [isthisaCanvas.width/2 + 10, 50, isthisaCanvas.width/2-15, 3],
+    2: [5, 4 / 5 * isthisaCanvas.height, isthisaCanvas.width - 10, 3],
   };
 
   brainImg.onload = function() {
@@ -104,7 +106,8 @@ let setupInputFields = function () {
     brainInput.maxLength = 119;
   }
 
-  let maxlens = [20, 18, 36];
+  // max length, in characters, of each of the input fields (who, butterfly, is this...)
+  let maxlens = [20, 30, 54];
   for (let i = 0; i < 3; i++) {
     let isthisaInput = document.getElementById(`id_is_this_a_${i+1}`);
     isthisaInput.oninput = drawAllIsthisa;
@@ -158,7 +161,8 @@ let drawTextIsthisa = (ind) => () => {
 
   drawCenteredBorderedIsthisaText(text, isThisPosMap[ind][1],
                                   isThisPosMap[ind][0] + isThisPosMap[ind][2],
-                                  leftXBound=isThisPosMap[ind][0]);
+                                  leftXBound=isThisPosMap[ind][0],
+                                  maxLines=isThisPosMap[ind][3]);
 };
 
 let updatePikachuInputWidth = function(text) {
@@ -187,40 +191,46 @@ let drawTextPikachu = function () {
 };
 
 // Horizontally centered
-let drawCenteredBorderedIsthisaText = function (text, initY, boundingX, leftXBound=0) {
+let drawCenteredBorderedIsthisaText = function (text, initY, boundingX, leftXBound=0,
+                                                maxLines=2) {
   if (boundingX === null || initY === null) { return; }
 
-  let charsPerLine = 22; // manually grabbed, nothing fancy
+  let charsPerLine = 24; // manually grabbed, nothing fancy
   let regionWidth = boundingX - leftXBound;
   let widthRatio = regionWidth / isthisaCanvas.width;
   let charsPerLineRegion = Math.floor(charsPerLine * widthRatio);
 
   let textWidth = isthisaCtx.measureText(text + " ").width;
-  if (textWidth > 2 * regionWidth) { return; }
+  if (textWidth > maxLines * regionWidth) { return; }
 
-  // If there are two lines, draw the first one first
-  if (textWidth >= regionWidth) {
-    let firstLine = text.slice(0, charsPerLineRegion);
-    if (firstLine[charsPerLineRegion] != " ") {
-      firstLine += "-";
+  let numLinesRequired = Math.ceil(textWidth / regionWidth);
+  for (let i = 0; i < numLinesRequired; i++) {
+    let line = text.slice(0, charsPerLineRegion);
+    if (line.length < charsPerLineRegion) {
+      // This is the last line, so we need to do some work to center it
+      let initX = (regionWidth - textWidth) / 2 + leftXBound;
+
+      isthisaCtx.lineWidth = 7;
+      isthisaCtx.strokeText(line, initX, initY);
+      isthisaCtx.lineWidth = 1;
+      isthisaCtx.fillText(line, initX, initY);
+
+      return;
+    }
+
+    if (line[charsPerLineRegion] != " " && i + 1 < maxLines) {
+      line += "-";
     }
 
     isthisaCtx.lineWidth = 7;
-    isthisaCtx.strokeText(firstLine, leftXBound, initY);
+    isthisaCtx.strokeText(line, leftXBound, initY);
     isthisaCtx.lineWidth = 1;
-    isthisaCtx.fillText(firstLine, leftXBound, initY);
+    isthisaCtx.fillText(line, leftXBound, initY);
 
     textWidth -= regionWidth;
     initY += 18; // 18 works for height = 3vh
     text = text.slice(charsPerLineRegion);
   }
-
-  let initX = (regionWidth - textWidth) / 2 + leftXBound;
-
-  isthisaCtx.lineWidth = 7;
-  isthisaCtx.strokeText(text, initX, initY);
-  isthisaCtx.lineWidth = 1;
-  isthisaCtx.fillText(text, initX, initY);
 };
 
 // yStep == 12 works for 2 vh
