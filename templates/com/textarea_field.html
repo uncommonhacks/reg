@@ -1,9 +1,17 @@
 {% if field.name == "essay1" or field.name == "essay2" or field.name == "essay3" %}
   <label>{{ field.label }}</label>
-  <textarea class="materialize-textarea"></textarea>  
+  <textarea class="materialize-textarea"
+            id="{{ field.auto_id }}"
+            name="{{ field.html_name }}"
+            "{% include 'com/attr.html' %}"
+            required>{% if field.value %}{{ field.value }}{% endif %}</textarea>
 {% else %}
-  <div class="input-field">
-    <textarea id="{{ field.id_for_label }}" class="materialize-textarea"></textarea>
-    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-  </div>
+<div class="input-field">
+    <textarea id="{{ field.auto_id }}"
+              class="materialize-textarea"
+              name="{{ field.html_name }}"
+              "{% include 'com/attr.html' %}"
+              required>{% if field.value %}{{ field.value }}{% endif %}</textarea>
+    <label for="{{ field.auto_id }}">{{ field.label }}</label>
+</div>
 {% endif %}

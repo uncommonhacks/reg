@@ -3,6 +3,11 @@
 </div>
 
 <div class="input-field">
-  <input type="text" id = "id_brain_1">
+  <input type="text"
+         name="brain_1"
+         id="id_brain_1"
+         maxlength="150"
+         value="{% if widget.value %}{{ widget.value }}{% endif %}"
+         required>
   <label for="id_brain_1">Expanding Brain 1</label>
 </div>
