@@ -27,6 +27,23 @@ let validateFilesize = function (e) {
     alert("Resume too large, please restrict file size to 10MB!");
   }
 };
+
+let formModified = 0;
+$(document).ready(function() {
+  formModified = 0;
+  $("form *").change(function(){
+      formModified = 1;
+  });
+  window.onbeforeunload = confirmExit;
+  function confirmExit() {
+      if (formModified == 1) {
+          return "Your changes won't be saved if you don't submit. Are you sure you want to leave?";
+      }
+  }
+  $("input[name='submit']").click(function() {
+      formModified = 0;
+  });
+});
 </script>
 {% endblock %}
 
@@ -75,7 +92,7 @@ let validateFilesize = function (e) {
 
   <!--Submit Button-->
   <div class="row center-align">
-    <input class="btn btn-default btn-lg" value="Submit" type="submit"/>
+    <input class="btn btn-default btn-lg" name="submit" value="Submit" type="submit"/>
   </div>
 </form>
 {% endblock %}
