@@ -145,7 +145,7 @@ class Application(models.Model):
     essay3 = models.TextField(
         max_length=1500,
         verbose_name=(
-            "If you could create your own flavor of lacroix, "
+            "If you could create your own flavor of La Croix, "
             "what would it be and why? What would it be "
             "called? What would it taste like--to the degree "
             "that you can actually taste it ;) "
@@ -181,7 +181,7 @@ class Application(models.Model):
 
     is_this_a_3 = models.CharField(max_length=150, verbose_name="Is this...", null=True)
 
-    pikachu = models.CharField(max_length=500, verbose_name="", null=True)
+    pikachu = models.TextField(max_length=500, verbose_name="", null=True)
 
 
 # confirmation class, to attach to applicant class

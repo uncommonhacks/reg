@@ -8,8 +8,6 @@ let pikachuCanvas = null;
 let brainCtx = null;
 let isthisaCtx = null;
 let pikachuCtx = null;
-let brainInputs = null;
-let isthisaInput = null;
 let pikachuInput = null;
 let isthisaImg = null;
 let isThisPosMap = null;
@@ -72,7 +70,7 @@ $(document).ready(function() {
 
 // ind == -1 resets everything
 let resetBrain = function (ind=-1) {
-  if (ind == -1) {
+  if (ind === -1) {
     whiteoutBlock(brainCtx, 0, 0, brainCanvas.width/2 - 2, brainCanvas.height);
   } else {
     whiteoutBlock(brainCtx, 0, brainCanvas.height / 4 * ind, brainCanvas.width/2 - 2, brainCanvas.height/4 - 8);
@@ -113,9 +111,9 @@ let setupInputFields = function () {
     isthisaInput.maxLength = maxlens[i];
   }
 
-  let pikachuInput = document.getElementById("id_pikachu");
+  pikachuInput = document.getElementById("id_pikachu");
   pikachuInput.oninput = drawTextPikachu;
-  pikachuInput.maxLength = 290;
+  pikachuInput.maxLength = 310;
 };
 
 let whiteoutBlock = function (ctx, x, y, width, height) {
@@ -128,7 +126,7 @@ let whiteoutBlock = function (ctx, x, y, width, height) {
 // Rather than trying to figure out which brain was updated, just scan all of them
 let drawTextBrain = (ind) => () => {
   if (ind < 0 || ind > 3) { return; }
-  if (brainCtx == null) { return; }
+  if (brainCtx === null) { return; }
 
   // Clear the area we're modifying
   resetBrain(ind);
@@ -147,10 +145,10 @@ let drawAllIsthisa = function () {
 
 let drawTextIsthisa = (ind) => () => {
   if (ind < 0 || ind > 2) { return; }
-  if (isthisaCtx == null) { return; }
+  if (isthisaCtx === null) { return; }
 
   let start = "";
-  if (ind == 2) {
+  if (ind === 2) {
     start = "Is this ";
   }
 
@@ -163,19 +161,34 @@ let drawTextIsthisa = (ind) => () => {
                                   leftXBound=isThisPosMap[ind][0]);
 };
 
+let updatePikachuInputWidth = function(text) {
+  let lineOffset = 0; // offset into each line
+  let charsPerLine = 35; // manually grabbed
+
+  pikachuInput.maxLength = 310; // length without newlines
+  for (let i = 0; i < text.length; i++, lineOffset++) {
+    if (text[i] == "\n") {
+      let toReduce = charsPerLine - lineOffset;
+      lineOffset = 0;
+      pikachuInput.maxLength -= toReduce;
+    }
+  }
+};
+
 let drawTextPikachu = function () {
-  if (pikachuCtx == null) { return; }
+  if (pikachuCtx === null) { return; }
 
   resetPikachu();
 
   let text = document.getElementById("id_pikachu").value;
+  updatePikachuInputWidth(text);
+
   drawWrappedText(pikachuCtx, text, 0, 18, pikachuCanvas.width, 12);
 };
 
 // Horizontally centered
 let drawCenteredBorderedIsthisaText = function (text, initY, boundingX, leftXBound=0) {
-  console.log("Drawing from y", initY, "centered within (", leftXBound, boundingX, ") text", text);
-  if (boundingX == null || initY == null) { return; }
+  if (boundingX === null || initY === null) { return; }
 
   let charsPerLine = 22; // manually grabbed, nothing fancy
   let regionWidth = boundingX - leftXBound;
@@ -215,6 +228,7 @@ let drawWrappedText = function (ctx, text, initX, initY, boundingWidth, yStep) {
   let line = "";
   let x = initX;
   let y = initY;
+  let numLines = 0;
 
   for(let n = 0; n < text.length; n++) {
     let testLine = line + text[n];
@@ -226,6 +240,11 @@ let drawWrappedText = function (ctx, text, initX, initY, boundingWidth, yStep) {
       y += yStep;
     } else {
       line = testLine;
+      if (text[n] === "\n") {
+        ctx.fillText(line, x, y);
+        line = "";
+        y += yStep;
+      }
     }
   }
   ctx.fillText(line, x, y);
