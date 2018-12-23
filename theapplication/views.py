@@ -46,7 +46,6 @@ def index(request):
         },
     )
 
-
 @login_required
 def application(request):
     if not models.Applicant.objects.filter(user=request.user).exists():
@@ -59,7 +58,7 @@ def application(request):
         if not form.is_valid():
             pass
         elif not upload_resume_to_s3(request.FILES["resume"], request.user):
-            form.add_error("resume", "Resume should be a PDF!")
+            form.add_error("resume", "Resume should be a PDF smaller than 10MB!")
         else:
             user = request.user
             user.first_name = form.cleaned_data["first_name"]
