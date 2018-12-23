@@ -101,7 +101,7 @@ let setupInputFields = function () {
 
   let isthisaInput = document.getElementById("id_is_this_a");
   isthisaInput.oninput = drawTextIsthisa;
-  isthisaInput.maxLength = 16;
+  isthisaInput.maxLength = 39;
 
   let pikachuInput = document.getElementById("id_pikachu");
   pikachuInput.oninput = drawTextPikachu;
@@ -147,8 +147,25 @@ let drawTextPikachu = function () {
 
 // Horizontally centered
 let drawCenteredBorderedText = function (ctx, text, initY, boundingWidth) {
-  let textWidth = ctx.measureText(text).width;
-  if (textWidth > boundingWidth) { return; }
+  let textWidth = ctx.measureText(text + " ").width;
+  if (textWidth > 2 * boundingWidth) { return; }
+
+  // If there are two lines, draw the first one first
+  if (textWidth >= boundingWidth) {
+    let firstLine = text.slice(0, 23); // 15 + 8 (len "Is this ")
+    if (firstLine[23] != " ") {
+      firstLine += "-";
+    }
+
+    ctx.lineWidth = 7;
+    ctx.strokeText(firstLine, 0, initY);
+    ctx.lineWidth = 1;
+    ctx.fillText(firstLine, 0, initY);
+
+    textWidth -= boundingWidth;
+    initY += 18; // 18 works for height = 3vh
+    text = text.slice(23);
+  }
 
   let initX = (boundingWidth - textWidth) / 2;
 
