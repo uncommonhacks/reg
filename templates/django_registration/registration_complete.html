@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block title %}
-<title>Account Registered</title>
+<title>Account Created</title>
 {% endblock %}
 
 {% block card_title %}
-Account Registered
+Account Created
 {% endblock %}
 
 {% block card_content %}
-<p class="card-text">Your account has been created. Check your email for a validation link.</p>
+<p class="card-text">Your account has been created. You must activate your account using the validation link sent to your email before you may log in.</p>
 {% endblock %}
 
 {% block card_action %}
@@ -20,5 +20,5 @@ Account Registered
 {% block after_card %}
   </div>
 </div>
-<img class="animal-img" style="left: 0;" src="{% static "img/cat.png"%}">
+<img class="animal-img animal-left" src="{% static "img/cat.png"%}">
 {% endblock %}

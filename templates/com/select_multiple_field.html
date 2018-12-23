@@ -1,7 +1,10 @@
 <div class="input-field">
   <select multiple name="{{ field.html_name }}">
+    <option value="" disabled selected></option>
     {% for choice in field %}
-      {{ choice.tag }}
+      {% if "---------" not in choice.tag %}
+        {{ choice.tag }}
+      {% endif %}
     {% endfor %}
   </select>
   {% if field.auto_id %}

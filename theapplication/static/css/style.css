@@ -11,8 +11,17 @@ html, body {
 
 .animal-img{
   position:absolute;
-  bottom: 0;
+  bottom: 20px;
   height: 30vh;
+  max-width: 100vw;
+}
+
+.animal-right{
+  right: 10px;
+}
+
+.animal-left{
+  left: 10px;
 }
 
 /* Forms */
@@ -60,7 +69,7 @@ html, body {
   margin-top: 15vh;
 }
 
-.card-text{
+p.card-text{
   font-size: 1.3rem;
   padding-top: 10px;
 }
@@ -109,6 +118,13 @@ html, body {
     position: relative;
     margin-left: auto;
     margin-right: auto;    
+    margin-top: 6vh;
+  }
+  .animal-right{
+    right: 0px;
+  }
+  .animal-left{
+    left: 0px;
   }
 
   /* Navbar */

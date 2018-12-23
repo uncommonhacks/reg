@@ -10,10 +10,12 @@ class ApplicationForm(forms.ModelForm):
     last_name = forms.CharField(
                     max_length=100,
                     label="Last Name",
+                    initial="",
+                    required=False,
     )
     resume = forms.FileField(
-                label="Upload Resume",
-                help_text="File must be a PDF (10MB max)",
+                label="Resume",
+                help_text="Upload your resume. File must be a PDF (10MB max).",
     )
 
     def __init__(self, *args, **kwargs):
