@@ -13,6 +13,23 @@ span {
 </style>
 {% endblock %}
 
+{% block extra_js %}
+<script>
+let validateFilesize = function (e) {
+  if (!window.FileReader) { return; }
+  if (!e.files) { return; }
+
+  let file = e.files[0];
+  if (!file) { return; }
+
+  if (file.size > 10000000) {
+    e.value = null;
+    alert("Resume too large, please restrict file size to 10MB!");
+  }
+};
+</script>
+{% endblock %}
+
 {% block form_com %}
 <form method="post" {{ enctype }}>
   {% csrf_token %}
