@@ -54,13 +54,15 @@ class Application(models.Model):
         RaceChoice, verbose_name="What is your race/ethnicity?"
     )
 
-    school = models.ManyToManyField(
+    school = models.ForeignKey(
         SchoolChoice,
         verbose_name=(
             "Where do you attend school? If your school does not appear "
             'on the list, select "Other".'
         ),
         help_text="SELECT OTHER",
+        on_delete="SET_NULL",
+        null=True,
     )
 
     major = models.CharField(
