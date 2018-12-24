@@ -5,6 +5,7 @@
             name="{{ field.html_name }}"
             "{% include 'com/attr.html' %}"
             required>{% if field.value %}{{ field.value }}{% endif %}</textarea>
+  <span class="helper-text">{{ field.help_text }}</span>
 {% else %}
 <div class="input-field">
     <textarea id="{{ field.auto_id }}"
@@ -13,5 +14,6 @@
               "{% include 'com/attr.html' %}"
               required>{% if field.value %}{{ field.value }}{% endif %}</textarea>
     <label for="{{ field.auto_id }}">{{ field.label }}</label>
+    <span class="helper-text">{{ field.help_text }}</span>
 </div>
 {% endif %}

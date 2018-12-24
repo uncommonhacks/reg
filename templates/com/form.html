@@ -28,8 +28,13 @@ span {
   <!--Fields-->
   {% for field in form.visible_fields %}
   <div class="row">
-    {% if field.field.widget.template_name == "django/forms/widgets/text.html" or field.field.widget.template_name == "django/forms/widgets/date.html" %}
-      {% include "com/text_field.html" with field=field %}
+    {% if field.name == "school" %}
+      {% include "com/autocomplete.html" %}
+    {% endif %}
+    {% if field.field.widget.template_name == "django/forms/widgets/text.html" or field.field.widget.template_name == "django/forms/widgets/date.html"%}
+      {% if field.name != "school" %}
+        {% include "com/text_field.html" with field=field %}
+      {% endif %}
     {% endif %}
     {% if field.field.widget.template_name == "django/forms/widgets/textarea.html" %}
       {% include "com/textarea_field.html" with field=field form=form %}

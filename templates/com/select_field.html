@@ -1,9 +1,9 @@
-{% if field.name == "school" or field.name == "study_level" %}
+{% if field.name == "study_level" %}
 <label class="control-label">{{ field.label }}</label>
 {% endif %}
 <div class="input-field">
   <select id="{{ field.auto_id }}"
-          name="{{ field.html_name }}">
+      name="{{ field.html_name }}">
     <option value="" disabled selected>---------</option>
     {% for choice in field %}
       {% if "---------" not in choice.tag %}
@@ -11,10 +11,8 @@
       {% endif %}
     {% endfor %}
   </select>
-  {% if field.auto_id %}
-  {% if field.name != "school" and field.name != "study_level" %}
+  {% if field.name != "study_level" %}
   <label class="control-label">{{ field.label }}</label>
   {% endif %}
   <span class="helper-text">{{ field.help_text }}</span>
-  {% endif %}
 </div>
