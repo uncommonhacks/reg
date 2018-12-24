@@ -27,6 +27,7 @@ SECRET_KEY = client.get_parameter(
     Name="registration-django-secret-key", WithDecryption=True
 )["Parameter"]["Value"]
 
+MAIN_URL = "testing.uncommonhacks.com"
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("RUN_LOCAL") == "TRUE":
     DEBUG = True
@@ -43,7 +44,6 @@ else:
 
 
 DEBUG = True
-MAIN_URL = "testing.uncommonhacks.com"
 
 
 # Application definition
