@@ -37,4 +37,15 @@ $(document).ready(function(){
   $(".input-field").click(function (e) {
     e.stopPropagation();
   });
+
+  // 2019TODO shouldn't need to hide the default element
+  let raceSelect = document.getElementById("id_race");
+  let raceInput = raceSelect.previousElementSibling
+                            .previousElementSibling
+                            .previousElementSibling;
+  raceSelect.onchange = function () {
+    if (raceInput.value.includes("---------, ")) {
+      raceInput.value = raceInput.value.slice(11);
+    }
+  };
 });
