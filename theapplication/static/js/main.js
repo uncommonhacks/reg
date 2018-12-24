@@ -6,25 +6,35 @@ $(document).ready(function(){
   let schoolSelect = $("select[name=school]");
   schoolSelect.select2({width: "100%"});
 
+  let schoolDropdownOpen = false;
+
+  $("select[name=school]").on("select2:open", function (e) {
+    schoolDropdownOpen = true;
+  });
+
+  $("select[name=school]").on("select2:close", function (e) {
+    schoolDropdownOpen = false;
+  });
 
   let closeDropdowns = function(){
-      console.log("clsoing dropdowns");
-      let selectDropdowns =  Array.prototype.slice.call(document.getElementsByClassName("dropdown-content"), 0);
-      let select2Dropdowns =  Array.prototype.slice.call(document.getElementsByClassName("select2-dropdown"), 0);
-      let dropdowns = selectDropdowns.concat(select2Dropdowns);
-      for(let i = 0; i < dropdowns.length; i++){
-          dropdowns[i].style.display = "none";
-      }      
+    let selects = $("select");
+    for (let i = 0; i < selects.length; i++) {
+      let formInstance = M.FormSelect.getInstance(selects[i]);
+      if (formInstance && formInstance.dropdown && formInstance.dropdown.isOpen) {
+        formInstance.dropdown.close();
+      }
+    }
+
+    if (schoolDropdownOpen) {
+      $("select[name=school]").select2("close");
+    }
   };
 
   $(window).click(function (){
-          console.log("window clicked");
-          closeDropdowns();
+    closeDropdowns();
   });
 
-  $(".input-field").click(function(event){
-          console.log("input field clicked");
-          event.stopPropagation();
-      });  
- 
+  $(".input-field").click(function (e) {
+    e.stopPropagation();
+  });
 });

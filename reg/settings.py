@@ -30,19 +30,20 @@ SECRET_KEY = client.get_parameter(
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("RUN_LOCAL") == "TRUE":
     DEBUG = True
+    ALLOWED_HOSTS = ["*"]
 else:
     DEBUG = False
+    ALLOWED_HOSTS = [
+        "127.0.0.1",
+        "localhost",
+        "bcdeda7b.ngrok.io",
+        MAIN_URL,
+        client.get_parameter(Name="django-registration-url")["Parameter"]["Value"],
+    ]
+
 
 DEBUG = True
 MAIN_URL = "testing.uncommonhacks.com"
-
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "bcdeda7b.ngrok.io",
-    MAIN_URL,
-    client.get_parameter(Name="django-registration-url")["Parameter"]["Value"],
-]
 
 
 # Application definition

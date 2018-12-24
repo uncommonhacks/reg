@@ -2,7 +2,7 @@
 <label class="control-label">{{ field.label }}</label>
 {% endif %}
 <div class="input-field">
-  <select name="{{ field.html_name }}">
+  <select id="{{ field.auto_id }}" name="{{ field.html_name }}">
     <option value="" disabled selected>---------</option>
     {% for choice in field %}
       {% if "---------" not in choice.tag %}
