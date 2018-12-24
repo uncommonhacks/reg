@@ -3,19 +3,6 @@ $(document).ready(function(){
 
   $("select").formSelect();
 
-  let schoolSelect = $("select[name=school]");
-  schoolSelect.select2({width: "100%"});
-
-  let schoolDropdownOpen = false;
-
-  $("select[name=school]").on("select2:open", function (e) {
-    schoolDropdownOpen = true;
-  });
-
-  $("select[name=school]").on("select2:close", function (e) {
-    schoolDropdownOpen = false;
-  });
-
   let closeDropdowns = function(){
     let selects = $("select");
     for (let i = 0; i < selects.length; i++) {
@@ -23,10 +10,6 @@ $(document).ready(function(){
       if (formInstance && formInstance.dropdown && formInstance.dropdown.isOpen) {
         formInstance.dropdown.close();
       }
-    }
-
-    if (schoolDropdownOpen) {
-      $("select[name=school]").select2("close");
     }
   };
 
@@ -43,11 +26,13 @@ $(document).ready(function(){
   let raceInput = raceSelect.previousElementSibling
     .previousElementSibling
     .previousElementSibling;
-  raceSelect.onchange = function () {
+  let clearMultipleDashes = function () {
     if (raceInput.value.includes("---------, ")) {
       raceInput.value = raceInput.value.slice(11);
     }
   };
+  raceSelect.onchange = clearMultipleDashes;
+  clearMultipleDashes(); // run it once in case people refreshed
 
   // MLH School List Autocomplete
   $('input.autocomplete').autocomplete({

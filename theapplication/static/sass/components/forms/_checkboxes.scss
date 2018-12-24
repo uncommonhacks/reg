@@ -19,7 +19,8 @@
     display: inline-block;
     height: 25px;
     line-height: 25px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    color: #f48fb1;
     user-select: none;
   }
 
@@ -196,5 +197,11 @@
   &:disabled:checked + span:not(.lever):after {
     background-color: $input-disabled-solid-color;
     border-color: $input-disabled-solid-color;
+  }
+}
+
+@media #{$medium-and-up} {
+  [type="checkbox"] + span {
+    font-size: 1.3rem;
   }
 }
