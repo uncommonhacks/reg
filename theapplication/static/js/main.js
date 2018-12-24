@@ -7,17 +7,24 @@ $(document).ready(function(){
   schoolSelect.select2({width: "100%"});
 
 
-  let minimizeDropdowns = function (){
-      console.log("minimizing dropdowns");
+  let closeDropdowns = function(){
+      console.log("clsoing dropdowns");
       let selectDropdowns =  Array.prototype.slice.call(document.getElementsByClassName("dropdown-content"), 0);
       let select2Dropdowns =  Array.prototype.slice.call(document.getElementsByClassName("select2-dropdown"), 0);
       let dropdowns = selectDropdowns.concat(select2Dropdowns);
       for(let i = 0; i < dropdowns.length; i++){
           dropdowns[i].style.display = "none";
-      }
+      }      
   };
 
-  document.addEventListener("click", minimizeDropdowns);
-  
+  $(window).click(function (){
+          console.log("window clicked");
+          closeDropdowns();
+  });
+
+  $(".input-field").click(function(event){
+          console.log("input field clicked");
+          event.stopPropagation();
+      });  
  
 });
