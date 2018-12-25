@@ -10,13 +10,6 @@ class RaceChoice(models.Model):
         return self.race_string
 
 
-class SchoolChoice(models.Model):
-    school_string = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.school_string
-
-
 # Application class, to attach to applicant class.
 class Application(models.Model):
 
@@ -54,14 +47,8 @@ class Application(models.Model):
         RaceChoice, verbose_name="What is your race/ethnicity?"
     )
 
-    school = models.ForeignKey(
-        SchoolChoice,
-        verbose_name=(
-            "Where do you attend school?"
-        ),
-        help_text="If your school does not appear on the list, select \"Other\"",
-        on_delete="SET_NULL",
-        null=True,
+    school = models.CharField(
+        max_length=200, verbose_name="Where do you attend school?", help_text="If your school does not appear on the list, select \"Other\"", null=True
     )
 
     major = models.CharField(
