@@ -2,12 +2,8 @@ import datetime
 
 import django
 
-application_deadline = "12:00:00 12/25/2018"  # 'HH:mm:ss MM/DD/YYYY' format
-confirmation_deadline = "12:00:00 12/27/2018"
-
-format_str = "%H:%M:%S %m/%d/%Y"
-app_deadline_dt = datetime.datetime.strptime(application_deadline, format_str)
-con_deadline_dt = datetime.datetime.strptime(confirmation_deadline, format_str)
+app_deadline_dt = datetime.datetime(2019, 1, 20, hour=23, minute=59, second=59)
+con_deadline_dt = datetime.datetime(2019, 1, 27, hour=23, minute=59, second=59)
 
 
 def over_application_deadline():
