@@ -4,7 +4,7 @@ from registration.backends.default.views import ActivationView
 from . import models
 from . import forms
 from django.http import HttpResponse
-from .settings import over_application_deadline, over_confirmation_deadline
+from .settings import over_application_deadline, over_confirmation_deadline, con_deadline_dt
 from .storage_backends import upload_resume_to_s3
 
 # Create your views here.
@@ -34,6 +34,7 @@ def index(request):
     open_confirmation = applicant_obj.status == "AM" and not over_confirmation_deadline()
     over_app_deadline = applicant_obj.status == "NS" and over_application_deadline()
     over_conf_deadline = applicant_obj.status == "AM" and over_confirmation_deadline()
+    conf_deadline = con_deadline_dt
     return render(
         request,
         "in_app/applicant_index.html",
@@ -43,6 +44,7 @@ def index(request):
             "open_confirmation": open_confirmation,
             "over_application_deadline": over_app_deadline,
             "over_confirmation_deadline": over_conf_deadline,
+            "conf_deadline": con_deadline_dt
         },
     )
 

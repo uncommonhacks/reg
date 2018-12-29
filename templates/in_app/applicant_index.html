@@ -22,47 +22,47 @@ Application Status
           <div class="card-panel">
             <div class="flowtext">
               {% if status == "Application Not Started" %}
-    		  {% if over_application_deadline %}
-		  We are no longer accepting applications for Uncommon Hacks 2019. Apply again next year!
-		  {% else %}
-                   Welcome! Please submit an application for Uncommon Hacks 2019 by following the link below.
-		  {% endif %}
+              {% if over_application_deadline %}
+              We are no longer accepting applications for Uncommon Hacks 2019. Apply again next year!
+              {% else %}
+              Welcome! Please submit an application for Uncommon Hacks 2019 by following the link below.
+              {% endif %}
               {% endif %}
               {% if status == "Awaiting Decision" %}
-                Submitted! Thank you for your applying. We are excited to review your application,
-                and will notify you via email regarding your decision. 
-                If you have any questions in the mean time, 
-                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
-                celery AT uncommonhacks.com or shoot us a
-                <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
+              Submitted! Thank you for your applying. We are excited to review your application,
+              and will notify you via email regarding your decision. 
+              If you have any questions in the mean time, 
+              <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
+              celery AT uncommonhacks.com or shoot us a
+              <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
               {% endif %}
               {% if status == "Waitlist" %}
-                Waitlisted. At this time we cannot offer you a spot.
-                If one opens up we will notify you. Feel free to
-                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
-                celery AT uncommonhacks.com or shoot us a
-                <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
+              Waitlisted. At this time we cannot offer you a spot.
+              If one opens up we will notify you. Feel free to
+              <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
+              celery AT uncommonhacks.com or shoot us a
+              <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
               {% endif %}
               {% if status == "Not Admitted" %}
-                We are not able to offer you a spot at Uncommon Hacks this year.
-                We hope that you will apply again next year!
+              We are not able to offer you a spot at Uncommon Hacks this year.
+              We hope that you will apply again next year!
               {% endif %}
               {% if status == "Admitted" %}
-                {% if over_confirmation_deadline %}
-		The confirmation deadline for Uncommon Hacks 2019 has passed. Apply again next year!
-		{% else %}
-                Admitted! We are excited to have you at Uncommon Hacks 2019. Please fill out the
-                form below to confirm your attendance. Should you have any questions 
-                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
-                celery AT uncommonhacks.com or shoot us a
-                <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
-		{% endif %}
+              {% if over_confirmation_deadline %}
+              The confirmation deadline for Uncommon Hacks 2019 has passed. Apply again next year!
+              {% else %}
+              Admitted! We are excited to have you at Uncommon Hacks 2019. Please fill out the
+              form below <b>before {{ conf_deadline }}</b> to confirm your attendance. Should you have any questions 
+              <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
+              celery AT uncommonhacks.com or shoot us a
+              <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
+              {% endif %}
               {% endif %}
               {% if status == "Confirmed" %}
-                Confirmed! See you in Chicago. If you have any lingering questions 
-                <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
-                celery AT uncommonhacks.com or shoot us a
-                <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
+              Confirmed! See you in Chicago. If you have any lingering questions 
+              <a class="email-link" href="mailto:celery@uncommonhacks.com">email us</a>:
+              celery AT uncommonhacks.com or shoot us a
+              <a class="email-link" href="https://m.me/uncommonhacks" target="_blank">facebook message</a>.
               {% endif %}
               <div class="center-align" style="padding:20px;">
                 {% if open_application  %}
