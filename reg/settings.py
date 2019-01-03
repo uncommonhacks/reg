@@ -39,7 +39,6 @@ else:
         "registration.uncommonhacks.com"
     ]
 
-
 # Application definition
 
 INSTALLED_APPS = [

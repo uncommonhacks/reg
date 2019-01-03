@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p>Something went wrong. Did you want the <a href='/admin/'>admin page</a>?</p>
+<h3>Applicant Statistics</h3>
+<ul>
+{% for k, v in stats %}
+<li>{{ k }}: {{ v }}</li>
+{% endfor %}
+</ul>
 {% endblock %}
