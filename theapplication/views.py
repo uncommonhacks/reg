@@ -35,18 +35,16 @@ def stats_page(request):
     number_admitted = models.Applicant.objects.filter(status='AM').count()
     total_admits_confirms = number_admitted + total_confirmed
 
-    admitted_queryset = models.Applicant.objects.filter(Q(status='AM') | Q(status='CF')).all()
+    admitted_queryset = models.Application.objects.all()
 
-    admitted_apps = [a.application for a in admitted_queryset]
+    count_by_gender = lambda g: len([a for a in admitted_queryset if a.gender == g])
 
-    count_by_gender = lambda g: len([a for a in admitted_apps if a.gender == g])
-
-    admitted_gender_stats = {gender[1]: count_by_gender(gender[0])/admitted_queryset.count()
+    admitted_gender_stats = {gender[1]: '%.2f' % (count_by_gender(gender[0])/admitted_queryset.count())
             for gender in models.Application.GENDER_CHOICES}
 
-    count_by_class_year = lambda cy: len([a for a in admitted_apps if a.study_level == cy])
+    count_by_class_year = lambda cy: len([a for a in admitted_queryset if a.study_level == cy])
 
-    class_year_stats = {class_year[1]: count_by_class_year(class_year[0])/admitted_queryset.count()
+    class_year_stats = {class_year[1]: '%.2f' % (count_by_class_year(class_year[0])/admitted_queryset.count())
             for class_year in models.Application.STUDY_LEVEL_CHOICES}
 
     STATS_DICT = [
@@ -58,8 +56,8 @@ def stats_page(request):
             ('number not admitted', number_not_admitted),
             ('number admitted but not confirmed', number_admitted),
             ('number admitted and confirmed', total_admits_confirms),
-            ('gender stats of admitted applicants', admitted_gender_stats),
-            ('class year stats of admitted applicants', class_year_stats),
+            ('gender stats of all applicants', admitted_gender_stats),
+            ('class year stats of all applicants', class_year_stats),
             ]
     return render(request, 'in_app/reviewer_index.html', context={'stats': STATS_DICT})
 
