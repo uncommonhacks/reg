@@ -69,7 +69,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         db_data = [get_data_from_applicant(a) for a in Applicant.objects.all()]
         
-        with open(str(Path.home()) + '/' + options['outfile'], 'w') as f:
+        with open(str(Path.home()) + '/' + options['outfile'], 'w', encoding='utf-8') as f:
             f.write(json.dumps(db_data, indent=4, separators=(',', ': ')))
         
         self.stdout.write('wrote db dump to: ' + options['outfile'])
