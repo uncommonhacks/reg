@@ -33,6 +33,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for a in Applicant.objects.all():
             if not a.application:
-                if a.user.email != 'laudecay@gmail.com':
-                    continue
                 send_notification_email(a.user.email, a.user.first_name)
