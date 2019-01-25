@@ -3,19 +3,12 @@ from .models import Application, Confirmation
 
 
 class ApplicationForm(forms.ModelForm):
-    first_name = forms.CharField(
-                    max_length=100,
-                    label="First Name",
-    )
+    first_name = forms.CharField(max_length=100, label="First Name")
     last_name = forms.CharField(
-                    max_length=100,
-                    label="Last Name",
-                    initial="",
-                    required=False,
+        max_length=100, label="Last Name", initial="", required=False
     )
     resume = forms.FileField(
-                label="Resume",
-                help_text="Upload your resume. File must be a PDF (10MB max).",
+        label="Resume", help_text="Upload your resume. File must be a PDF (10MB max)."
     )
 
     def __init__(self, *args, **kwargs):
@@ -24,8 +17,12 @@ class ApplicationForm(forms.ModelForm):
         self.fields["legal2"].widget.template_name = "django/forms/widgets/legal2.html"
         self.fields["legal3"].widget.template_name = "django/forms/widgets/legal3.html"
         self.fields["brain_1"].widget.template_name = "django/forms/widgets/brain1.html"
-        self.fields["is_this_a_1"].widget.template_name = "django/forms/widgets/isthisa1.html"
-        self.fields["pikachu"].widget.template_name = "django/forms/widgets/pikachu.html"
+        self.fields[
+            "is_this_a_1"
+        ].widget.template_name = "django/forms/widgets/isthisa1.html"
+        self.fields[
+            "pikachu"
+        ].widget.template_name = "django/forms/widgets/pikachu.html"
 
     class Meta:
         model = Application

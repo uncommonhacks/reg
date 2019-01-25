@@ -5,14 +5,17 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0029_auto_20181223_1630'),
-    ]
+    dependencies = [("theapplication", "0029_auto_20181223_1630")]
 
     operations = [
         migrations.AlterField(
-            model_name='application',
-            name='proudof',
-            field=models.TextField(help_text='Github, Devpost, etc.', max_length=1500, null=True, verbose_name="What is something you're proud of?"),
-        ),
+            model_name="application",
+            name="proudof",
+            field=models.TextField(
+                help_text="Github, Devpost, etc.",
+                max_length=1500,
+                null=True,
+                verbose_name="What is something you're proud of?",
+            ),
+        )
     ]

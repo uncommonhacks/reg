@@ -34,10 +34,7 @@ if os.environ.get("RUN_LOCAL") == "TRUE":
     ALLOWED_HOSTS = ["*"]
 else:
     DEBUG = False
-    ALLOWED_HOSTS = [
-        "testing.uncommonhacks.com",
-        "registration.uncommonhacks.com"
-    ]
+    ALLOWED_HOSTS = ["testing.uncommonhacks.com", "registration.uncommonhacks.com"]
 
 # Application definition
 
@@ -90,7 +87,11 @@ WSGI_APPLICATION = "reg.wsgi.application"
 
 
 # email
-ANYMAIL = {"MAILGUN_API_KEY": client.get_parameter(Name="MAILGUN_API_KEY", WithDecryption=True)["Parameter"]["Value"]}
+ANYMAIL = {
+    "MAILGUN_API_KEY": client.get_parameter(
+        Name="MAILGUN_API_KEY", WithDecryption=True
+    )["Parameter"]["Value"]
+}
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 DEFAULT_FROM_EMAIL = "noreply@uncommonhacks.com"
 
@@ -175,7 +176,7 @@ else:
     AWS_STATIC_LOCATION = "static"
     STATICFILES_STORAGE = "theapplication.storage_backends.StaticStorage"
     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
-    AWS_DEFAULT_ACL = 'public-read'
+    AWS_DEFAULT_ACL = "public-read"
 RESUME_BUCKET = client.get_parameter(Name="resume_bucket")["Parameter"]["Value"]
 
 

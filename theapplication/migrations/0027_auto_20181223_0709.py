@@ -5,14 +5,18 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0026_auto_20181223_0253'),
-    ]
+    dependencies = [("theapplication", "0026_auto_20181223_0253")]
 
     operations = [
         migrations.AlterField(
-            model_name='application',
-            name='school',
-            field=models.ForeignKey(help_text='If your school does not appear on the list, select "Other"', null=True, on_delete='SET_NULL', to='theapplication.SchoolChoice', verbose_name='Where do you attend school?'),
-        ),
+            model_name="application",
+            name="school",
+            field=models.ForeignKey(
+                help_text='If your school does not appear on the list, select "Other"',
+                null=True,
+                on_delete="SET_NULL",
+                to="theapplication.SchoolChoice",
+                verbose_name="Where do you attend school?",
+            ),
+        )
     ]

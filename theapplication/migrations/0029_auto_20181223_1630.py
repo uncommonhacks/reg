@@ -5,19 +5,21 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0028_auto_20181223_0722'),
-    ]
+    dependencies = [("theapplication", "0028_auto_20181223_0722")]
 
     operations = [
         migrations.AlterField(
-            model_name='application',
-            name='essay3',
-            field=models.TextField(max_length=1500, null=True, verbose_name='If you could create your own flavor of La Croix, what would it be and why? What would it be called? What would it taste like--to the degree that you can actually taste it ;) '),
+            model_name="application",
+            name="essay3",
+            field=models.TextField(
+                max_length=1500,
+                null=True,
+                verbose_name="If you could create your own flavor of La Croix, what would it be and why? What would it be called? What would it taste like--to the degree that you can actually taste it ;) ",
+            ),
         ),
         migrations.AlterField(
-            model_name='application',
-            name='pikachu',
-            field=models.TextField(max_length=500, null=True, verbose_name=''),
+            model_name="application",
+            name="pikachu",
+            field=models.TextField(max_length=500, null=True, verbose_name=""),
         ),
     ]

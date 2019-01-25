@@ -14,9 +14,7 @@ class RaceChoice(models.Model):
 class Application(models.Model):
 
     phone_number = models.CharField(
-        max_length=20, null=True, 
-        verbose_name="Phone Number", 
-        help_text="###-###-####"
+        max_length=20, null=True, verbose_name="Phone Number", help_text="###-###-####"
     )
 
     birth_date = models.DateField(
@@ -48,7 +46,10 @@ class Application(models.Model):
     )
 
     school = models.CharField(
-        max_length=200, verbose_name="Where do you attend school?", help_text="If your school does not appear on the list, select \"Other\"", null=True
+        max_length=200,
+        verbose_name="Where do you attend school?",
+        help_text='If your school does not appear on the list, select "Other"',
+        null=True,
     )
 
     major = models.CharField(
@@ -147,9 +148,7 @@ class Application(models.Model):
 
     legal3 = models.BooleanField(default=False, verbose_name="")
 
-    brain_1 = models.CharField(
-        max_length=150, verbose_name="", null=True,
-    )
+    brain_1 = models.CharField(max_length=150, verbose_name="", null=True)
 
     brain_2 = models.CharField(
         max_length=150, verbose_name="Expanding Brain 2", null=True
@@ -175,8 +174,7 @@ class Application(models.Model):
 # confirmation class, to attach to applicant class
 class Confirmation(models.Model):
     dietary_restrictions = models.CharField(
-                            verbose_name="Do you have any dietary restrictions?",
-                            max_length=1000,
+        verbose_name="Do you have any dietary restrictions?", max_length=1000
     )
 
     SHIRT_SIZE_CHOICES = (
@@ -188,15 +186,13 @@ class Confirmation(models.Model):
         ("2X", "XXL"),
     )
     shirt_size = models.CharField(
-                    verbose_name="Shirt Size",
-                    max_length=2,
-                    choices=SHIRT_SIZE_CHOICES,
-                    null=True)
+        verbose_name="Shirt Size", max_length=2, choices=SHIRT_SIZE_CHOICES, null=True
+    )
 
     notes = models.TextField(
-                verbose_name = "Anything else we should know? (health information, accommodations, etc.)",
-                max_length=1500,
-                null=True,
+        verbose_name="Anything else we should know? (health information, accommodations, etc.)",
+        max_length=1500,
+        null=True,
     )
 
 

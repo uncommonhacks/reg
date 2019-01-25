@@ -5,28 +5,25 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('theapplication', '0027_auto_20181223_0709'),
-    ]
+    dependencies = [("theapplication", "0027_auto_20181223_0709")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='application',
-            name='is_this_a',
+        migrations.RemoveField(model_name="application", name="is_this_a"),
+        migrations.AddField(
+            model_name="application",
+            name="is_this_a_1",
+            field=models.CharField(max_length=150, null=True, verbose_name="Who"),
         ),
         migrations.AddField(
-            model_name='application',
-            name='is_this_a_1',
-            field=models.CharField(max_length=150, null=True, verbose_name='Who'),
+            model_name="application",
+            name="is_this_a_2",
+            field=models.CharField(max_length=150, null=True, verbose_name="Butterfly"),
         ),
         migrations.AddField(
-            model_name='application',
-            name='is_this_a_2',
-            field=models.CharField(max_length=150, null=True, verbose_name='Butterfly'),
-        ),
-        migrations.AddField(
-            model_name='application',
-            name='is_this_a_3',
-            field=models.CharField(max_length=150, null=True, verbose_name='Is this...'),
+            model_name="application",
+            name="is_this_a_3",
+            field=models.CharField(
+                max_length=150, null=True, verbose_name="Is this..."
+            ),
         ),
     ]
