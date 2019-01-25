@@ -189,11 +189,20 @@ class Confirmation(models.Model):
         verbose_name="Shirt Size", max_length=2, choices=SHIRT_SIZE_CHOICES, null=True
     )
 
+    wherefrom = models.TextField(
+        verbose_name="Where are you coming from? (city, state, etc.)",
+        max_length=200,
+        null=True,
+    )
+
     notes = models.TextField(
         verbose_name="Anything else we should know? (health information, accommodations, etc.)",
         max_length=1500,
         null=True,
     )
+
+    over18 = models.BooleanField(default=False, verbose_name="")
+    will_show = models.BooleanField(default=False, verbose_name="")
 
 
 class Applicant(models.Model):

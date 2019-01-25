@@ -39,7 +39,7 @@
     {% if field.field.widget.template_name == "django/forms/widgets/clearable_file_input.html" %}
       {% include "com/file_field.html" with field=field %}
     {% endif %}
-    {% if field.name == "legal1" or field.name == "legal2" or field.name == "legal3" or field.name == "is_this_a_1" or field.name == "pikachu" or field.name == "brain_1" %}
+    {% if field.name == "legal1" or field.name == "legal2" or field.name == "legal3" or field.name == "is_this_a_1" or field.name == "pikachu" or field.name == "brain_1" or field.name == "over18" or field.name == "will_show" %}
       {{ field }}
     {% endif %}
     <div class="error">

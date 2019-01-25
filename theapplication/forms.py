@@ -63,6 +63,8 @@ class ApplicationForm(forms.ModelForm):
 class ConfirmationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields["over18"].widget.template_name = "django/forms/widgets/over18.html"
+        self.fields["will_show"].widget.template_name = "django/forms/widgets/will_show.html"
 
     class Meta:
         model = Confirmation
