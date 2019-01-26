@@ -54,7 +54,21 @@
 
   <!--Submit Button-->
   <div class="row center-align">
-    <input class="btn btn-default btn-lg" value="Submit" type="submit"/>
+    <input id="submit_button" class="btn btn-default btn-lg" value="Submit" type="submit"/>
   </div>
 </form>
+
+<script>
+  document.getElementById("submit_button").onclick = function() {
+    let reqs = document.getElementsByClassName("required_checkbox");
+    for (let i = 0; i < reqs.length; i++) {
+      if (!reqs[i].checked) {
+        alert("Both checkboxes are required to confirm your spot!");
+        return false;
+      }
+    }
+    return true;
+  };
+</script>
+
 {% endblock %}

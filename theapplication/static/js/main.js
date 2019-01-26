@@ -23,16 +23,18 @@ $(document).ready(function(){
 
   // 2019TODO shouldn't need to hide the default element
   let raceSelect = document.getElementById("id_race");
-  let raceInput = raceSelect.previousElementSibling
-    .previousElementSibling
-    .previousElementSibling;
-  let clearMultipleDashes = function () {
-    if (raceInput.value.includes("---------, ")) {
-      raceInput.value = raceInput.value.slice(11);
-    }
-  };
-  raceSelect.onchange = clearMultipleDashes;
-  clearMultipleDashes(); // run it once in case people refreshed
+  if (raceSelect) {
+    let raceInput = raceSelect.previousElementSibling
+      .previousElementSibling
+      .previousElementSibling;
+    let clearMultipleDashes = function () {
+      if (raceInput.value.includes("---------, ")) {
+        raceInput.value = raceInput.value.slice(11);
+      }
+    };
+    raceSelect.onchange = clearMultipleDashes;
+    clearMultipleDashes(); // run it once in case people refreshed
+  }
 
   // MLH School List Autocomplete
   $('input.autocomplete').autocomplete({
