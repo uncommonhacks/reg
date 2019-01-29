@@ -8,15 +8,17 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from theapplication.models import Applicant
 
-
-def send_notification_email(email_addr, first_name):
+def send_notification_email(email_addr, first_name, email_type_str):
     context = {"site": settings.MAIN_URL, "first_name": first_name}
+    if email_type_str == '':
+        print('wrong status of applicant {}'.format(email_addr))
+        return
     subject = render_to_string(
-        template_name="emails/decision_email_subject.txt", context=context
+        template_name="emails/{}_email_subject.txt".format(email_type_str), context=context
     )
     subject = "".join(subject.splitlines())
     message = render_to_string(
-        template_name="emails/decision_email_contents.html", context=context
+        template_name="emails/{}_email_contents.html".format(email_type_str), context=context
     )
     plain_message = strip_tags(message)
     from_email = settings.DEFAULT_FROM_EMAIL
@@ -57,9 +59,18 @@ class Command(BaseCommand):
             )
             for applicant in queryset:
                 try:
+                    if applicant.status == 'NA':
+                        email_format = 'rejected'
+                    elif applicant.status == 'AM':
+                        email_format = 'admitted'
+                    elif applicant.status == 'WA':
+                        email_format = 'waitlisted'
+                    else:
+                        email_format = ''
                     user = applicant.user
-                    send_notification_email(user.email, user.first_name)
+                    send_notification_email(user.email, user.first_name, email_format)
                     applicant.notified_of_admit_status = True
                     applicant.save()
-                except:
+                except Exception as e:
                     self.stdout.write("failed to email user {}".format(user.username))
+                    self.stdout.write(str(e))
