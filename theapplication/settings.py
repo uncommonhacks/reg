@@ -2,8 +2,8 @@ import datetime
 
 import django
 
-app_deadline_dt = datetime.datetime(2019, 2, 17, hour=23, minute=59, second=59)
-con_deadline_dt = datetime.datetime(2019, 2, 17, hour=23, minute=59, second=59)
+app_deadline_dt = datetime.datetime(2019, 2, 10, hour=23, minute=59, second=59)
+con_deadline_dt = datetime.datetime(2019, 2, 10, hour=23, minute=59, second=59)
 
 
 def over_application_deadline():

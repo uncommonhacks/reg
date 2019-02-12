@@ -28,9 +28,8 @@ def send_notification_email(email_addr, first_name):
 
 
 class Command(BaseCommand):
-    help = "send email blast to anyone who's got an account but hasn't applied lol"
+    help = "send email blast to anyone who's accepted but not confirmed"
 
     def handle(self, *args, **options):
-        for a in Applicant.objects.all():
-            if not a.application:
-                send_notification_email(a.user.email, a.user.first_name)
+        for a in Applicant.objects.filter(status='AM').all():
+            send_notification_email(a.user.email, a.user.first_name)
