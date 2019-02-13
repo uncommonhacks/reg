@@ -31,5 +31,5 @@ class Command(BaseCommand):
     help = "send email blast to anyone who's accepted but not confirmed"
 
     def handle(self, *args, **options):
-        for a in Applicant.objects.filter(status='AM').all():
+        for a in Applicant.objects.filter(status='CF').all():
             send_notification_email(a.user.email, a.user.first_name)
